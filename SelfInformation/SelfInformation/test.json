@@ -1,0 +1,19 @@
+{
+    "0":[
+          {"u_Name":"John",
+           "userpic":"head.jpg"},
+        ],
+    
+    
+    "1":[{"u_Name":"John",
+         "userpic":"head.jpg",
+         "userfavorite":"NULL",
+         "userhistroy":"NULL",
+         "userrank":"NULL",
+         "u_ID":"110100110",
+         "u_PhoneNo":"1234567890",
+         "u_Email":"xxx@xxx.xxx",
+         "learnStat":"cet-8",
+         "fromSchool":"上海交通大学",
+         }]
+}
