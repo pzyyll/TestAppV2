@@ -28,7 +28,7 @@ UITableViewDelegate {
         
         self.title = aCourse.courseName
         self.navigationController?.title = "Test"
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 88/255, green: 195/255, blue: 224/255, alpha: 1)
+//        self.navigationController?.navigationBar.barTintColor = UIColor(red: 88/255, green: 195/255, blue: 224/255, alpha: 1)
         
         //search Btn
         let searchBtn = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: Selector("searchTest:"))

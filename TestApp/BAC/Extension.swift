@@ -8,3 +8,9 @@
 
 import Foundation
 import UIKit
+
+extension UIColor {
+    class func orangeColorV1() -> UIColor {
+        return UIColor(red: 1, green: 83/255, blue: 0, alpha: 1)
+    }
+}
