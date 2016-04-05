@@ -41,6 +41,7 @@ UITableViewDelegate {
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: .Plain)
         
+
         self.titleView = UIView(frame: CGRectMake(0, 0, self.frame.width, 30))
         self.titleView.backgroundColor = UIColor(red: 253/255, green: 252/255, blue: 249/255, alpha: 1)
         
@@ -52,7 +53,6 @@ UITableViewDelegate {
         self.titleView.addSubview(self.titleLeftItem)
         self.titleView.addSubview(self.titleRightItem)
         self.tableHeaderView = self.titleView
-        
         self.separatorStyle = .None
         
         //设置tableview 相关协议

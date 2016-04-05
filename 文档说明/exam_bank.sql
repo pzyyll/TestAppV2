@@ -19,8 +19,14 @@ SET time_zone = "+00:00";
 --
 -- Database: `exam_bank`
 --
+<<<<<<< Updated upstream
 CREATE DATABASE `exam_bank`;
 use database `exam_bank`;
+=======
+
+use database `exam_bank`;
+
+>>>>>>> Stashed changes
 -- --------------------------------------------------------
 
 --

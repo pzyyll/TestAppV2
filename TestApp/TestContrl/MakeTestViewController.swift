@@ -42,9 +42,9 @@ class MakeTestViewController: UIViewController, MyTableViewContrlerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //返回按钮
+        //关闭tabBar
         self.tabBarController!.tabBar.hidden = true
+        //返回按钮
         var img = UIImage(named: "back")
         let backBtn = UIBarButtonItem(image: UIImage(data: UIImagePNGRepresentation(img!)!, scale: 5.0), style: UIBarButtonItemStyle.Plain, target: self, action: "back")
         backBtn.imageInsets = UIEdgeInsetsMake(0, -10, 0, 10)
@@ -80,7 +80,7 @@ class MakeTestViewController: UIViewController, MyTableViewContrlerDelegate {
 
     override func viewDidAppear(animated: Bool) {
         //print("yes")
-        
+
         self.timer.timer = NSTimer(timeInterval: 1.0, target: self, selector: "nstimerHandler", userInfo: nil, repeats: true)
         NSRunLoop.mainRunLoop().addTimer(self.timer.timer!, forMode: NSDefaultRunLoopMode)
         self.timer.timer!.fire()

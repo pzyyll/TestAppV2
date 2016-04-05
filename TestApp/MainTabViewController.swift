@@ -17,28 +17,30 @@ class MainTabViewController: UITabBarController {
         //self.tabBar.setItems(items, animated: true)
         
         
-        //备忘录界面
-        let messages = MainViewController()
+        //试题界面
+        let paperSB = UIStoryboard(name: "PapersStoryboard", bundle: nil)
+        
+        let messages = paperSB.instantiateViewControllerWithIdentifier("papers") as! PapersViewController
         let navMessages = UINavigationController(rootViewController: messages)
-        var img = UIImage(named: "test");
-        navMessages.tabBarItem.image = UIImage(data: UIImagePNGRepresentation(img!)!, scale: 2.0)
-        navMessages.tabBarItem.title = "备忘录";
+        var img = UIImage(named: "Icon_home_paperSmall");
+        
+        navMessages.tabBarItem.image = img
+        navMessages.tabBarItem.title = "试卷";
         
         
-        //做题界面
+        //练习界面
         let test = TestSearchViewController()
-        test.title = "Test"
         let navTest = UINavigationController(rootViewController: test)
-        img = UIImage(named: "pen");
-        navTest.tabBarItem.image = UIImage(data: UIImagePNGRepresentation(img!)!, scale: 1.9)
+        img = UIImage(named: "icon_home_practice");
+        navTest.tabBarItem.image = img
+        test.tabBarItem.title = "练习"
         
-        
-        //个人信息界面
+        //fun界面
         let me = SelfInforViewController()
         let navMe = UINavigationController(rootViewController: me)
-        img = UIImage(named: "me")
-        navMe.tabBarItem.image = UIImage(data: UIImagePNGRepresentation(img!)!, scale: 2.0)
-        navMe.tabBarItem.title = "Me"
+        img = UIImage(named: "alien")
+        navMe.tabBarItem.image = img
+        navMe.tabBarItem.title = "Fun"
         
         
         self.setViewControllers([navTest, navMessages, navMe], animated: true)
