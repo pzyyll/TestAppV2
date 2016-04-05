@@ -31,7 +31,7 @@ class MainTabViewController: UITabBarController {
         
         
         //练习界面
-        let test = TestSearchViewController()
+        let test = PractiseViewController()//TestSearchViewController()
         let navTest = UINavigationController(rootViewController: test)
         img = UIImage(named: "icon_home_practice");
         navTest.tabBarItem.image = img
@@ -51,9 +51,6 @@ class MainTabViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-
         // Do any additional setup after loading the view.
     
     }

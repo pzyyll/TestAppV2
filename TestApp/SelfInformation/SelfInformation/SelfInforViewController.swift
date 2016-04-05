@@ -33,15 +33,12 @@ class SelfInforViewController: UIViewController, UITableViewDataSource, UITableV
     func navigationPrepare(){
         self.title = "Me"
         self.view.backgroundColor = UIColor.whiteColor()
-//        self.navigationController?.navigationBar.barTintColor =
-//            UIColor(red: 0/255, green: 160/255, blue: 255/255, alpha: 1)//导航栏背景颜色
-//        self.navigationController?.navigationBar.titleTextAttributes =
-//            [NSForegroundColorAttributeName: UIColor.whiteColor()]//文字颜色
-//        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()//按钮颜色
+
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()//按钮颜色
         let item = UIBarButtonItem(title: "", style: .Plain, target: self, action: nil)//导航栏返回的按键名
         self.navigationItem.backBarButtonItem = item;
         
-        print("navigation loaded")
+        //print("navigation loaded")
         
     }
     
@@ -58,7 +55,7 @@ class SelfInforViewController: UIViewController, UITableViewDataSource, UITableV
         //json数据在此操作
         saveJsonInMe()
        // print(Dic)
-        print("tableview loaded")
+        //print("tableview loaded")
     }
     
     //MARK:json数据的操作
