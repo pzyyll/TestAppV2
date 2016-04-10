@@ -7,41 +7,64 @@
 //
 
 import UIKit
+import WebKit
 
 class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     let numOfPages = 3
     
     var scrollView:UIScrollView!
-    var blankView:UIView!
     var pageControl:UIPageControl?
     var timer:NSTimer!
     var collectionView:UICollectionView?
     var smalltblView:UITableView?
+    var smallView:UIView!
     var arr : [String] = ["CET-4", "CET-6", "TEM-4", "TEM-6", "GRE", "more"] //"TOFEL", "N2"]
     
     var num:CGFloat = 1.0
     var flag = true
+    
+    var webAct: WKWebView!
+    var ddlleeggaattee:SmallTableViewDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
         self.timer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(10),target:self,selector:#selector(PractiseViewController.countTime),userInfo:nil,repeats:true)
         
+        
         readyForMainPageView()
-        readyForBlankView()
+        readyForWKWebView()
         readyForCollectionView()
+        readyForSelectView()
     }
     
     func readyForSelectView(){
+
         
+        smallView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width - 98, UIScreen.mainScreen().bounds.height))
+        smallView.backgroundColor = UIColor.grayColor()
+        smalltblView = UITableView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width - 100, UIScreen.mainScreen().bounds.height), style: UITableViewStyle.Plain)
+        
+        //smalltblView?.bounces = false
+        smalltblView?.scrollEnabled = false
+        smalltblView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "testcell")
+        smalltblView!.delegate = ddlleeggaattee
+        smalltblView!.dataSource = ddlleeggaattee
+        
+        //ddlleeggaattee.tableView(smalltblView!, numberOfRowsInSection: 15)
+        //ddlleeggaattee.tableView(smalltblView!, cellForRowAtIndexPath: NSIndexPath)
+        
+        smallView.addSubview(smalltblView!)
+        smallView.hidden = true
+        self.view.addSubview(smallView)
     }
     
     func readyForMainPageView(){
         
         let frame = self.view.bounds
         self.scrollView = UIScrollView()
-        scrollView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 240)//self.view.bounds
+        scrollView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 250)//self.view.bounds
         
         scrollView.contentSize=CGSizeMake(frame.size.width*CGFloat(numOfPages),0)
         scrollView.pagingEnabled = true
@@ -71,7 +94,7 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     
     func countTime(){
-        pageChanged(pageControl!, pageNum: num)
+        pageChanged(pageControl, pageNum: num)
         
         if flag == true{
             num = num + 1
@@ -89,23 +112,24 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
         self.pageControl!.currentPage=Int(offset.x/self.view.frame.size.width)
     }
     
-    func pageChanged(sender:UIPageControl, pageNum:CGFloat){
+    func pageChanged(sender:UIPageControl?, pageNum:CGFloat){
         //print(pageNum)
-        var frame = scrollView.frame
-        frame.origin.x = frame.size.width * CGFloat(pageNum)
-        frame.origin.y = 0
+        if sender != nil{
+            var frame = scrollView.frame
+            frame.origin.x = frame.size.width * CGFloat(pageNum)
+            frame.origin.y = 0
         
-        scrollView.scrollRectToVisible(frame, animated: true)
+            scrollView.scrollRectToVisible(frame, animated: true)
+        }
     }
     
-    func readyForBlankView(){
-        blankView = UIView(frame: CGRectMake(0, 250, UIScreen.mainScreen().bounds.width, 190))
-        let label = UILabel(frame: CGRectMake(20, 50, 100, 30))
-        label.text = "BlankView"
+    func readyForWKWebView(){
+        webAct = WKWebView(frame: CGRectMake(0, 250, UIScreen.mainScreen().bounds.width, 190))
+        webAct.scrollView.scrollEnabled = false
+        self.view.addSubview(webAct)
         
-        blankView.backgroundColor = UIColor.whiteColor()
-        blankView.addSubview(label)
-        self.view.addSubview(blankView)
+        let req = NSMutableURLRequest(URL: NSURL(string: "http://www.html5tricks.com/demo/html5-css3-car-animation/index.html")!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 60)
+        webAct.loadRequest(req)
     }
     
     func readyForCollectionView(){
@@ -136,12 +160,29 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! CustomCLcell
         
         cell.toggleSelected()
-        //if indexPath.row == 5{
-        //let cell = collectionView.cellForItemAtIndexPath(indexPath) as! CustomCLcell
         
-        
-        //print(indexPath.row)
-        // }
+        if indexPath.row == arr.count-1{
+            if(self.smallView.hidden == true){
+                let animation = CATransition()
+                animation.duration = 0.3
+                animation.fillMode = kCAFillModeForwards
+                animation.type = kCATransitionPush
+                animation.subtype = kCATransitionFromLeft
+            
+                self.smallView.hidden = false
+                self.smallView.layer.addAnimation(animation, forKey: nil)
+            } else {
+                self.smallView.hidden = true
+                
+                let animation2 = CATransition()
+                animation2.duration = 0.3
+                //animation.fillMode = kCAFillModeForwards
+                animation2.type = kCATransitionReveal
+                animation2.subtype = kCATransitionFromRight
+
+                self.smallView.layer.addAnimation(animation2, forKey: nil)
+            }
+        }
         
     }
     
@@ -174,5 +215,6 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets{
         return UIEdgeInsetsMake(10, 20, 10, 10)
     }
+    
 
 }

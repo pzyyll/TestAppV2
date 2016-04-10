@@ -49,6 +49,7 @@
 		6385EB751CB4039E006655F8 /* PractiseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6385EB741CB4039E006655F8 /* PractiseViewController.swift */; };
 		6385EB771CB4040E006655F8 /* CustomCLcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6385EB761CB4040E006655F8 /* CustomCLcell.swift */; };
 		6385EB791CB4043D006655F8 /* AdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6385EB781CB4043D006655F8 /* AdViewController.swift */; };
+		63ED53F61CB93CA700C44138 /* SmallTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ED53F51CB93CA700C44138 /* SmallTableViewDelegate.swift */; };
 		E6F046B11C2D0A0000D3CF6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F046B01C2D0A0000D3CF6C /* AppDelegate.swift */; };
 		E6F046B61C2D0A0000D3CF6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F046B41C2D0A0000D3CF6C /* Main.storyboard */; };
 		E6F046B91C2D0A0000D3CF6C /* TestApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E6F046B71C2D0A0000D3CF6C /* TestApp.xcdatamodeld */; };
@@ -120,6 +121,7 @@
 		6385EB741CB4039E006655F8 /* PractiseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PractiseViewController.swift; sourceTree = "<group>"; };
 		6385EB761CB4040E006655F8 /* CustomCLcell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCLcell.swift; sourceTree = "<group>"; };
 		6385EB781CB4043D006655F8 /* AdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdViewController.swift; sourceTree = "<group>"; };
+		63ED53F51CB93CA700C44138 /* SmallTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallTableViewDelegate.swift; sourceTree = "<group>"; };
 		8A5CC247F2D556D103D74E63 /* Pods_TestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B78021C4DEF0CC8AD07DD8CD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E6F046AD1C2D0A0000D3CF6C /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -275,6 +277,7 @@
 		4C4BCF511CAD4EFF001FFC09 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				63ED53F51CB93CA700C44138 /* SmallTableViewDelegate.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -692,6 +695,7 @@
 				4C8EFD311C32B3F000AC7454 /* CollectionView.swift in Sources */,
 				4C8EFD3C1C32B3F000AC7454 /* UserItem.swift in Sources */,
 				4C4BCF561CAD50EF001FFC09 /* PapersViewController.swift in Sources */,
+				63ED53F61CB93CA700C44138 /* SmallTableViewDelegate.swift in Sources */,
 				4C38035A1C31D3E500B8C0B1 /* TopicDetail.swift in Sources */,
 				4C8EFCBE1C328EB300AC7454 /* PlayerView.swift in Sources */,
 				4C89551C1C2FE0AE00A63975 /* MakeTestViewController.swift in Sources */,
