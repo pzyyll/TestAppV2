@@ -25,7 +25,7 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
     var flag = true
     
     var webAct: WKWebView!
-    var ddlleeggaattee:SmallTableViewDelegate!
+    var ddlleeggaattee:SelectTheCourseController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
         readyForCollectionView()
     }
     
-        
+    
     func readyForMainPageView(){
         
         let frame = self.view.bounds
@@ -92,7 +92,6 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     
     func pageChanged(sender:UIPageControl?, pageNum:CGFloat){
-        //print(pageNum)
         if sender != nil{
             var frame = scrollView.frame
             frame.origin.x = frame.size.width * CGFloat(pageNum)
@@ -141,30 +140,10 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
         cell.toggleSelected()
         
         if indexPath.row == arr.count-1{
-            let courseCtr = SmallTableViewDelegate()
+            let courseCtr = SelectTheCourseController()
             self.addChildViewController(courseCtr)
             self.view.addSubview(courseCtr.view);
             self.didMoveToParentViewController(self)
-//            if(self.smallView.hidden == true){
-//                let animation = CATransition()
-//                animation.duration = 0.3
-//                animation.fillMode = kCAFillModeForwards
-//                animation.type = kCATransitionPush
-//                animation.subtype = kCATransitionFromLeft
-//            
-//                self.smallView.hidden = false
-//                self.smallView.layer.addAnimation(animation, forKey: nil)
-//            } else {
-//                self.smallView.hidden = true
-//                
-//                let animation2 = CATransition()
-//                animation2.duration = 0.3
-//                //animation.fillMode = kCAFillModeForwards
-//                animation2.type = kCATransitionReveal
-//                animation2.subtype = kCATransitionFromRight
-//
-//                self.smallView.layer.addAnimation(animation2, forKey: nil)
-//            }
         }
         
     }
