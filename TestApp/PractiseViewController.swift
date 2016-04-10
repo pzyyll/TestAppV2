@@ -36,30 +36,9 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
         readyForMainPageView()
         readyForWKWebView()
         readyForCollectionView()
-        readyForSelectView()
     }
     
-    func readyForSelectView(){
-
         
-        smallView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width - 98, UIScreen.mainScreen().bounds.height))
-        smallView.backgroundColor = UIColor.grayColor()
-        smalltblView = UITableView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width - 100, UIScreen.mainScreen().bounds.height), style: UITableViewStyle.Plain)
-        
-        //smalltblView?.bounces = false
-        smalltblView?.scrollEnabled = false
-        smalltblView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "testcell")
-        smalltblView!.delegate = ddlleeggaattee
-        smalltblView!.dataSource = ddlleeggaattee
-        
-        //ddlleeggaattee.tableView(smalltblView!, numberOfRowsInSection: 15)
-        //ddlleeggaattee.tableView(smalltblView!, cellForRowAtIndexPath: NSIndexPath)
-        
-        smallView.addSubview(smalltblView!)
-        smallView.hidden = true
-        self.view.addSubview(smallView)
-    }
-    
     func readyForMainPageView(){
         
         let frame = self.view.bounds
@@ -162,26 +141,30 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
         cell.toggleSelected()
         
         if indexPath.row == arr.count-1{
-            if(self.smallView.hidden == true){
-                let animation = CATransition()
-                animation.duration = 0.3
-                animation.fillMode = kCAFillModeForwards
-                animation.type = kCATransitionPush
-                animation.subtype = kCATransitionFromLeft
-            
-                self.smallView.hidden = false
-                self.smallView.layer.addAnimation(animation, forKey: nil)
-            } else {
-                self.smallView.hidden = true
-                
-                let animation2 = CATransition()
-                animation2.duration = 0.3
-                //animation.fillMode = kCAFillModeForwards
-                animation2.type = kCATransitionReveal
-                animation2.subtype = kCATransitionFromRight
-
-                self.smallView.layer.addAnimation(animation2, forKey: nil)
-            }
+            let courseCtr = SmallTableViewDelegate()
+            self.addChildViewController(courseCtr)
+            self.view.addSubview(courseCtr.view);
+            self.didMoveToParentViewController(self)
+//            if(self.smallView.hidden == true){
+//                let animation = CATransition()
+//                animation.duration = 0.3
+//                animation.fillMode = kCAFillModeForwards
+//                animation.type = kCATransitionPush
+//                animation.subtype = kCATransitionFromLeft
+//            
+//                self.smallView.hidden = false
+//                self.smallView.layer.addAnimation(animation, forKey: nil)
+//            } else {
+//                self.smallView.hidden = true
+//                
+//                let animation2 = CATransition()
+//                animation2.duration = 0.3
+//                //animation.fillMode = kCAFillModeForwards
+//                animation2.type = kCATransitionReveal
+//                animation2.subtype = kCATransitionFromRight
+//
+//                self.smallView.layer.addAnimation(animation2, forKey: nil)
+//            }
         }
         
     }
