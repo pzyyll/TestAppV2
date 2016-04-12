@@ -23,11 +23,11 @@ UITableViewDelegate {
     override func loadView() {
         super.loadView()
         aCourse.courseNo = "20015LV4"
-        aCourse.courseName = "大学英语四级"
+        aCourse.courseName = "练习"
         aCourse.courseIntro = "2015-12-26 00:00:00"
         
         self.title = aCourse.courseName
-        self.navigationController?.title = "Test"
+        //self.navigationController?.title = "Test"
 //        self.navigationController?.navigationBar.barTintColor = UIColor(red: 88/255, green: 195/255, blue: 224/255, alpha: 1)
         
         //search Btn

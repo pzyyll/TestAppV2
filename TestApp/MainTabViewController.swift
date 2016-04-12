@@ -31,11 +31,12 @@ class MainTabViewController: UITabBarController {
         
         
         //练习界面
-        let test = TestSearchViewController()
+        let test = PractiseViewController()//TestSearchViewController()
         let navTest = UINavigationController(rootViewController: test)
         img = UIImage(named: "icon_home_practice");
         navTest.tabBarItem.image = img
-        test.tabBarItem.title = "练习"
+        //test.tabBarItem.title = "练习"
+        test.title = "练习"
         
         //fun界面
         let me = SelfInforViewController()
@@ -64,9 +65,6 @@ class MainTabViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-
         // Do any additional setup after loading the view.
     
     }
