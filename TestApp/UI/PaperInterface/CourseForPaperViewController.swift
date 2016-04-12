@@ -10,24 +10,35 @@ import UIKit
 
 class CourseForPaperViewController: UIViewController {
 
+    var label: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.redColor()
-        self.view.layer.opacity = 0.3
+        self.view.backgroundColor = UIColor.clearColor()
         
-        var label = UILabel(frame: CGRect(x: 0, y: 50, width: 300, height: self.view.frame.height))
+        label = UILabel(frame: CGRect(x: -414, y: 50, width: 300, height: self.view.frame.height))
         label.backgroundColor = UIColor.blackColor()
         self.view.addSubview(label)
         let ges = UITapGestureRecognizer(target: self, action: #selector(self.close(_:)))
         self.view.addGestureRecognizer(ges)
         
-        var transition = CATransition()
-        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        transition.duration = 1.0
-        transition.subtype = kCATransitionFromLeft
-        transition.type = kCATransitionMoveIn
-        transition.removedOnCompletion = false
-        self.view.layer.addAnimation(transition, forKey: "yes")
+        
+//        var transition = CATransition()
+//        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+//        transition.duration = 1.0
+//        transition.subtype = kCATransitionFromLeft
+//        transition.type = kCATransitionMoveIn
+//        transition.removedOnCompletion = false
+//        label.layer.addAnimation(transition, forKey: "yes")
+        
+        CATransaction.begin()
+        CATransaction.setAnimationDuration(3.0)
+        label.frame.origin.x = 0
+        CATransaction.setCompletionBlock {
+            self.view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
+        }
+        
+        CATransaction.commit()
+        
         // Do any additional setup after loading the view.
     }
 
@@ -40,6 +51,7 @@ class CourseForPaperViewController: UIViewController {
         let point = sender.locationInView(self.view)
         print(point);
         if (point.x > 370) {
+            self.view.backgroundColor = UIColor.clearColor()
             UIView.animateWithDuration(1.0, animations: {
                 self.view.frame.origin.x = -414
                 }, completion: { (bool) in
