@@ -74,7 +74,10 @@ class SelectTheCourseController: UIViewController, UITableViewDelegate, UITableV
         
         let ges = UITapGestureRecognizer(target: self, action:#selector(close(_:)))
 
-        self.view.addGestureRecognizer(ges);
+        let view = UIView(frame: CGRectMake(smalltblView!.frame.width, smalltblView!.frame.origin.y, 100, smalltblView!.frame.height));
+        view.backgroundColor = UIColor.clearColor();
+        self.view.addSubview(view)
+        view.addGestureRecognizer(ges);
     }
     
     
