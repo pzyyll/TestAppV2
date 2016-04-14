@@ -40,16 +40,16 @@ class MainTabViewController: UITabBarController {
         //fun界面
         let me = SelfInforViewController()
         let navMe = UINavigationController(rootViewController: me)
-        img = UIImage(named: "alien")
+        img = UIImage(named: "Icon_me-Small")
         navMe.tabBarItem.image = img
-        navMe.tabBarItem.title = "Fun"
+        navMe.tabBarItem.title = "Me"
         
         
         self.setViewControllers([navTest, navMessages, navMe], animated: true)
         
         let selectIconsForTabItems = ["icon_home_practice_checked_",
             "icon_home_paper_checked_",
-            "alien_press"];
+            "Icon_me-Small"];
         var i = 0;
         for item in self.tabBar.items! {
             let selectedImg = UIImage(named: selectIconsForTabItems[i]);

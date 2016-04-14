@@ -84,19 +84,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(btnNeedHelp)
         self.view.addSubview(switchPwd)
         
-//        imageUsername = UIImageView(image: UIImage(named: "userIcon"))
-//        imageUsername.frame = CGRectMake(0, 0, 30, 30)
-//        imageUsername.frame.origin.x = textUsername.frame.origin.x - 6 -
-//            imageUsername.frame.width
-//        imageUsername.frame.origin.y = textUsername.frame.origin.y
-//        imageUsername.bounds.size.width -= 5
-//        imageUsername.bounds.size.height -= 5
-//        self.view.addSubview(imageUsername)
-//        
-//        imagePwd = UIImageView(image: UIImage(named: "pwdIcon"))
-//        imagePwd.frame.origin.x = textUsername.frame.origin.x
-//        imagePwd.frame.origin.y = textPwd.frame.origin.y
-//        imagePwd.frame.size = imageUsername.frame.size
+        let tView = TSUITextField()
+        tView.frame.origin = CGPoint(x: 10, y: 50)
+        tView.leftView = UIImageView(image: UIImage(named: "Icon_login_user"))
+        tView.leftView?.bounds.size.height -= 15
+        tView.leftView?.bounds.size.width -= 18
+        tView.leftViewMode = .Always
+        self.view.addSubview(tView)
         
     }
     
@@ -120,10 +114,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         textUsername.returnKeyType = .Next
         textUsername.clearButtonMode = UITextFieldViewMode.WhileEditing
         textUsername.delegate = self
-        imageUsername = UIImageView(image: UIImage(named: "userIcon"))
+        imageUsername = UIImageView(image: UIImage(named: "Icon_login_user"))
         textUsername.leftView = imageUsername
-        textUsername.leftView?.bounds.size.width -= 4;
-        textUsername.leftView?.bounds.size.height -= 4;
+        textUsername.leftView?.bounds.size.width -= 10;
+        textUsername.leftView?.bounds.size.height -= 10;
         textUsername.leftViewMode = .Always
         
         textPwd.borderStyle = UITextBorderStyle.RoundedRect

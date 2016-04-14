@@ -24,6 +24,8 @@
 		4C4BCF5A1CAD515B001FFC09 /* PapersStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C4BCF591CAD515B001FFC09 /* PapersStoryboard.storyboard */; };
 		4C4E73171CB549C4002D8926 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4E73141CB549C4002D8926 /* MBProgressHUD.m */; };
 		4C4E731A1CB54A18002D8926 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4E73191CB54A18002D8926 /* AFNetworking.framework */; };
+		4C7540C61CBF435300E94C82 /* LoginMainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C7540C51CBF435300E94C82 /* LoginMainStoryboard.storyboard */; };
+		4C7540C81CBF46BE00E94C82 /* TSUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7540C71CBF46BE00E94C82 /* TSUITextField.swift */; };
 		4C775A041CB3F799000BA228 /* UILabelPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C775A031CB3F799000BA228 /* UILabelPadding.swift */; };
 		4C775A061CB3F7F5000BA228 /* AbsViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C775A051CB3F7F5000BA228 /* AbsViewFactory.swift */; };
 		4C775A081CB3F86C000BA228 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C775A071CB3F86C000BA228 /* Extension.swift */; };
@@ -102,6 +104,8 @@
 		4C4E73141CB549C4002D8926 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		4C4E73191CB54A18002D8926 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = "AFNetworking-master/build/Debug-iphoneos/AFNetworking.framework"; sourceTree = "<group>"; };
 		4C4E731B1CB54A4B002D8926 /* TA-Bri-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "TA-Bri-Header.h"; path = "UI/TA-Bri-Header.h"; sourceTree = "<group>"; };
+		4C7540C51CBF435300E94C82 /* LoginMainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LoginMainStoryboard.storyboard; path = UI/LoginInstall/LoginMainStoryboard.storyboard; sourceTree = "<group>"; };
+		4C7540C71CBF46BE00E94C82 /* TSUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSUITextField.swift; path = UI/LoginInstall/TSUITextField.swift; sourceTree = "<group>"; };
 		4C775A031CB3F799000BA228 /* UILabelPadding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelPadding.swift; sourceTree = "<group>"; };
 		4C775A051CB3F7F5000BA228 /* AbsViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbsViewFactory.swift; path = Factory/AbsViewFactory.swift; sourceTree = "<group>"; };
 		4C775A071CB3F86C000BA228 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extension.swift; path = BAC/Extension.swift; sourceTree = "<group>"; };
@@ -183,6 +187,8 @@
 				4C1FECC11C340E8600B3E855 /* LoginViewController.swift */,
 				4C1FECC21C340E8600B3E855 /* RegisterViewController.swift */,
 				4C1FECC31C340E8600B3E855 /* InstallViewController.swift */,
+				4C7540C51CBF435300E94C82 /* LoginMainStoryboard.storyboard */,
+				4C7540C71CBF46BE00E94C82 /* TSUITextField.swift */,
 			);
 			name = LoginInstall;
 			sourceTree = "<group>";
@@ -635,6 +641,7 @@
 				E6F046BB1C2D0A0000D3CF6C /* Assets.xcassets in Resources */,
 				4C8EFD3B1C32B3F000AC7454 /* test.json in Resources */,
 				E6F046B61C2D0A0000D3CF6C /* Main.storyboard in Resources */,
+				4C7540C61CBF435300E94C82 /* LoginMainStoryboard.storyboard in Resources */,
 				4C8EFD301C32B3F000AC7454 /* collection.png in Resources */,
 				4C8EFD381C32B3F000AC7454 /* rank.png in Resources */,
 				4C8EFD2A1C32B3F000AC7454 /* Info.png in Resources */,
@@ -717,6 +724,7 @@
 				4C4BCF4B1CAD4C65001FFC09 /* PaperCollectionViewCell.swift in Sources */,
 				4C8EFD361C32B3F000AC7454 /* InsideCollectiondetail.swift in Sources */,
 				4C4E73171CB549C4002D8926 /* MBProgressHUD.m in Sources */,
+				4C7540C81CBF46BE00E94C82 /* TSUITextField.swift in Sources */,
 				4C1FECC51C340E8600B3E855 /* RegisterViewController.swift in Sources */,
 				4C775A081CB3F86C000BA228 /* Extension.swift in Sources */,
 				4C8EFD2B1C32B3F000AC7454 /* AboutPageView.swift in Sources */,
