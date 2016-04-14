@@ -16,8 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        UINavigationBar.appearance().barTintColor = UIColor.orangeColorV1()
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+        
+        
         //self.window?.rootViewController = MainTabViewController()
-        self.window?.rootViewController = LoginViewController()
+        
+        self.window?.rootViewController =  UINavigationController(rootViewController: LoginViewController())
         return true
     }
 

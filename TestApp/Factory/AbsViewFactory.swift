@@ -29,7 +29,7 @@ class AbsViewFactory: AbsViewFactoryDelegete {
         sender: AnyObject?, otherConfig items: [AnyObject]!) -> UIView {
             return viewFactory.createControl(titles, action: action, sender: sender, otherConfig: items)
     }
-    init (aFactory: AbsViewFactoryDelegete) {
+    init (FactoryType aFactory: AbsViewFactoryDelegete) {
         self.viewFactory = aFactory
     }
     
@@ -59,4 +59,23 @@ class FactoryForLablePaddingOfSubDetail: AbsViewFactoryDelegete {
     }
 }
 
+class FactoryForTextFiledOfLogin: AbsViewFactoryDelegete {
+    func createControl(titles: [String]?
+        , action: Selector, sender: AnyObject?,
+          otherConfig items: [AnyObject]!) -> UIView {
+        let textFiled = TSUITextField(frame: AbsViewFactory.getDefaultFrame());
+        textFiled.clearButtonMode = .WhileEditing
+        if items != nil {
+            textFiled.leftView = UIImageView(image: UIImage(named: items[0] as! String));
+            textFiled.leftViewMode = .Always
+        }
+        
+        return textFiled
+    }
+}
 
+class FactoryForBtnOfLogin: AbsViewFactoryDelegete {
+    func createControl(titles: [String]?, action: Selector, sender: AnyObject?, otherConfig items: [AnyObject]!) -> UIView {
+        let btn = UIButton(frame: <#T##CGRect#>)
+    }
+}

@@ -184,6 +184,8 @@
 		4C1FECC01C340E1100B3E855 /* LoginInstall */ = {
 			isa = PBXGroup;
 			children = (
+				4C609D211CBF7D6E00485476 /* View */,
+				4C609D201CBF7D5B00485476 /* View Controller */,
 				4C1FECC11C340E8600B3E855 /* LoginViewController.swift */,
 				4C1FECC21C340E8600B3E855 /* RegisterViewController.swift */,
 				4C1FECC31C340E8600B3E855 /* InstallViewController.swift */,
@@ -334,6 +336,20 @@
 			);
 			path = MBProgressHUD;
 			sourceTree = SOURCE_ROOT;
+		};
+		4C609D201CBF7D5B00485476 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "View Controller";
+			sourceTree = "<group>";
+		};
+		4C609D211CBF7D6E00485476 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
 		};
 		4C7759FF1CB3F5EF000BA228 /* BAC */ = {
 			isa = PBXGroup;

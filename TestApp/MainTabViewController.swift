@@ -15,8 +15,8 @@ class MainTabViewController: UITabBarController {
         
         self.tabBar.backgroundColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 245/255)
         //self.tabBar.setItems(items, animated: true)
-        UINavigationBar.appearance().barTintColor = UIColor.orangeColorV1()
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+//        UINavigationBar.appearance().barTintColor = UIColor.orangeColorV1()
+//        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
         
         //试题界面
         let paperSB = UIStoryboard(name: "PapersStoryboard", bundle: nil)
