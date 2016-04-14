@@ -107,20 +107,20 @@ class MakeTestViewController: UIViewController, MyTableViewContrlerDelegate {
             let jsonObj = JSON(data: data!);
             let paperinfo = jsonObj["1"];
             
-            var temp = AExamPaper()
+            let temp = AExamPaper()
             for (key, value) in paperinfo {
                 if (key == "paperNo") {
                     temp.ep_No = value.stringValue
                 } else {
-                    var onePart = OnePartOfChoice()
+                    let onePart = OnePartOfChoice()
                     onePart.intro = value["direction",0,"intro"].stringValue
                     onePart.ansScore = value["direction",0,"ansScore"].stringValue
                     for (key, val) in value["options"] {
-                        var atopic = ATopic()
+                        let atopic = ATopic()
                         atopic.content = val["choice_Content"].stringValue
                         atopic.title = val["choice_Title"].stringValue
                         for (key, val) in val["question"] {
-                            var option = OptionItem()
+                            let option = OptionItem()
                             
                             option.title = val["co_question"].stringValue
                             option.rights = val["co_Right"].stringValue
@@ -283,7 +283,7 @@ class MakeTestViewController: UIViewController, MyTableViewContrlerDelegate {
     
     
     func nstimerHandler() {
-        timer.sec++
+        timer.sec += 1
         timer.update()
         self.timeBtn.title = "\(self.timer.getHourString()):\(self.timer.getSecString())"
         //self.timer.timer!.fire()

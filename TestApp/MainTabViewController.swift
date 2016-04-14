@@ -23,11 +23,10 @@ class MainTabViewController: UITabBarController {
         
         let messages = paperSB.instantiateViewControllerWithIdentifier("papers") as! PapersViewController
         let navMessages = UINavigationController(rootViewController: messages)
-
-        var img = UIImage(named: "Icon_home_paperSmall");
         
+        var img = UIImage(named: "Icon_home_paperSmall");
         navMessages.tabBarItem.image = img
-        navMessages.tabBarItem.title = "试卷";
+        navMessages.topViewController?.title = "试卷"
         
         
         //练习界面
@@ -35,7 +34,8 @@ class MainTabViewController: UITabBarController {
         let navTest = UINavigationController(rootViewController: test)
         img = UIImage(named: "icon_home_practice");
         navTest.tabBarItem.image = img
-        test.tabBarItem.title = "练习"
+        //test.tabBarItem.title = "练习"
+        test.title = "练习"
         
         //fun界面
         let me = SelfInforViewController()
@@ -46,6 +46,19 @@ class MainTabViewController: UITabBarController {
         
         
         self.setViewControllers([navTest, navMessages, navMe], animated: true)
+        
+        let selectIconsForTabItems = ["icon_home_practice_checked_",
+            "icon_home_paper_checked_",
+            "alien_press"];
+        var i = 0;
+        for item in self.tabBar.items! {
+            let selectedImg = UIImage(named: selectIconsForTabItems[i]);
+            item.selectedImage = selectedImg?.imageWithRenderingMode(.AlwaysOriginal)
+            item.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.orangeColorV1()], forState: .Selected)
+            item.titlePositionAdjustment = UIOffsetMake(0, -4)
+            i += 1;
+        }
+        
         self.selectedIndex = 0;
     }
     

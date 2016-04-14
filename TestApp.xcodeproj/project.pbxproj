@@ -22,6 +22,8 @@
 		4C4BCF4C1CAD4C65001FFC09 /* PaperCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C4BCF4A1CAD4C65001FFC09 /* PaperCollectionViewCell.xib */; };
 		4C4BCF561CAD50EF001FFC09 /* PapersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4BCF551CAD50EF001FFC09 /* PapersViewController.swift */; };
 		4C4BCF5A1CAD515B001FFC09 /* PapersStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C4BCF591CAD515B001FFC09 /* PapersStoryboard.storyboard */; };
+		4C4E73171CB549C4002D8926 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4E73141CB549C4002D8926 /* MBProgressHUD.m */; };
+		4C4E731A1CB54A18002D8926 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4E73191CB54A18002D8926 /* AFNetworking.framework */; };
 		4C775A041CB3F799000BA228 /* UILabelPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C775A031CB3F799000BA228 /* UILabelPadding.swift */; };
 		4C775A061CB3F7F5000BA228 /* AbsViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C775A051CB3F7F5000BA228 /* AbsViewFactory.swift */; };
 		4C775A081CB3F86C000BA228 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C775A071CB3F86C000BA228 /* Extension.swift */; };
@@ -29,6 +31,7 @@
 		4C8955191C2FC3D900A63975 /* ExamPaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8955181C2FC3D900A63975 /* ExamPaper.swift */; };
 		4C89551C1C2FE0AE00A63975 /* MakeTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C89551B1C2FE0AE00A63975 /* MakeTestViewController.swift */; };
 		4C89555D1C30326500A63975 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C89555C1C30326500A63975 /* CustomView.swift */; };
+		4C8983C11CB93D8B008AE900 /* CourseForPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8983C01CB93D8B008AE900 /* CourseForPaperViewController.swift */; };
 		4C8EFCBE1C328EB300AC7454 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8EFCBD1C328EB300AC7454 /* PlayerView.swift */; };
 		4C8EFCC01C32A1D500AC7454 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8EFCBF1C32A1D500AC7454 /* Timer.swift */; };
 		4C8EFD2A1C32B3F000AC7454 /* Info.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C8EFD0B1C32B3F000AC7454 /* Info.png */; };
@@ -95,6 +98,10 @@
 		4C4BCF4A1CAD4C65001FFC09 /* PaperCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PaperCollectionViewCell.xib; path = UI/PaperCollectionViewCell.xib; sourceTree = "<group>"; };
 		4C4BCF551CAD50EF001FFC09 /* PapersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PapersViewController.swift; path = UI/PapersViewController.swift; sourceTree = "<group>"; };
 		4C4BCF591CAD515B001FFC09 /* PapersStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = PapersStoryboard.storyboard; path = UI/PapersStoryboard.storyboard; sourceTree = "<group>"; };
+		4C4E73131CB549C4002D8926 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		4C4E73141CB549C4002D8926 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		4C4E73191CB54A18002D8926 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = "AFNetworking-master/build/Debug-iphoneos/AFNetworking.framework"; sourceTree = "<group>"; };
+		4C4E731B1CB54A4B002D8926 /* TA-Bri-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "TA-Bri-Header.h"; path = "UI/TA-Bri-Header.h"; sourceTree = "<group>"; };
 		4C775A031CB3F799000BA228 /* UILabelPadding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelPadding.swift; sourceTree = "<group>"; };
 		4C775A051CB3F7F5000BA228 /* AbsViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbsViewFactory.swift; path = Factory/AbsViewFactory.swift; sourceTree = "<group>"; };
 		4C775A071CB3F86C000BA228 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extension.swift; path = BAC/Extension.swift; sourceTree = "<group>"; };
@@ -102,6 +109,7 @@
 		4C8955181C2FC3D900A63975 /* ExamPaper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamPaper.swift; sourceTree = "<group>"; };
 		4C89551B1C2FE0AE00A63975 /* MakeTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MakeTestViewController.swift; path = TestContrl/MakeTestViewController.swift; sourceTree = "<group>"; };
 		4C89555C1C30326500A63975 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomView.swift; path = TestContrl/CustomView.swift; sourceTree = "<group>"; };
+		4C8983C01CB93D8B008AE900 /* CourseForPaperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseForPaperViewController.swift; path = UI/PaperInterface/CourseForPaperViewController.swift; sourceTree = "<group>"; };
 		4C8EFCBD1C328EB300AC7454 /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerView.swift; path = TestContrl/PlayerView.swift; sourceTree = "<group>"; };
 		4C8EFCBF1C32A1D500AC7454 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		4C8EFD0B1C32B3F000AC7454 /* Info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Info.png; sourceTree = "<group>"; };
@@ -146,6 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C4E731A1CB54A18002D8926 /* AFNetworking.framework in Frameworks */,
 				61FF06BA696E2980C6013659 /* Pods.framework in Frameworks */,
 				0F67259225F2414EBD2EC6AA /* Pods_TestApp.framework in Frameworks */,
 			);
@@ -181,6 +190,7 @@
 		4C4BCF421CAD1690001FFC09 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4C9C20C31CB609E3006465A7 /* Fun Interface */,
 				4C4BCF4F1CAD4E50001FFC09 /* Personal Interface */,
 				4C4BCF4E1CAD4DC2001FFC09 /* Practise Interface */,
 				4C4BCF4D1CAD4DAC001FFC09 /* Paper Interface */,
@@ -207,6 +217,8 @@
 		4C4BCF441CAD1DC0001FFC09 /* Technical Service */ = {
 			isa = PBXGroup;
 			children = (
+				4C4E731B1CB54A4B002D8926 /* TA-Bri-Header.h */,
+				4C4E73111CB549C4002D8926 /* MBProgressHUD */,
 				4C4BCF451CAD1E16001FFC09 /* persistance */,
 			);
 			name = "Technical Service";
@@ -270,6 +282,7 @@
 				4C89551A1C2FE04D00A63975 /* TestContrl */,
 				E6F046E21C2D0A3B00D3CF6C /* TestSearchController */,
 				4C4BCF551CAD50EF001FFC09 /* PapersViewController.swift */,
+				4C8983C01CB93D8B008AE900 /* CourseForPaperViewController.swift */,
 			);
 			name = "View Conroller";
 			sourceTree = "<group>";
@@ -306,6 +319,15 @@
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
+		};
+		4C4E73111CB549C4002D8926 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				4C4E73131CB549C4002D8926 /* MBProgressHUD.h */,
+				4C4E73141CB549C4002D8926 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = SOURCE_ROOT;
 		};
 		4C7759FF1CB3F5EF000BA228 /* BAC */ = {
 			isa = PBXGroup;
@@ -397,9 +419,33 @@
 			path = SelfInformation;
 			sourceTree = "<group>";
 		};
+		4C9C20C31CB609E3006465A7 /* Fun Interface */ = {
+			isa = PBXGroup;
+			children = (
+				4C9C20C41CB609EE006465A7 /* ViewController */,
+				4C9C20C51CB609FB006465A7 /* View */,
+			);
+			name = "Fun Interface";
+			sourceTree = "<group>";
+		};
+		4C9C20C41CB609EE006465A7 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		4C9C20C51CB609FB006465A7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		CB46CE203EB0A580517F56DD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C4E73191CB54A18002D8926 /* AFNetworking.framework */,
 				2E1E948396830C51998BB4E1 /* Pods.framework */,
 				8A5CC247F2D556D103D74E63 /* Pods_TestApp.framework */,
 			);
@@ -670,6 +716,7 @@
 				4C8955171C2FC34900A63975 /* Course.swift in Sources */,
 				4C4BCF4B1CAD4C65001FFC09 /* PaperCollectionViewCell.swift in Sources */,
 				4C8EFD361C32B3F000AC7454 /* InsideCollectiondetail.swift in Sources */,
+				4C4E73171CB549C4002D8926 /* MBProgressHUD.m in Sources */,
 				4C1FECC51C340E8600B3E855 /* RegisterViewController.swift in Sources */,
 				4C775A081CB3F86C000BA228 /* Extension.swift in Sources */,
 				4C8EFD2B1C32B3F000AC7454 /* AboutPageView.swift in Sources */,
@@ -692,6 +739,7 @@
 				4C3803581C31C3C400B8C0B1 /* ATopic.swift in Sources */,
 				E6F046B11C2D0A0000D3CF6C /* AppDelegate.swift in Sources */,
 				4C8EFD391C32B3F000AC7454 /* SelfInforViewController.swift in Sources */,
+				4C8983C11CB93D8B008AE900 /* CourseForPaperViewController.swift in Sources */,
 				4C8EFCC01C32A1D500AC7454 /* Timer.swift in Sources */,
 				4C8EFD311C32B3F000AC7454 /* CollectionView.swift in Sources */,
 				4C8EFD3C1C32B3F000AC7454 /* UserItem.swift in Sources */,
@@ -843,10 +891,15 @@
 			baseConfigurationReference = B78021C4DEF0CC8AD07DD8CD /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AFNetworking-master/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = TestApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cab.TestApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TestApp/UI/TA-Bri-Header.h";
 			};
 			name = Debug;
 		};
@@ -855,10 +908,15 @@
 			baseConfigurationReference = 091A524E08E9AF6938D2C1BC /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AFNetworking-master/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = TestApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cab.TestApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TestApp/UI/TA-Bri-Header.h";
 			};
 			name = Release;
 		};

@@ -13,7 +13,7 @@ class PapersViewController: UIViewController {
     @IBOutlet weak var t: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let a = UIButton(type: .Custom)
         a.frame = CGRect(x: 80, y: 80, width: 100, height: 150)
         a.setBackgroundImage(UIImage(named: "bg_paper_latest_pressed"), forState: .Highlighted)
@@ -24,9 +24,9 @@ class PapersViewController: UIViewController {
         label.text = "abcd"
         label.textColor = UIColor.blackColor()
         a.addSubview(label)
-        
+
         self.view.addSubview(a)
-        
+        a.addTarget(self, action: #selector(self.pushView), forControlEvents: UIControlEvents.TouchUpInside)
         // Do any additional setup after loading the view.
     }
 
@@ -37,6 +37,12 @@ class PapersViewController: UIViewController {
     }
     
 
+    func pushView(){
+        let viewCtr = CourseForPaperViewController()
+        self.addChildViewController(viewCtr)
+        self.view.addSubview(viewCtr.view)
+        viewCtr.didMoveToParentViewController(self)
+    }
     /*
     // MARK: - Navigation
 
