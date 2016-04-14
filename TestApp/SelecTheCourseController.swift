@@ -18,11 +18,7 @@ protocol SelectTheCourseControllerDataSource {
 class SelectTheCourseController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     var smalltblView:UITableView?
-    
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
         
     var dataSourceDelegate: SelectTheCourseControllerDataSource!
     var pendingarr: [Course]!
@@ -76,13 +72,13 @@ class SelectTheCourseController: UIViewController, UITableViewDelegate, UITableV
         self.view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
         self.view.layer.addAnimation(animation2, forKey: "view")
         
-        let ges = UITapGestureRecognizer(target: self, action: #selector(close(_:)))
+        let ges = UITapGestureRecognizer(target: self, action:#selector(close(_:)))
 
         self.view.addGestureRecognizer(ges);
     }
     
     
-    @objc @objc func close(sender: UITapGestureRecognizer) {
+    func close(sender: UITapGestureRecognizer) {
         print("in close count \(self.pendingarr.count)");
 
         let point = sender.locationInView(self.view)
