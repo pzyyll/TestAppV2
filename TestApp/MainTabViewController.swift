@@ -25,7 +25,6 @@ class MainTabViewController: UITabBarController {
         let navMessages = UINavigationController(rootViewController: messages)
         
         var img = UIImage(named: "Icon_home_paperSmall");
-        
         navMessages.tabBarItem.image = img
         navMessages.topViewController?.title = "试卷"
         

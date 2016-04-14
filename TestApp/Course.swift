@@ -9,13 +9,23 @@
 import Foundation
 
 class Course {
+    var l_No = ""
+    var l_Name = ""
+    var c_No = ""
+    var c_Name = ""
+    var c_Intro = ""
+
+    
     var courseNo = ""
     var courseName = ""
     var courseIntro = ""
-    
 //    init (no: String, name: String, intro: String) {
 //        self.courseNo = no
 //        self.courseName = name
 //        self.courseIntro = intro
 //    }
+    class  func getAllCourse(var n: Int) -> [Course]{
+        //
+        return [Course]()
+    }
 }

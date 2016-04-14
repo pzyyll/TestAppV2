@@ -9,7 +9,8 @@
 import UIKit
 import WebKit
 
-class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
+class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SelectTheCourseControllerDataSource {
 
     let numOfPages = 3
     
@@ -19,7 +20,7 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
     var collectionView:UICollectionView?
     var smalltblView:UITableView?
     var smallView:UIView!
-    var arr : [String] = ["CET-4", "CET-6", "TEM-4", "TEM-6", "GRE", "more"] //"TOFEL", "N2"]
+    var arr : [Course]!
     
     var num:CGFloat = 1.0
     var flag = true
@@ -32,6 +33,15 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
         self.view.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
         self.timer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(10),target:self,selector:#selector(PractiseViewController.countTime),userInfo:nil,repeats:true)
         
+        let firstCourse = Course()
+        firstCourse.c_No = "c1"
+        firstCourse.c_Name = "CET-4";
+        let secCourse = Course()
+        secCourse.c_No = "c2"
+        secCourse.c_Name = "CET-6";
+        
+        self.arr = [firstCourse, secCourse];
+        //self.arr = Course.getAllCourse(2);
         
         readyForMainPageView()
         readyForWKWebView()
@@ -139,8 +149,9 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
         
         cell.toggleSelected()
         
-        if indexPath.row == arr.count-1{
+        if indexPath.row == arr.count{
             let courseCtr = SelectTheCourseController()
+            courseCtr.dataSourceDelegate = self
             self.addChildViewController(courseCtr)
             self.view.addSubview(courseCtr.view);
             self.didMoveToParentViewController(self)
@@ -154,7 +165,7 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
-        return arr.count//return how many cell you have
+        return arr.count + 1//return how many cell you have
     }
     
     //获取单元格
@@ -162,11 +173,11 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ocell", forIndexPath: indexPath) as! CustomCLcell
         
-        
-        cell.nameLabel?.text = arr[indexPath.item]
-        if indexPath.row == arr.count-1{
+        if indexPath.row == arr.count {
             cell.imgView?.image = UIImage(named: "icon_subject_add")
+            cell.nameLabel?.text = "more"
         }else{
+            cell.nameLabel?.text = arr[indexPath.item].c_Name
             cell.imgView?.image = UIImage(named: "icon_subject_yingyu")
         }
         
@@ -178,5 +189,8 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
         return UIEdgeInsetsMake(10, 20, 10, 10)
     }
     
+    func changeData() -> [Course]? {
+        return arr
+    }
 
 }
