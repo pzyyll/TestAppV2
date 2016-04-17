@@ -18,11 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().barTintColor = UIColor.orangeColorV1()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
-        
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         
         //self.window?.rootViewController = MainTabViewController()
         
-        self.window?.rootViewController =  UINavigationController(rootViewController: LoginViewController())
+        self.window?.rootViewController =  TSUINavigationController(rootViewController: LoginViewController())
         return true
     }
 

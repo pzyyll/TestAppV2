@@ -11,7 +11,7 @@ import UIKit
 protocol AbsViewFactoryDelegete {
     func createControl(titles: [String]?
         , action: Selector, sender: AnyObject?,
-        otherConfig items: [AnyObject]!) -> UIView
+          otherConfig items: [String: AnyObject]!) -> UIView
     
 }
 
@@ -26,7 +26,7 @@ class AbsViewFactory: AbsViewFactoryDelegete {
     var viewFactory: AbsViewFactoryDelegete!
     
     func createControl(titles: [String]?, action: Selector,
-        sender: AnyObject?, otherConfig items: [AnyObject]!) -> UIView {
+                       sender: AnyObject?, otherConfig items: [String:AnyObject]!) -> UIView {
             return viewFactory.createControl(titles, action: action, sender: sender, otherConfig: items)
     }
     init (FactoryType aFactory: AbsViewFactoryDelegete) {
@@ -41,7 +41,7 @@ class AbsViewFactory: AbsViewFactoryDelegete {
 
 class FactoryForLablePaddingOfSubDetail: AbsViewFactoryDelegete {
     func createControl(titles: [String]?,action: Selector,
-        sender: AnyObject?, otherConfig items: [AnyObject]!) -> UIView {
+                       sender: AnyObject?, otherConfig items: [String:AnyObject]!) -> UIView {
             let label = UILabelPadding();
             label.frame = AbsViewFactory.getDefaultFrame();
             label.textAlignment = .Center;
@@ -62,20 +62,75 @@ class FactoryForLablePaddingOfSubDetail: AbsViewFactoryDelegete {
 class FactoryForTextFiledOfLogin: AbsViewFactoryDelegete {
     func createControl(titles: [String]?
         , action: Selector, sender: AnyObject?,
-          otherConfig items: [AnyObject]!) -> UIView {
+          otherConfig items: [String: AnyObject]!) -> UIView {
         let textFiled = TSUITextField(frame: AbsViewFactory.getDefaultFrame());
         textFiled.clearButtonMode = .WhileEditing
-        if items != nil {
-            textFiled.leftView = UIImageView(image: UIImage(named: items[0] as! String));
+        textFiled.autocorrectionType = .No
+        textFiled.autocapitalizationType = .None
+        textFiled.placeholder = titles![0];
+        if let str = items["leftView"] as? String {
+            textFiled.leftView = UIImageView(image: UIImage(named: str));
             textFiled.leftViewMode = .Always
+        }
+        
+        if let color = items[TSUITextField.BottomLineColorOfNormal] as? UIColor {
+            textFiled.setBottomLineColor(color, state: .Normal)
+        }
+        if let color = items[TSUITextField.BottomLineColorOfSelected] as? UIColor {
+            textFiled.setBottomLineColor(color, state: .Selected)
         }
         
         return textFiled
     }
 }
 
-class FactoryForBtnOfLogin: AbsViewFactoryDelegete {
-    func createControl(titles: [String]?, action: Selector, sender: AnyObject?, otherConfig items: [AnyObject]!) -> UIView {
-        let btn = UIButton(frame: <#T##CGRect#>)
+class FactoryForBtnOfNormal: AbsViewFactoryDelegete {
+    func createControl(titles: [String]?, action: Selector, sender: AnyObject?, otherConfig items: [String: AnyObject]!) -> UIView {
+        let btn = UIButton(frame: AbsViewFactory.getDefaultFrame())
+        btn.setTitle(titles![0], forState: .Normal)
+        btn.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        btn.layer.cornerRadius = 3
+        btn.clipsToBounds = true
+        btn.userInteractionEnabled = true
+        
+        if let str = items["bgImg_Normal"] as? String {
+            btn.setBackgroundImage(UIImage(named: str), forState: .Normal)
+        }
+        if let str = items["bgImg_Clicked"] as? String {
+            btn.setBackgroundImage(UIImage(named: str), forState: .Highlighted)
+        }
+        if let str = items["bgImg_Disabled"] as? String {
+            btn.setBackgroundImage(UIImage(named: str), forState: .Disabled)
+        }
+        
+        if (action != nil) {
+            btn.addTarget(sender, action: action, forControlEvents: .TouchUpInside)
+        }
+        return btn;
+    }
+
+}
+
+class FactoryForBtnOfBorder: AbsViewFactoryDelegete {
+    func createControl(titles: [String]?, action: Selector, sender: AnyObject?, otherConfig items: [String : AnyObject]!) -> UIView {
+        let btn = UIButton(frame: AbsViewFactory.getDefaultFrame())
+        btn.setTitle(titles![0], forState: .Normal)
+        btn.setTitleColor(UIColor.orangeColorV1(), forState: .Normal)
+        btn.backgroundColor = UIColor.clearColor()
+        btn.layer.borderWidth = 1.2
+        btn.layer.borderColor = UIColor.orangeColorV1().CGColor
+        btn.layer.cornerRadius = 3
+        btn.clipsToBounds = true
+        
+        if let str = items["bgImg_Normal"] as? String {
+            btn.setBackgroundImage(UIImage(named: str), forState: .Normal)
+        }
+        if let str = items["bgImg_Clicked"] as? String {
+            btn.setBackgroundImage(UIImage(named: str), forState: .Highlighted)
+        }
+        if action != nil {
+            btn.addTarget(sender, action: action, forControlEvents: .TouchUpInside)
+        }
+        return btn
     }
 }

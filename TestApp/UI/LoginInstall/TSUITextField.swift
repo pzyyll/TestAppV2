@@ -8,10 +8,13 @@
 
 import UIKit
 
-private var mycontext = 0;
-
 class TSUITextField: UITextField {
-
+    class var BottomLineColorOfNormal: String {
+        return "BottomLineColorOfNormal"
+    }
+    class var BottomLineColorOfSelected: String {
+        return "BottemLineColorOfSelected"
+    }
     
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -21,6 +24,8 @@ class TSUITextField: UITextField {
 //        // Drawing code
 //    }
     var bottomLine: UIView!
+    var bottomLineColorOfNormal: UIColor!
+    var bottomLineColorOfSelected: UIColor!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,25 +33,14 @@ class TSUITextField: UITextField {
         
         self.font = UIFont.systemFontOfSize(10)
         self.borderStyle = .None
-        
         self.bottomLine = UIView(frame: CGRectMake(0, self.frame.height - 1, self.frame.width, 1));
         self.bottomLine.backgroundColor = UIColor.lightGrayColor()
         self.addSubview(self.bottomLine)
+        self.addObserver(self, forKeyPath: "frame", options: NSKeyValueObservingOptions.New, context: nil);
         
-        self.addObserver(self, forKeyPath: "frame", options: NSKeyValueObservingOptions.New, context: &mycontext);
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.changeBottomLineColor), name: UITextFieldTextDidBeginEditingNotification, object: self)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.changeBottomLineColor), name: UITextFieldTextDidEndEditingNotification, object: self)
     }
-    
-//    init(){
-//        super.init(frame: CGRectMake(0, 0, 100, 30));
-//        
-//        self.font = UIFont.systemFontOfSize(10)
-//        self.borderStyle = .None
-//        
-//        self.bottomLine = UIView(frame: CGRectMake(0, self.frame.height - 1, self.frame.width, 1));
-//        self.bottomLine.backgroundColor = UIColor.lightGrayColor()
-//        self.addSubview(self.bottomLine)
-//    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -72,16 +66,38 @@ class TSUITextField: UITextField {
     }
     
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        if context == &mycontext {
-            if let newValue = change?[NSKeyValueChangeNewKey] {
+        if keyPath == "frame" {
+            if (change?[NSKeyValueChangeNewKey]) != nil {
                 self.bottomLine.frame = CGRectMake(0, self.frame.height - 1, self.frame.width, 1)
             }
         } else {
             super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
         }
+        
+    }
+    
+    func changeBottomLineColor() {
+        if self.editing {
+            self.bottomLine.backgroundColor = self.bottomLineColorOfSelected
+        } else {
+            self.bottomLine.backgroundColor = self.bottomLineColorOfNormal
+        }
+    }
+    
+    func setBottomLineColor(color: UIColor, state: UIControlState){
+        switch state {
+        case UIControlState.Normal:
+            self.bottomLineColorOfNormal = color
+        case UIControlState.Selected:
+            self.bottomLineColorOfSelected = color
+        default:
+            break
+        }
     }
     
     deinit {
-        self.removeObserver(self, forKeyPath: "frame", context: &mycontext);
+        self.removeObserver(self, forKeyPath: "frame")
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UITextFieldTextDidBeginEditingNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UITextFieldTextDidEndEditingNotification, object: nil)
     }
 }

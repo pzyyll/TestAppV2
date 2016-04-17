@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0F67259225F2414EBD2EC6AA /* Pods_TestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5CC247F2D556D103D74E63 /* Pods_TestApp.framework */; };
 		4C11ABFA1C314E0F006C3816 /* OptionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11ABF91C314E0F006C3816 /* OptionItem.swift */; };
+		4C17EB3D1CC3B6A900A2F6C5 /* TSUINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C17EB3C1CC3B6A900A2F6C5 /* TSUINavigationController.swift */; };
 		4C1FECC41C340E8600B3E855 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1FECC11C340E8600B3E855 /* LoginViewController.swift */; };
 		4C1FECC51C340E8600B3E855 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1FECC21C340E8600B3E855 /* RegisterViewController.swift */; };
 		4C1FECC61C340E8600B3E855 /* InstallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1FECC31C340E8600B3E855 /* InstallViewController.swift */; };
@@ -28,7 +29,7 @@
 		4C7540C81CBF46BE00E94C82 /* TSUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7540C71CBF46BE00E94C82 /* TSUITextField.swift */; };
 		4C775A041CB3F799000BA228 /* UILabelPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C775A031CB3F799000BA228 /* UILabelPadding.swift */; };
 		4C775A061CB3F7F5000BA228 /* AbsViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C775A051CB3F7F5000BA228 /* AbsViewFactory.swift */; };
-		4C775A081CB3F86C000BA228 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C775A071CB3F86C000BA228 /* Extension.swift */; };
+		4C775A081CB3F86C000BA228 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C775A071CB3F86C000BA228 /* UIColor+Extension.swift */; };
 		4C8955171C2FC34900A63975 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8955161C2FC34900A63975 /* Course.swift */; };
 		4C8955191C2FC3D900A63975 /* ExamPaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8955181C2FC3D900A63975 /* ExamPaper.swift */; };
 		4C89551C1C2FE0AE00A63975 /* MakeTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C89551B1C2FE0AE00A63975 /* MakeTestViewController.swift */; };
@@ -87,6 +88,7 @@
 		091A524E08E9AF6938D2C1BC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		2E1E948396830C51998BB4E1 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C11ABF91C314E0F006C3816 /* OptionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionItem.swift; sourceTree = "<group>"; };
+		4C17EB3C1CC3B6A900A2F6C5 /* TSUINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSUINavigationController.swift; path = BAC/TSUINavigationController.swift; sourceTree = "<group>"; };
 		4C1FECC11C340E8600B3E855 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4C1FECC21C340E8600B3E855 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		4C1FECC31C340E8600B3E855 /* InstallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstallViewController.swift; sourceTree = "<group>"; };
@@ -108,7 +110,7 @@
 		4C7540C71CBF46BE00E94C82 /* TSUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSUITextField.swift; path = UI/LoginInstall/TSUITextField.swift; sourceTree = "<group>"; };
 		4C775A031CB3F799000BA228 /* UILabelPadding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelPadding.swift; sourceTree = "<group>"; };
 		4C775A051CB3F7F5000BA228 /* AbsViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AbsViewFactory.swift; path = Factory/AbsViewFactory.swift; sourceTree = "<group>"; };
-		4C775A071CB3F86C000BA228 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extension.swift; path = BAC/Extension.swift; sourceTree = "<group>"; };
+		4C775A071CB3F86C000BA228 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Extension.swift"; path = "BAC/UIColor+Extension.swift"; sourceTree = "<group>"; };
 		4C8955161C2FC34900A63975 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		4C8955181C2FC3D900A63975 /* ExamPaper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamPaper.swift; sourceTree = "<group>"; };
 		4C89551B1C2FE0AE00A63975 /* MakeTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MakeTestViewController.swift; path = TestContrl/MakeTestViewController.swift; sourceTree = "<group>"; };
@@ -380,7 +382,8 @@
 			isa = PBXGroup;
 			children = (
 				4C775A031CB3F799000BA228 /* UILabelPadding.swift */,
-				4C775A071CB3F86C000BA228 /* Extension.swift */,
+				4C775A071CB3F86C000BA228 /* UIColor+Extension.swift */,
+				4C17EB3C1CC3B6A900A2F6C5 /* TSUINavigationController.swift */,
 			);
 			name = UtilView;
 			sourceTree = "<group>";
@@ -742,7 +745,7 @@
 				4C4E73171CB549C4002D8926 /* MBProgressHUD.m in Sources */,
 				4C7540C81CBF46BE00E94C82 /* TSUITextField.swift in Sources */,
 				4C1FECC51C340E8600B3E855 /* RegisterViewController.swift in Sources */,
-				4C775A081CB3F86C000BA228 /* Extension.swift in Sources */,
+				4C775A081CB3F86C000BA228 /* UIColor+Extension.swift in Sources */,
 				4C8EFD2B1C32B3F000AC7454 /* AboutPageView.swift in Sources */,
 				4C775A041CB3F799000BA228 /* UILabelPadding.swift in Sources */,
 				4C8EFD3A1C32B3F000AC7454 /* SettingView.swift in Sources */,
@@ -768,6 +771,7 @@
 				4C8EFD311C32B3F000AC7454 /* CollectionView.swift in Sources */,
 				4C8EFD3C1C32B3F000AC7454 /* UserItem.swift in Sources */,
 				4C4BCF561CAD50EF001FFC09 /* PapersViewController.swift in Sources */,
+				4C17EB3D1CC3B6A900A2F6C5 /* TSUINavigationController.swift in Sources */,
 				4C38035A1C31D3E500B8C0B1 /* TopicDetail.swift in Sources */,
 				4C8EFCBE1C328EB300AC7454 /* PlayerView.swift in Sources */,
 				4C89551C1C2FE0AE00A63975 /* MakeTestViewController.swift in Sources */,

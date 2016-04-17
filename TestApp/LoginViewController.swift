@@ -9,154 +9,175 @@
 import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
-
-    var labelUsername: UILabel!
-    var labelPwd: UILabel!
-    var textUsername: UITextField!
-    var textPwd: UITextField!
+    
+    var userText: TSUITextField!
+    var pwdText: TSUITextField!
+    var btn_Login: UIButton!
+    var btn_Reg: UIButton!
     
     override func loadView() {
         super.loadView()
-        var rect = CGRectMake(20, 200, 80, 30)
-        
-        labelUsername = UILabel(frame: rect)
-        
-        rect.origin = labelUsername.frame.origin
-        rect.origin.x += labelUsername.frame.width + 20
-        rect.size.width = 200
-        textUsername = UITextField(frame: rect)
-        
 
-        rect.origin = labelUsername.frame.origin
-        rect.origin.y += labelUsername.frame.height + 10
-        rect.size = labelUsername.frame.size
-        labelPwd = UILabel(frame: rect)
-        
-        
-        rect.origin = labelPwd.frame.origin
-        rect.origin.x = textUsername.frame.origin.x
-        rect.size = textUsername.frame.size
-        textPwd = UITextField(frame: rect)
-        
-
-        
-        
-//        self.view.addSubview(labelUsername)
-//        self.view.addSubview(labelPwd)
-//        self.view.addSubview(textUsername)
-//        self.view.addSubview(textPwd)
-        
-        let viewFactory = AbsViewFactory(FactoryType: FactoryForTextFiledOfLogin());
-        
-        let userText = viewFactory.createControl(nil, action: nil, sender: nil, otherConfig: ["Icon_login_user"]);
-        userText.translatesAutoresizingMaskIntoConstraints = false
-        userText.frame.size.width = 300;
-        userText.frame.size.height = 30;
-        self.view.addSubview(userText)
-        
-        let cons1 = NSLayoutConstraint.constraintsWithVisualFormat("[tView(==\(userText.frame.width))]", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: ["tView": userText])
-        let cons2 = NSLayoutConstraint.constraintsWithVisualFormat("V:|-100-[tView(==\(userText.frame.height))]", options: .AlignAllTop, metrics: nil, views: ["tView": userText]);
-        NSLayoutConstraint.activateConstraints(cons1)
-        NSLayoutConstraint.activateConstraints(cons2)
-        NSLayoutConstraint(item: userText, attribute: .CenterX, relatedBy: .Equal, toItem: self.view, attribute: .CenterX, multiplier: 1.0, constant: 0).active = true
-        
-        let pwdText = viewFactory.createControl(nil, action: nil, sender: nil, otherConfig: ["Icon_login_pwd"]);
-        pwdText.translatesAutoresizingMaskIntoConstraints = false
-        pwdText.frame.size.width = userText.frame.width
-        pwdText.frame.size.height = userText.frame.height
-        self.view.addSubview(pwdText)
-        print(pwdText.frame)
-        
-        let cons3 = NSLayoutConstraint.constraintsWithVisualFormat("V:[userText]-4-[pwdText(==\(pwdText.frame.height))]", options: .AlignAllLeft, metrics: nil, views: ["userText": userText, "pwdText": pwdText])
-        let cons4 = NSLayoutConstraint.constraintsWithVisualFormat("H:[pwdText(==\(pwdText.frame.width))]", options: .AlignAllTop, metrics: nil, views: ["pwdText": pwdText])
-        NSLayoutConstraint.activateConstraints(cons3)
-        NSLayoutConstraint.activateConstraints(cons4)
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(red: 242, green: 242, blue: 242, alpha: 1)
+        self.view.backgroundColor = UIColor.whiteColor()
+        //self.view.backgroundColor = UIColor.grayLightColor236()
+        self.title = "登录"
         
-        //labelUsername.text = "User Name"
-        labelUsername.textColor = UIColor.blackColor()
-        labelUsername.textAlignment = NSTextAlignment.Right
-        labelUsername.font = UIFont.systemFontOfSize(15)
-        
-        
-        //labelPwd.text = "Passwd"
-        labelPwd.textColor = UIColor.blackColor()
-        labelPwd.textAlignment = NSTextAlignment.Right
-        labelPwd.font = UIFont.systemFontOfSize(15)
-        
-        textUsername.borderStyle = .RoundedRect
-        textUsername.placeholder = "Please enter user name"
-        textUsername.returnKeyType = .Next
-        textUsername.clearButtonMode = UITextFieldViewMode.WhileEditing
-        textUsername.delegate = self
-        textUsername.leftView?.bounds.size.width -= 10;
-        textUsername.leftView?.bounds.size.height -= 10;
-        textUsername.leftViewMode = .Always
-        
-        textPwd.borderStyle = UITextBorderStyle.RoundedRect
-        textPwd.returnKeyType = .Done
-        textPwd.clearButtonMode = .WhileEditing
-        textPwd.delegate = self
-        textPwd.secureTextEntry = true
-        textPwd.leftViewMode = .Always
-        textPwd.leftView?.bounds.size.width -= 3
-        textPwd.leftView?.bounds.size.height -= 3
-        
+
+        self.viewConfig()
+
 
         // Do any additional setup after loading the view.
+
     }
 
+    override func viewWillAppear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.loginStatus(_:)), name: UITextFieldTextDidChangeNotification, object: nil)
+    }
+    override func viewDidDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UITextFieldTextDidChangeNotification, object: nil)
+    }
+    
+    func viewConfig() {
+        let viewFactory = AbsViewFactory(FactoryType: FactoryForTextFiledOfLogin());
+        
+        userText = viewFactory.createControl(
+            ["邮箱/用户名"],
+            action: nil,
+            sender: nil,
+            otherConfig: [
+                "leftView":"Icon_login_user",
+                TSUITextField.BottomLineColorOfNormal: UIColor.lightGrayColor(),
+                TSUITextField.BottomLineColorOfSelected: UIColor.orangeColorV1()
+            ]
+        ) as! TSUITextField;
+        userText.translatesAutoresizingMaskIntoConstraints = false
+        userText.frame.size.width = 350;
+        userText.frame.size.height = 30;
+        userText.returnKeyType = .Next
+        userText.delegate = self
+        self.view.addSubview(userText)
+        
+        var conss: Array<[NSLayoutConstraint]> = Array<[NSLayoutConstraint]>()
+        
+        conss.append(NSLayoutConstraint.constraintsWithVisualFormat("[tView(==\(userText.frame.width))]", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: ["tView": userText]))
+        conss.append(NSLayoutConstraint.constraintsWithVisualFormat("V:|-100-[tView(==\(userText.frame.height))]", options: .AlignAllTop, metrics: nil, views: ["tView": userText]))
+        
+        NSLayoutConstraint(item: userText, attribute: .CenterX, relatedBy: .Equal, toItem: self.view, attribute: .CenterX, multiplier: 1.0, constant: 0).active = true
+        
+        pwdText = viewFactory.createControl(
+            ["密码"],
+            action: nil,
+            sender: nil,
+            otherConfig: [
+                "leftView":"Icon_login_pwd",
+                TSUITextField.BottomLineColorOfNormal: UIColor.lightGrayColor(),
+                TSUITextField.BottomLineColorOfSelected: UIColor.orangeColorV1()
+                ]
+            ) as! TSUITextField;
+        pwdText.translatesAutoresizingMaskIntoConstraints = false
+        pwdText.frame.size.width = userText.frame.width
+        pwdText.frame.size.height = userText.frame.height
+        pwdText.returnKeyType = .Done
+        pwdText.secureTextEntry = true
+        pwdText.delegate = self
+        self.view.addSubview(pwdText)
+        
+        conss.append(NSLayoutConstraint.constraintsWithVisualFormat("V:[userText]-4-[pwdText(==\(pwdText.frame.height))]", options: .AlignAllLeft, metrics: nil, views: ["userText": userText, "pwdText": pwdText]))
+        conss.append(NSLayoutConstraint.constraintsWithVisualFormat("H:[pwdText(==\(pwdText.frame.width))]", options: .AlignAllTop, metrics: nil, views: ["pwdText": pwdText]))
+        
+        viewFactory.viewFactory = FactoryForBtnOfNormal()
+        btn_Login = viewFactory.createControl(
+            ["登录"],
+            action: #selector(LoginViewController.login),
+            sender: self,
+            otherConfig: ["bgImg_Normal": "login_btn_normal",
+                "bgImg_Clicked": "login_btn_clicked",
+                "bgImg_Disabled": "login_btn_disabled"
+            ]) as! UIButton;
+        btn_Login.enabled = false
+    
+        btn_Login.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(btn_Login)
+        
+        conss.append(NSLayoutConstraint.constraintsWithVisualFormat("V:[topView]-[btnLogin(==34)]", options: .AlignAllLeft, metrics: nil, views: ["topView": pwdText, "btnLogin": btn_Login]))
+        conss.append(NSLayoutConstraint.constraintsWithVisualFormat("H:[btnLogin(==topView)]", options: .AlignAllLeft, metrics: nil, views: ["btnLogin": btn_Login, "topView": pwdText]))
+        
+        viewFactory.viewFactory = FactoryForBtnOfBorder();
+        btn_Reg = viewFactory.createControl(
+            ["注册"],
+            action: #selector(self.register(_:)),
+            sender: self,
+            otherConfig: ["bgImg_Clicked": "reg_btn_cliced"]) as! UIButton
+        btn_Reg.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(btn_Reg)
+        
+        conss.append(NSLayoutConstraint.constraintsWithVisualFormat("V:[btnLogin]-[btnReg(==btnLogin)]", options: .AlignAllLeft, metrics: nil, views: ["btnLogin": btn_Login, "btnReg": btn_Reg]))
+        conss.append(NSLayoutConstraint.constraintsWithVisualFormat("H:[btnReg(==topView)]", options: .AlignAllLeft, metrics: nil, views: ["topView": btn_Login, "btnReg": btn_Reg]))
+        
+        
+        for item in conss {
+            NSLayoutConstraint.activateConstraints(item)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textUsername.resignFirstResponder()
-        textPwd.resignFirstResponder()
+        if textField.isEqual(self.userText) {
+            self.pwdText.becomeFirstResponder()
+        }
+        if textField.isEqual(self.pwdText) {
+            self.resignFirstResponder()
+            self.login()
+        }
         return true;
     }
     
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        
+        //print(textField.text)
         //change the login button states
         
         return true
     }
     
+    
 
     func textFieldShouldClear(textField: UITextField) -> Bool {
-    
         return true
     }
     
     func login() {
         print("it's login");
 
-        if textUsername.text == "czl" && textPwd.text == "123456789" {
-            let segView = MainTabViewController()
-            self.presentViewController(segView, animated: true, completion: nil)
-        } else {
-            let alertView = UIAlertController(title: "Warn", message: "用户名或密码错误", preferredStyle: .Alert)
-            alertView.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
-            self.presentViewController(alertView, animated: true, completion: nil)
-        }
     }
     
     func register(sender: UIButton) {
-        print("it's register")
+        //var reg = RegisterViewController()
         
-        let reg = RegisterViewController()
-        reg.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
-        self.presentViewController(reg, animated: true, completion: nil)
+        let sb = UIStoryboard(name: "LoginMainStoryboard", bundle: nil)
+        let reg = sb.instantiateViewControllerWithIdentifier("123")
+        self.navigationController?.pushViewController(reg, animated: true)
     }
     
+    func loginStatus(sender: NSNotification) {
+//        sender.object!.isEqual(userText)
+//        sender.object!.isEqual(pwdText)
+        if (!userText.text!.isEmpty && !pwdText.text!.isEmpty) {
+            self.btn_Login.enabled = true
+        } else {
+            self.btn_Login.enabled = false
+        }
+    }
 
     /*
     // MARK: - Navigation
