@@ -157,8 +157,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func login() {
-        print("it's login");
-
+        let user = self.userText.text
+        let pwd = self.pwdText.text
+        
+        
     }
     
     func register(sender: UIButton) {

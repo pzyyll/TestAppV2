@@ -68,6 +68,7 @@ class FactoryForTextFiledOfLogin: AbsViewFactoryDelegete {
         textFiled.autocorrectionType = .No
         textFiled.autocapitalizationType = .None
         textFiled.placeholder = titles![0];
+        textFiled.translatesAutoresizingMaskIntoConstraints = false
         if let str = items["leftView"] as? String {
             textFiled.leftView = UIImageView(image: UIImage(named: str));
             textFiled.leftViewMode = .Always
@@ -89,9 +90,15 @@ class FactoryForBtnOfNormal: AbsViewFactoryDelegete {
         let btn = UIButton(frame: AbsViewFactory.getDefaultFrame())
         btn.setTitle(titles![0], forState: .Normal)
         btn.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+    
         btn.layer.cornerRadius = 3
         btn.clipsToBounds = true
         btn.userInteractionEnabled = true
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        
+        if let font = items["font"] as? UIFont {
+            btn.titleLabel?.font = font
+        }
         
         if let str = items["bgImg_Normal"] as? String {
             btn.setBackgroundImage(UIImage(named: str), forState: .Normal)
@@ -122,12 +129,20 @@ class FactoryForBtnOfBorder: AbsViewFactoryDelegete {
         btn.layer.cornerRadius = 3
         btn.clipsToBounds = true
         
+        if let font = items["font"] as? UIFont {
+            btn.titleLabel?.font = font
+        }
+        btn.translatesAutoresizingMaskIntoConstraints = false
         if let str = items["bgImg_Normal"] as? String {
             btn.setBackgroundImage(UIImage(named: str), forState: .Normal)
         }
         if let str = items["bgImg_Clicked"] as? String {
             btn.setBackgroundImage(UIImage(named: str), forState: .Highlighted)
         }
+        if let str = items["bgImg_Disabled"] as? String {
+            btn.setBackgroundImage(UIImage(named: str), forState: .Disabled)
+        }
+        
         if action != nil {
             btn.addTarget(sender, action: action, forControlEvents: .TouchUpInside)
         }

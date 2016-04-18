@@ -33,7 +33,7 @@ class TSUITextField: UITextField {
         
         self.font = UIFont.systemFontOfSize(10)
         self.borderStyle = .None
-        self.bottomLine = UIView(frame: CGRectMake(0, self.frame.height - 1, self.frame.width, 1));
+        self.bottomLine = UIView(frame: CGRectMake(0, self.frame.height - 1, 1000, 1));
         self.bottomLine.backgroundColor = UIColor.lightGrayColor()
         self.addSubview(self.bottomLine)
         self.addObserver(self, forKeyPath: "frame", options: NSKeyValueObservingOptions.New, context: nil);
@@ -42,8 +42,11 @@ class TSUITextField: UITextField {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.changeBottomLineColor), name: UITextFieldTextDidEndEditingNotification, object: self)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        self.init(frame: CGRectMake(0, 0, 300, 0))
+        self.translatesAutoresizingMaskIntoConstraints = false
+        //fatalError("init(coder:) has not been implemented")
     }
     
     override func editingRectForBounds(bounds: CGRect) -> CGRect {
@@ -52,9 +55,10 @@ class TSUITextField: UITextField {
     
     override func textRectForBounds(bounds: CGRect) -> CGRect {
         var res = bounds;
-        res.origin.x += 28;
-        res.size.width -= 44;
-    
+        if (self.leftView != nil) {
+            res.origin.x += 28;
+            res.size.width -= 44;
+        }
         return res
     }
     

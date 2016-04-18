@@ -21,16 +21,22 @@ class TSUINavigationController: UINavigationController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    var cnt = 0;
     override func pushViewController(viewController: UIViewController, animated: Bool) {
 
         
+        if (!self.viewControllers.isEmpty) {
+            
+            let backBtnItem = UIBarButtonItem(image: UIImage(named: "Icon_back_alpha"), style: .Plain, target: self, action: #selector(self.backAction))
+            
+            viewController.navigationItem.setLeftBarButtonItems([backBtnItem], animated: true)
+        }
         super.pushViewController(viewController, animated: animated)
     
     }
     
     func backAction() {
-        self.visibleViewController?.dismissViewControllerAnimated(true, completion: nil)
+        self.visibleViewController?.navigationController?.popViewControllerAnimated(true)
     }
     /*
     // MARK: - Navigation
