@@ -25,7 +25,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         self.view.backgroundColor = UIColor.whiteColor()
         self.configView()
         
-
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -51,6 +50,13 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         
         self.verify = viewFactory.createControl(["验证码"], action: nil, sender: nil, otherConfig: configColor) as! TSUITextField
         self.view.addSubview(self.verify)
+        
+        self.regUser.returnKeyType = .Next
+        self.pwd.returnKeyType = .Next
+        self.verify.returnKeyType = .Done
+        self.regUser.delegate = self
+        self.pwd.delegate = self
+        self.verify.delegate = self
         
         viewFactory.viewFactory = FactoryForBtnOfNormal();
         self.btnGetVerify = viewFactory.createControl(
@@ -126,6 +132,22 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             self.btnReg.enabled = false
         }
     }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField.isEqual(self.regUser) {
+            textField.resignFirstResponder()
+            self.pwd.becomeFirstResponder()
+        } else if textField.isEqual(self.pwd) {
+            textField.resignFirstResponder()
+            self.verify.becomeFirstResponder()
+        } else {
+            self.verify.resignFirstResponder()
+            self.register()
+        }
+        
+        return true
+    }
+    
     /*
     // MARK: - Navigation
 

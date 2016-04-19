@@ -38,7 +38,7 @@ class MainTabViewController: UITabBarController {
         test.title = "练习"
         
         //fun界面
-        let me = SelfInforViewController()
+        let me = TestSearchViewController()//SelfInforViewController()
         let navMe = UINavigationController(rootViewController: me)
         img = UIImage(named: "Icon_me-Small")
         navMe.tabBarItem.image = img

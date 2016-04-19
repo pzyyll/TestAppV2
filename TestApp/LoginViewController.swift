@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate, LoginBLDelegate {
     
     var userText: TSUITextField!
     var pwdText: TSUITextField!
@@ -60,6 +60,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         userText.frame.size.height = 30;
         userText.returnKeyType = .Next
         userText.delegate = self
+        userText.becomeFirstResponder()
         self.view.addSubview(userText)
         
         var conss: Array<[NSLayoutConstraint]> = Array<[NSLayoutConstraint]>()
@@ -136,7 +137,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.pwdText.becomeFirstResponder()
         }
         if textField.isEqual(self.pwdText) {
-            self.resignFirstResponder()
+            textField.resignFirstResponder()
             self.login()
         }
         return true;
@@ -157,18 +158,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func login() {
-        let user = self.userText.text
-        let pwd = self.pwdText.text
+
+        let user = UserInfo()
+        user.userName = self.userText.text!
+        user.pwd = self.pwdText.text!
         
-        
+        let log = LoginBL()
+        log.login(user)
+        log.delegate = self
     }
     
     func register(sender: UIButton) {
         //var reg = RegisterViewController()
-        
-        let sb = UIStoryboard(name: "LoginMainStoryboard", bundle: nil)
-        let reg = sb.instantiateViewControllerWithIdentifier("123")
-        self.navigationController?.pushViewController(reg, animated: true)
+          MBProgressHUD.showDelayHUDToView(self.view, mess: "loading", icon: nil)
+//        let sb = UIStoryboard(name: "LoginMainStoryboard", bundle: nil)
+//        let reg = sb.instantiateViewControllerWithIdentifier("123")
+//        self.navigationController?.pushViewController(reg, animated: true)
     }
     
     func loginStatus(sender: NSNotification) {
@@ -181,6 +186,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
+    func loginAuthority(ok: Bool) {
+        if ok {
+            let jumpCtr = MainTabViewController()
+            UIApplication.sharedApplication().delegate!.window!!.rootViewController = jumpCtr
+        } else {
+            
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

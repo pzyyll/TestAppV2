@@ -8,8 +8,40 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
+
+@objc
+protocol GRNetworkDelegateForUserInfo {
+    func checkoutUserInfoFinished(flag: Bool);
+    optional func checkoutUserInfoFail(flag: Bool);
+}
 
 class GRNetwork: NSObject {
     
-    URLRequestConvertible
+    //URLRequestConvertible
+    //单例模式
+    class var shareInstance: GRNetwork {
+        struct Static {
+            static var instance: GRNetwork?
+            static var token: dispatch_once_t = 0
+        }
+        
+        dispatch_once(&Static.token) { 
+            Static.instance = GRNetwork()
+        }
+        
+        return Static.instance!
+    }
+    
+    var delegateForUserInfo: GRNetworkDelegateForUserInfo!
+    
+    func checkoutUserInfo(user: UserInfo) {
+        Alamofire.request(Router.QueryUser(user)).responseJSON { (response) in
+            let json = JSON(data: response.data!);
+            let ok = json["status"].int
+            print(json)
+            print(ok!)
+            self.delegateForUserInfo.checkoutUserInfoFinished(ok! == 1);
+        }
+    }
 }
