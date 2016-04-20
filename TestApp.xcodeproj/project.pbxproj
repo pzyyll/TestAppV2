@@ -58,6 +58,7 @@
 		6385EB791CB4043D006655F8 /* AdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6385EB781CB4043D006655F8 /* AdViewController.swift */; };
 		63A2F93E1CBA59F700AB5EDA /* SelecTheCourseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2F93D1CBA59F700AB5EDA /* SelecTheCourseController.swift */; };
 		63A956801CC675C700B4AB63 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A9567F1CC675C700B4AB63 /* MainTableViewController.swift */; };
+		63DA68171CC704BE004489F2 /* CustomLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DA68161CC704BE004489F2 /* CustomLayout.swift */; };
 		E6F046B11C2D0A0000D3CF6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F046B01C2D0A0000D3CF6C /* AppDelegate.swift */; };
 		E6F046B61C2D0A0000D3CF6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F046B41C2D0A0000D3CF6C /* Main.storyboard */; };
 		E6F046B91C2D0A0000D3CF6C /* TestApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E6F046B71C2D0A0000D3CF6C /* TestApp.xcdatamodeld */; };
@@ -140,6 +141,7 @@
 		6385EB781CB4043D006655F8 /* AdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdViewController.swift; sourceTree = "<group>"; };
 		63A2F93D1CBA59F700AB5EDA /* SelecTheCourseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelecTheCourseController.swift; sourceTree = "<group>"; };
 		63A9567F1CC675C700B4AB63 /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
+		63DA68161CC704BE004489F2 /* CustomLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLayout.swift; sourceTree = "<group>"; };
 		8A5CC247F2D556D103D74E63 /* Pods_TestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B78021C4DEF0CC8AD07DD8CD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E6F046AD1C2D0A0000D3CF6C /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -311,6 +313,7 @@
 		4C4BCF521CAD4F07001FFC09 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				63DA68161CC704BE004489F2 /* CustomLayout.swift */,
 				63A9567F1CC675C700B4AB63 /* MainTableViewController.swift */,
 				63A2F93D1CBA59F700AB5EDA /* SelecTheCourseController.swift */,
 				6385EB761CB4040E006655F8 /* CustomCLcell.swift */,
@@ -767,6 +770,7 @@
 				4C8EFCBE1C328EB300AC7454 /* PlayerView.swift in Sources */,
 				637FEF101CBFCB70008C7CDE /* CutsomCourseTableViewCell.swift in Sources */,
 				4C89551C1C2FE0AE00A63975 /* MakeTestViewController.swift in Sources */,
+				63DA68171CC704BE004489F2 /* CustomLayout.swift in Sources */,
 				4C8955191C2FC3D900A63975 /* ExamPaper.swift in Sources */,
 				4C3803541C31B92800B8C0B1 /* OnePartOfChoice.swift in Sources */,
 			);

@@ -19,10 +19,10 @@ class SelectTheCourseController: UIViewController, UITableViewDelegate, UITableV
     
     var smalltblView:UITableView?
     
-    
+    var rec_courseArr:[Dictionary<String, String>] = [["c_No":"c1","c_Name":"CET-4"],["c_No":"c2","c_Name":"CET-6"],["c_No":"c3", "c_Name":"CET-8"]]
     var dataSourceDelegate: SelectTheCourseControllerDataSource!
     var pendingarr: [CourseEntity]!
-    var allCourse: [Course]!
+    var allCourse: [Course] = []
     var count = 0;
     var appDelegate:AppDelegate!
     let entityName = "CourseEntity"
@@ -71,19 +71,15 @@ class SelectTheCourseController: UIViewController, UITableViewDelegate, UITableV
     
     func do_coredata(){
         self.appDelegate = (UIApplication.sharedApplication().delegate) as!  AppDelegate
+       
+        for i in 0..<rec_courseArr.count{
+            let rec_course = Course()
+            rec_course.c_No = rec_courseArr[i]["c_No"]!
+            rec_course.c_Name = rec_courseArr[i]["c_Name"]!
+            
+            self.allCourse.append(rec_course)
+        }
         
-        let firstCourse = Course()
-        firstCourse.c_No = "c1"
-        firstCourse.c_Name = "CET-4";
-        let secCourse = Course()
-        secCourse.c_No = "c2"
-        secCourse.c_Name = "CET-6";
-        let thCourse = Course()
-        thCourse.c_No = "c3"
-        thCourse.c_Name = "CET-8";
-        
-        
-        self.allCourse = [firstCourse, secCourse, thCourse]
     }
     
     func close(sender: UITapGestureRecognizer) {
@@ -237,7 +233,10 @@ class SelectTheCourseController: UIViewController, UITableViewDelegate, UITableV
         cell.courseNameLabel.text = allCourse[indexPath.row].c_Name
         
         if(findCourse(self.allCourse[indexPath.row]) != -1){
-            cell.backgroundColor = UIColor.greenColor()
+            //cell.backgroundColor = UIColor.greenColor()
+            let img = UIImage(named: "checked_green")?.imageWithRenderingMode(.AlwaysOriginal)
+            cell.currectbtn.setImage(img, forState: .Normal)
+            cell.selected_flag = true
         }
         
         return cell

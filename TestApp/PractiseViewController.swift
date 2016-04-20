@@ -84,7 +84,6 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
                 
             }
             
-            
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: boolKey)
         }
         else{
@@ -188,7 +187,7 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
         collectionView?.delegate = self;
         collectionView?.dataSource = self;
         collectionView?.bounces = false
-        flowLayout.itemSize = CGSizeMake(100, 100)//每个cell的大小
+        flowLayout.itemSize = CGSizeMake(60, 60)//每个cell的大小
         self.view.addSubview(self.collectionView!)
     }
     
@@ -203,6 +202,10 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
         
         cell.toggleSelected()
         
+        if cell.nameLabel?.text != "more"{
+            let trans = MainTableViewController()
+            self.navigationController?.pushViewController(trans, animated: true)
+        }
         
         if indexPath.row == arr.count {
             let courseCtr = SelectTheCourseController()

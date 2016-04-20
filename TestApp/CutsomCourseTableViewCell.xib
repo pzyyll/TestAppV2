@@ -20,18 +20,19 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5N-zz-2C0">
-                        <rect key="frame" x="296" y="11" width="0.0" height="0.0"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bof-Sj-Gum">
+                        <rect key="frame" x="274" y="7" width="30" height="30"/>
+                        <state key="normal">
+                            <color key="titleColor" red="0.077143607659574703" green="0.86035667539267013" blue="0.15874500485423731" alpha="0.0" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="correctLabel" destination="n5N-zz-2C0" id="dzD-h2-BOl"/>
                 <outlet property="courseNameLabel" destination="QRR-cz-jaM" id="eLy-1g-cIj"/>
+                <outlet property="currectbtn" destination="bof-Sj-Gum" id="epw-gN-HzX"/>
             </connections>
+            <point key="canvasLocation" x="170" y="294"/>
         </tableViewCell>
     </objects>
 </document>
