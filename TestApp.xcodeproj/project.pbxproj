@@ -27,6 +27,9 @@
 		4C4E731A1CB54A18002D8926 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4E73191CB54A18002D8926 /* AFNetworking.framework */; };
 		4C5D43D91CC4A92900AB3FFD /* LoginBL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D43D81CC4A92900AB3FFD /* LoginBL.swift */; };
 		4C5D43DB1CC4A94800AB3FFD /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5D43DA1CC4A94800AB3FFD /* UserInfo.swift */; };
+		4C643A561CC71B4E00698531 /* TSPaperCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C643A551CC71B4E00698531 /* TSPaperCollectionView.swift */; };
+		4C643A591CC72DD800698531 /* HearderForPaperCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C643A571CC72DD800698531 /* HearderForPaperCollectionReusableView.swift */; };
+		4C643A5A1CC72DD800698531 /* HearderForPaperCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C643A581CC72DD800698531 /* HearderForPaperCollectionReusableView.xib */; };
 		4C6965B41CC4823500C702E7 /* GRNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6965B31CC4823500C702E7 /* GRNetwork.swift */; };
 		4C7540C61CBF435300E94C82 /* LoginMainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C7540C51CBF435300E94C82 /* LoginMainStoryboard.storyboard */; };
 		4C7540C81CBF46BE00E94C82 /* TSUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7540C71CBF46BE00E94C82 /* TSUITextField.swift */; };
@@ -112,6 +115,9 @@
 		4C4E731B1CB54A4B002D8926 /* TA-Bri-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "TA-Bri-Header.h"; path = "UI/TA-Bri-Header.h"; sourceTree = "<group>"; };
 		4C5D43D81CC4A92900AB3FFD /* LoginBL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginBL.swift; path = DomainLayer/LoginBL.swift; sourceTree = "<group>"; };
 		4C5D43DA1CC4A94800AB3FFD /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInfo.swift; path = DomainLayer/UserInfo.swift; sourceTree = "<group>"; };
+		4C643A551CC71B4E00698531 /* TSPaperCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSPaperCollectionView.swift; path = UI/PaperInterface/TSPaperCollectionView.swift; sourceTree = "<group>"; };
+		4C643A571CC72DD800698531 /* HearderForPaperCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HearderForPaperCollectionReusableView.swift; path = UI/PaperInterface/HearderForPaperCollectionReusableView.swift; sourceTree = "<group>"; };
+		4C643A581CC72DD800698531 /* HearderForPaperCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HearderForPaperCollectionReusableView.xib; path = UI/PaperInterface/HearderForPaperCollectionReusableView.xib; sourceTree = "<group>"; };
 		4C6965B31CC4823500C702E7 /* GRNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GRNetwork.swift; path = TechnicalServiece/GRNetwork.swift; sourceTree = "<group>"; };
 		4C7540C51CBF435300E94C82 /* LoginMainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LoginMainStoryboard.storyboard; path = UI/LoginInstall/LoginMainStoryboard.storyboard; sourceTree = "<group>"; };
 		4C7540C71CBF46BE00E94C82 /* TSUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSUITextField.swift; path = UI/LoginInstall/TSUITextField.swift; sourceTree = "<group>"; };
@@ -266,6 +272,9 @@
 			children = (
 				4C4BCF491CAD4C65001FFC09 /* PaperCollectionViewCell.swift */,
 				4C4BCF4A1CAD4C65001FFC09 /* PaperCollectionViewCell.xib */,
+				4C643A551CC71B4E00698531 /* TSPaperCollectionView.swift */,
+				4C643A571CC72DD800698531 /* HearderForPaperCollectionReusableView.swift */,
+				4C643A581CC72DD800698531 /* HearderForPaperCollectionReusableView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -688,6 +697,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C643A5A1CC72DD800698531 /* HearderForPaperCollectionReusableView.xib in Resources */,
 				4C8EFD331C32B3F000AC7454 /* head.jpg in Resources */,
 				E6F046BE1C2D0A0000D3CF6C /* LaunchScreen.storyboard in Resources */,
 				4C4BCF5A1CAD515B001FFC09 /* PapersStoryboard.storyboard in Resources */,
@@ -786,6 +796,7 @@
 				4C8EFD2B1C32B3F000AC7454 /* AboutPageView.swift in Sources */,
 				4C775A041CB3F799000BA228 /* UILabelPadding.swift in Sources */,
 				4C8EFD3A1C32B3F000AC7454 /* SettingView.swift in Sources */,
+				4C643A561CC71B4E00698531 /* TSPaperCollectionView.swift in Sources */,
 				4C3803561C31BA4100B8C0B1 /* AExamPaper.swift in Sources */,
 				4C11ABFA1C314E0F006C3816 /* OptionItem.swift in Sources */,
 				4C775A061CB3F7F5000BA228 /* AbsViewFactory.swift in Sources */,
@@ -810,6 +821,7 @@
 				4C8EFCC01C32A1D500AC7454 /* Timer.swift in Sources */,
 				4C8EFD311C32B3F000AC7454 /* CollectionView.swift in Sources */,
 				4C8EFD3C1C32B3F000AC7454 /* UserItem.swift in Sources */,
+				4C643A591CC72DD800698531 /* HearderForPaperCollectionReusableView.swift in Sources */,
 				4C4BCF561CAD50EF001FFC09 /* PapersViewController.swift in Sources */,
 				4C17EB3D1CC3B6A900A2F6C5 /* TSUINavigationController.swift in Sources */,
 				4C38035A1C31D3E500B8C0B1 /* TopicDetail.swift in Sources */,

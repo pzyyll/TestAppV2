@@ -40,8 +40,12 @@ class GRNetwork: NSObject {
             let json = JSON(data: response.data!);
             let ok = json["status"].int
             print(json)
-            print(ok!)
-            self.delegateForUserInfo.checkoutUserInfoFinished(ok! == 1);
+            if ok != nil {
+                print(ok!)
+                self.delegateForUserInfo.checkoutUserInfoFinished(ok! == 1);
+            } else {
+                self.delegateForUserInfo.checkoutUserInfoFinished(false);
+            }
         }
     }
 }

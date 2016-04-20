@@ -164,6 +164,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginBLDelegat
         user.pwd = self.pwdText.text!
         
         let log = LoginBL()
+        MBProgressHUD.showLoadingHUDToView(self.view, icon: nil)
         log.login(user)
         log.delegate = self
     }
@@ -187,11 +188,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginBLDelegat
     }
 
     func loginAuthority(ok: Bool) {
+        MBProgressHUD.hideLoadingHUDToView(self.view)
         if ok {
             let jumpCtr = MainTabViewController()
             UIApplication.sharedApplication().delegate!.window!!.rootViewController = jumpCtr
         } else {
-            
+            MBProgressHUD.showLoadingErr(self.view, icon: nil)
         }
     }
     
