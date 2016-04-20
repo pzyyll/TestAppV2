@@ -19,16 +19,20 @@ class SelectTheCourseController: UIViewController, UITableViewDelegate, UITableV
     
     var smalltblView:UITableView?
     
-    var rec_courseArr:[Dictionary<String, String>] = [["c_No":"c1","c_Name":"CET-4"],["c_No":"c2","c_Name":"CET-6"],["c_No":"c3", "c_Name":"CET-8"]]
+    var rec_courseArr:[Dictionary<String, String>] = [
+        ["c_No":"c00001","c_Name":"CET-4", "c_Introduction":"大学英语四级","c_AppdendTime":"2016-04-05 14:21:42","l_No":"00001"],
+        ["c_No":"c00002","c_Name":"CET-6", "c_Introduction":"大学英语六级","c_AppdendTime":"2016-04-05 14:21:42","l_No":"00001"]]//,["c_No":"c2","c_Name":"CET-6"],["c_No":"c3", "c_Name":"CET-8"],["c_No":"c4","c_Name":"TEM-4"],["c_No":"c5","c_Name":"TEM-6"]]
     var dataSourceDelegate: SelectTheCourseControllerDataSource!
     var pendingarr: [CourseEntity]!
     var allCourse: [Course] = []
     var count = 0;
     var appDelegate:AppDelegate!
     let entityName = "CourseEntity"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("view did load \(count)");
+        
+        //print("view did load \(count)");
         count += 1;
         
         self.pendingarr = dataSourceDelegate.changeData()
@@ -46,7 +50,7 @@ class SelectTheCourseController: UIViewController, UITableViewDelegate, UITableV
         self.view.addSubview(smalltblView!);
         smalltblView!.delegate = self
         smalltblView!.dataSource = self
-        
+        smalltblView!.separatorStyle = UITableViewCellSeparatorStyle.None
         
         let animation = CATransition()
         animation.duration = 0.3
@@ -76,6 +80,7 @@ class SelectTheCourseController: UIViewController, UITableViewDelegate, UITableV
             let rec_course = Course()
             rec_course.c_No = rec_courseArr[i]["c_No"]!
             rec_course.c_Name = rec_courseArr[i]["c_Name"]!
+            rec_course.c_Intro = rec_courseArr[i]["c_Introduction"]!
             
             self.allCourse.append(rec_course)
         }
@@ -230,10 +235,9 @@ class SelectTheCourseController: UIViewController, UITableViewDelegate, UITableV
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier("cutsomStyle",forIndexPath: indexPath) as! CutsomCourseTableViewCell
         
-        cell.courseNameLabel.text = allCourse[indexPath.row].c_Name
+        cell.courseNameLabel.text = allCourse[indexPath.row].c_Intro
         
         if(findCourse(self.allCourse[indexPath.row]) != -1){
-            //cell.backgroundColor = UIColor.greenColor()
             let img = UIImage(named: "checked_green")?.imageWithRenderingMode(.AlwaysOriginal)
             cell.currectbtn.setImage(img, forState: .Normal)
             cell.selected_flag = true

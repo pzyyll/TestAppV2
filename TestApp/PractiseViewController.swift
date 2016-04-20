@@ -58,11 +58,13 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
         print("inside")
         if !NSUserDefaults.standardUserDefaults().boolForKey(boolKey) {
                         let firstCourse = Course()
-                        firstCourse.c_No = "c1"
-                        firstCourse.c_Name = "CET-4";
+                        firstCourse.c_No = "c00001"
+                        firstCourse.c_Name = "En_LV4";
+                        firstCourse.c_Intro = "大学英语四级";
                         let secCourse = Course()
-                        secCourse.c_No = "c2"
-                        secCourse.c_Name = "CET-6";
+                        secCourse.c_No = "c00002"
+                        secCourse.c_Name = "En_LV6";
+                        secCourse.c_Intro = "大学英语六级"
             
                         self.evarr = [firstCourse, secCourse];
             //self.arr = Course.getAllCourse(2);
@@ -72,7 +74,7 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
                 
                 myevent.c_No = item.c_No
                 myevent.c_Name = item.c_Name
-              
+                
                 arr.append(myevent)
                 
                 do {
@@ -94,7 +96,7 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
             do{
                 let ab = try  self.appDelegate.managedObjectContext.executeFetchRequest(req) as! [CourseEntity]
                 arr = ab
-                print("req arr \(arr.count)")
+                print("find req arr.count \(arr.count)")
             }catch let err as NSError{
                 print("req err \(err.userInfo)")
             }
@@ -106,7 +108,7 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
         
         let frame = self.view.bounds
         self.scrollView = UIScrollView()
-        scrollView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 250)//self.view.bounds
+        scrollView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 180)//self.view.bounds
         
         scrollView.contentSize=CGSizeMake(frame.size.width*CGFloat(numOfPages),0)
         scrollView.pagingEnabled = true
@@ -124,7 +126,7 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
         
         scrollView.contentOffset = CGPointZero
         
-        self.pageControl=UIPageControl(frame: CGRectMake(self.view.frame.size.width/2-50, 210, 100, 25))
+        self.pageControl=UIPageControl(frame: CGRectMake(self.view.frame.size.width/2-50, 150, 100, 25))
         self.pageControl!.numberOfPages=3
         self.pageControl!.currentPage=0
         self.pageControl!.addTarget(self, action: #selector(PractiseViewController.pageChanged(_:pageNum:)),forControlEvents: UIControlEvents.ValueChanged)
@@ -165,7 +167,7 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     
     func readyForWKWebView(){
-        webAct = WKWebView(frame: CGRectMake(0, 250, UIScreen.mainScreen().bounds.width, 190))
+        webAct = WKWebView(frame: CGRectMake(0, scrollView.frame.height, UIScreen.mainScreen().bounds.width, 130))
         webAct.scrollView.scrollEnabled = false
         self.view.addSubview(webAct)
         
@@ -179,7 +181,9 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
         
         let flowLayout = UICollectionViewFlowLayout()
         
-        self.collectionView = UICollectionView(frame: CGRectMake(0, 450, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height-500),collectionViewLayout: flowLayout)
+        flowLayout.sectionInset = UIEdgeInsets(top: 40, left: 40, bottom: 60, right: 60)
+        let startHigh = scrollView.frame.height + webAct.frame.height
+        self.collectionView = UICollectionView(frame: CGRectMake(0, startHigh, UIScreen.mainScreen().bounds.width, self.view.bounds.height - startHigh),collectionViewLayout: flowLayout)
         //register a cell
         self.collectionView!.registerClass(CustomCLcell.self, forCellWithReuseIdentifier: cellIdentifier)
         self.collectionView!.backgroundColor = UIColor.whiteColor()
@@ -202,11 +206,6 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
         
         cell.toggleSelected()
         
-        if cell.nameLabel?.text != "more"{
-            let trans = MainTableViewController()
-            self.navigationController?.pushViewController(trans, animated: true)
-        }
-        
         if indexPath.row == arr.count {
             let courseCtr = SelectTheCourseController()
             courseCtr.dataSourceDelegate = self
@@ -214,6 +213,9 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
             self.addChildViewController(courseCtr)
             self.view.addSubview(courseCtr.view);
             self.didMoveToParentViewController(self)
+        }else{
+            let trans = MainTableViewController()
+            self.navigationController?.pushViewController(trans, animated: true)
         }
         
     }
@@ -247,9 +249,9 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     
     //調整並返回collectionView的间距
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets{
-        return UIEdgeInsetsMake(10, 20, 10, 10)
-    }
+//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets{
+//        return UIEdgeInsetsMake(10, 20, 10, 10)
+//    }
     
     
     func changeData() -> [CourseEntity]? {

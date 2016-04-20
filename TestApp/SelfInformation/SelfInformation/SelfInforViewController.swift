@@ -49,7 +49,7 @@ class SelfInforViewController: UIViewController, UITableViewDataSource, UITableV
         self.tableView.dataSource=self//数据源
         self.tableView.delegate=self//委托
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "aCell")
-        
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.view.addSubview(self.tableView)
         
         //json数据在此操作

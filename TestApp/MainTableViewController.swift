@@ -17,15 +17,17 @@ class MainTableViewController: UITableViewController {
                        2:["TRANSLATION", "TRanslation"]]
     
     var cellDic : [Int:[Dictionary<String, String>]] = [:]
-    let cellIndenty = "systemCell"
     var countRowArr : [Int] = []
-   
+    
     var testBool = false
+    let cellIndenty = "systemCell"
+    var mCutsomCell = "mCutsomCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellIndenty)
+        self.tableView.registerNib(UINib(nibName: "CustsomMainTableViewCell", bundle: nil), forCellReuseIdentifier: mCutsomCell)
         perpare_data()
     }
 
@@ -66,15 +68,19 @@ class MainTableViewController: UITableViewController {
         let section = indexPath.section
         let crow = indexPath.row
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIndenty, forIndexPath: indexPath)
-
                 if cellDic[section]![crow]["cell"] == cellIndenty{
+                    let cell = tableView.dequeueReusableCellWithIdentifier(cellIndenty, forIndexPath: indexPath)
                     cell.textLabel?.text = rec_data[section]![crow]
-                }else if cellDic[section]![crow]["cell"] == "cutsomCell"{
-                    cell.textLabel?.text = rec_data[section]![crow]
+                      return cell
+                }else if cellDic[section]![crow]["cell"] == "\(mCutsomCell)"{
+                    let cell = tableView.dequeueReusableCellWithIdentifier(mCutsomCell, forIndexPath: indexPath) as! CustsomMainTableViewCell
+                        cell.sectionName.text = rec_data[section]![crow]
+                    return cell
+                }else {
+                    return UITableViewCell()
                 }
         
-        return cell
+      
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -97,7 +103,7 @@ class MainTableViewController: UITableViewController {
             cellDic[section]![0] = ndic
             
             for _ in 0..<countRowArr[section]{
-                let ndic = ["cell":"cutsomCell", "isAttached":"false"]
+                let ndic = ["cell":"\(mCutsomCell)", "isAttached":"false"]
                 cellDic[section]?.append(ndic)
             }
             

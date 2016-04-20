@@ -1,9 +1,6 @@
 //
 //  CustomLayout.swift
-//  SwiftInAction-008-016
 //
-//  Created by zhihua on 14-7-13.
-//  Copyright (c) 2014年 ucai. All rights reserved.
 //
 
 import UIKit
@@ -41,39 +38,31 @@ class CustomLayout : UICollectionViewLayout {
         let attribute = UICollectionViewLayoutAttributes(forCellWithIndexPath:indexPath)
         
         //单元格外部空隙，简单起见，这些常量都在方法内部定义了，没有共享为类成员
-        let itemSpacing = 2
-        let lineSpacing = 5
+        //let itemSpacing = 2
+        //let lineSpacing = 5
         
         //单元格边长
-        let largeCellSide:CGFloat = 200
-        let smallCellSide:CGFloat = 100
+        //let largeCellSide:CGFloat = 200
+        //let smallCellSide:CGFloat = 100
         
         //内部间隙，左右5
-        let insets = UIEdgeInsetsMake(2, 5, 2, 5)
+        //let insets = UIEdgeInsetsMake(10, 10, 10, 10)//top left buttom right
         
-        //当前行数，每行显示3个图片，1大2小
-        let line:Int = indexPath.item / 3
-        //当前行的Y坐标
-        let lineOriginY = largeCellSide * CGFloat(line) + CGFloat(lineSpacing * line) + insets.top
-        //右侧单元格X坐标，这里按左右对齐，所以中间空隙大
-        let rightLargeX = collectionView!.bounds.size.width - largeCellSide - insets.right
-        let rightSmallX = collectionView!.bounds.size.width - smallCellSide - insets.right
         
-        // 每行2个图片，2行循环一次，一共6种位置
-        if (indexPath.item % 6 == 0) {
-            attribute.frame = CGRectMake(insets.left, lineOriginY, largeCellSide, largeCellSide)
-        } else if (indexPath.item % 6 == 1) {
-            attribute.frame = CGRectMake(rightSmallX, lineOriginY, smallCellSide, smallCellSide)
-        } else if (indexPath.item % 6 == 2) {
-            attribute.frame = CGRectMake(rightSmallX, lineOriginY + smallCellSide + insets.top, smallCellSide, smallCellSide)
-        } else if (indexPath.item % 6 == 3) {
-            attribute.frame = CGRectMake(insets.left, lineOriginY, smallCellSide, smallCellSide)
-        } else if (indexPath.item % 6 == 4) {
-            attribute.frame = CGRectMake(insets.left, lineOriginY + smallCellSide + insets.top, smallCellSide, smallCellSide)
-        } else if (indexPath.item % 6 == 5) {
-            attribute.frame = CGRectMake(rightLargeX, lineOriginY, largeCellSide, largeCellSide)
+        
+        //当前行数，每行显示4个
+        let line:Int = indexPath.item / 4
+       
+       // let lineOriginY = insets.top
+        if (indexPath.item % 4 == 0){
+         attribute.frame = CGRectMake(40*CGFloat(line+1), 40*CGFloat(line+1), 60, 60)
+        }else if (indexPath.item % 4 == 1) {
+            attribute.frame = CGRectMake(40*CGFloat(line+1) * 2, 40*CGFloat(line+1), 60, 60)
+        }else if (indexPath.item % 4 == 2) {
+            attribute.frame = CGRectMake(40*CGFloat(line+1) * 3, 40*CGFloat(line+1), 60, 60)
+        }else if (indexPath.item % 4 == 3) {
+            attribute.frame = CGRectMake(40*CGFloat(line+1) * 4, 40*CGFloat(line+1), 60, 60)
         }
-        
         return attribute
     }
     
