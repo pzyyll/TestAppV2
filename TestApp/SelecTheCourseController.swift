@@ -8,7 +8,8 @@
 
 import UIKit
 import CoreData
-
+import Alamofire
+import SwiftyJSON
 
 protocol SelectTheCourseControllerDataSource {
     func changeData() -> [CourseEntity]?
@@ -19,9 +20,10 @@ class SelectTheCourseController: UIViewController, UITableViewDelegate, UITableV
     
     var smalltblView:UITableView?
     
-    var rec_courseArr:[Dictionary<String, String>] = [
-        ["c_No":"c00001","c_Name":"CET-4", "c_Introduction":"大学英语四级","c_AppdendTime":"2016-04-05 14:21:42","l_No":"00001"],
-        ["c_No":"c00002","c_Name":"CET-6", "c_Introduction":"大学英语六级","c_AppdendTime":"2016-04-05 14:21:42","l_No":"00001"]]//,["c_No":"c2","c_Name":"CET-6"],["c_No":"c3", "c_Name":"CET-8"],["c_No":"c4","c_Name":"TEM-4"],["c_No":"c5","c_Name":"TEM-6"]]
+    var rec_courseArr:[Dictionary<String, String>] = []
+       /* ["c_No":"c00001","c_Name":"CET-4", "c_Introduction":"大学英语四级","c_AppdendTime":"2016-04-05 14:21:42","l_No":"00001"],
+        ["c_No":"c00002","c_Name":"CET-6", "c_Introduction":"大学英语六级","c_AppdendTime":"2016-04-05 14:21:42","l_No":"00001"]]*///,["c_No":"c2","c_Name":"CET-6"],["c_No":"c3", "c_Name":"CET-8"],["c_No":"c4","c_Name":"TEM-4"],["c_No":"c5","c_Name":"TEM-6"]]
+    var blankArr : [Dictionary<String, String>] = []
     var dataSourceDelegate: SelectTheCourseControllerDataSource!
     var pendingarr: [CourseEntity]!
     var allCourse: [Course] = []
@@ -32,13 +34,12 @@ class SelectTheCourseController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //print("view did load \(count)");
+        json_Action()
+        
         count += 1;
         
         self.pendingarr = dataSourceDelegate.changeData()
         cout(self.pendingarr)
-        
-        do_coredata()
         
         
         smalltblView = UITableView(frame: CGRectMake(0, 60, UIScreen.mainScreen().bounds.width - 100, UIScreen.mainScreen().bounds.height), style: UITableViewStyle.Plain)
@@ -73,14 +74,40 @@ class SelectTheCourseController: UIViewController, UITableViewDelegate, UITableV
         view.addGestureRecognizer(ges);
     }
     
+    func json_Action(){
+        Alamofire.request(.POST, "http://127.0.0.1/ios/exam/getCourse.php", parameters: ["":""]).response{
+            (request, response, data, error) -> Void in
+            
+            if error != nil{
+                print(error)
+            }else{
+                let json = JSON(data: data!)
+                //print("json rec: \(json)")
+                for i in 0..<json.count{
+                    let arr = json[i].dictionaryObject as! [String:String]
+                    self.blankArr.append(arr)
+                    //print(self.blankArr)
+                }
+                
+                self.rec_courseArr = self.blankArr
+                
+                print(self.rec_courseArr)
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in//异步
+                    self.do_coredata()
+                    self.smalltblView!.reloadData()
+                })
+            }
+        }
+    }
+    
     func do_coredata(){
         self.appDelegate = (UIApplication.sharedApplication().delegate) as!  AppDelegate
-       
-        for i in 0..<rec_courseArr.count{
+        
+        for i in 0..<self.rec_courseArr.count{
             let rec_course = Course()
-            rec_course.c_No = rec_courseArr[i]["c_No"]!
-            rec_course.c_Name = rec_courseArr[i]["c_Name"]!
-            rec_course.c_Intro = rec_courseArr[i]["c_Introduction"]!
+            rec_course.c_No = self.rec_courseArr[i]["c_No"]!
+            rec_course.c_Name = self.rec_courseArr[i]["c_Name"]!
+            rec_course.c_Intro = self.rec_courseArr[i]["c_Introduction"]!
             
             self.allCourse.append(rec_course)
         }

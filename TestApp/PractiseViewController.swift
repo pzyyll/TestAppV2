@@ -55,7 +55,7 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
     
     func saveArr_coredata() {
         
-        print("inside")
+        //print("inside")
         if !NSUserDefaults.standardUserDefaults().boolForKey(boolKey) {
                         let firstCourse = Course()
                         firstCourse.c_No = "c00001"
@@ -96,7 +96,7 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
             do{
                 let ab = try  self.appDelegate.managedObjectContext.executeFetchRequest(req) as! [CourseEntity]
                 arr = ab
-                print("find req arr.count \(arr.count)")
+                //print("find req arr.count \(arr.count)")
             }catch let err as NSError{
                 print("req err \(err.userInfo)")
             }
