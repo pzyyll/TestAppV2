@@ -15,6 +15,7 @@ class CustsomMainTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        sectionName.font = UIFont(name: "Chalkboard SE", size: 18)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

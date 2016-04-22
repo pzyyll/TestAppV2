@@ -142,9 +142,9 @@ class SelfInforViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
         let secno = indexPath.section
         if secno == 0{//第一个分区的行高点点
-            return 150
+            return 100
         }else{//其它行高普通
-            return 50
+            return 40
         }
     }//end of heightForRowAtIndexPath
     
@@ -187,3 +187,4 @@ class SelfInforViewController: UIViewController, UITableViewDataSource, UITableV
     }
 
 }
+

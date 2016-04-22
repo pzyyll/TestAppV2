@@ -25,6 +25,9 @@ class MainTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellIndenty)
         self.tableView.registerNib(UINib(nibName: "CustsomMainTableViewCell", bundle: nil), forCellReuseIdentifier: mCutsomCell)
@@ -70,10 +73,12 @@ class MainTableViewController: UITableViewController {
         
                 if cellDic[section]![crow]["cell"] == cellIndenty{
                     let cell = tableView.dequeueReusableCellWithIdentifier(cellIndenty, forIndexPath: indexPath)
+                    cell.textLabel!.font = UIFont(name: "MarKer Felt", size: 25)
                     cell.textLabel?.text = rec_data[section]![crow]
                       return cell
                 }else if cellDic[section]![crow]["cell"] == "\(mCutsomCell)"{
                     let cell = tableView.dequeueReusableCellWithIdentifier(mCutsomCell, forIndexPath: indexPath) as! CustsomMainTableViewCell
+                        
                         cell.sectionName.text = rec_data[section]![crow]
                     return cell
                 }else {
@@ -146,9 +151,9 @@ class MainTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
         if cellDic[indexPath.section]![indexPath.row]["cell"]==cellIndenty{
-            return 80
+            return 70
         }else{
-            return 50
+            return 40
         }
     }
     

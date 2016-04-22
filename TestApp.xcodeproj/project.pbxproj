@@ -308,6 +308,7 @@
 		4C4BCF511CAD4EFF001FFC09 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6385EB761CB4040E006655F8 /* CustomCLcell.swift */,
 				637FEF0E1CBFCB70008C7CDE /* CutsomCourseTableViewCell.swift */,
 				637FEF0F1CBFCB70008C7CDE /* CutsomCourseTableViewCell.xib */,
 				63778CDA1CC79C3000F07921 /* CustsomMainTableViewCell.swift */,
@@ -322,7 +323,6 @@
 				63DA68161CC704BE004489F2 /* CustomLayout.swift */,
 				63A9567F1CC675C700B4AB63 /* MainTableViewController.swift */,
 				63A2F93D1CBA59F700AB5EDA /* SelecTheCourseController.swift */,
-				6385EB761CB4040E006655F8 /* CustomCLcell.swift */,
 				6385EB741CB4039E006655F8 /* PractiseViewController.swift */,
 				6385EB781CB4043D006655F8 /* AdViewController.swift */,
 			);

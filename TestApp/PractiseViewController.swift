@@ -108,7 +108,7 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
         
         let frame = self.view.bounds
         self.scrollView = UIScrollView()
-        scrollView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 180)//self.view.bounds
+        scrollView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 240)//self.view.bounds
         
         scrollView.contentSize=CGSizeMake(frame.size.width*CGFloat(numOfPages),0)
         scrollView.pagingEnabled = true
@@ -126,7 +126,7 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
         
         scrollView.contentOffset = CGPointZero
         
-        self.pageControl=UIPageControl(frame: CGRectMake(self.view.frame.size.width/2-50, 150, 100, 25))
+        self.pageControl=UIPageControl(frame: CGRectMake(self.view.frame.size.width/2-50, scrollView.frame.height*4/5, 100, 25))
         self.pageControl!.numberOfPages=3
         self.pageControl!.currentPage=0
         self.pageControl!.addTarget(self, action: #selector(PractiseViewController.pageChanged(_:pageNum:)),forControlEvents: UIControlEvents.ValueChanged)
@@ -239,8 +239,10 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
         
         if indexPath.row == arr.count {
             cell.imgView?.image = UIImage(named: "icon_subject_add")
+            cell.nameLabel?.font = UIFont(name: "Chalkboard SE", size: 18)
             cell.nameLabel?.text = "more"
         }else{
+            cell.nameLabel?.font = UIFont(name: "Chalkboard SE", size: 18)
             cell.nameLabel?.text = arr[indexPath.item].c_Name
             cell.imgView?.image = UIImage(named: "icon_subject_yingyu")
         }
