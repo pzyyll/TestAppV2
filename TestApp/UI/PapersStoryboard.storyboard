@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rde-PD-A1V">
-
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zaF-4c-vWQ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Papers View Controller-->
         <scene sceneID="R5J-JA-Bd5">
             <objects>
-                <viewController storyboardIdentifier="papers" id="rde-PD-A1V" customClass="PapersViewController" customModule="TestApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="papers" automaticallyAdjustsScrollViewInsets="NO" id="rde-PD-A1V" customClass="PapersViewController" customModule="TestApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Rhi-j1-Jx5"/>
                         <viewControllerLayoutGuide type="bottom" id="cQV-mA-pDV"/>
@@ -38,10 +37,80 @@
 
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="5Ar-ke-p40">
+                        <leftBarButtonItems>
+                            <barButtonItem image="icon_paper_catalog" id="RMK-pI-pfe">
+                                <connections>
+                                    <action selector="setCourse:" destination="rde-PD-A1V" id="fMi-72-mY0"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="H0t-VT-ZOC">
+                                <view key="customView" contentMode="scaleToFill" id="QQX-XM-YfK">
+                                    <rect key="frame" x="69" y="5" width="133" height="33"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大学英语专业四级" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjL-fh-MLY">
+                                            <rect key="frame" x="-8" y="6" width="182" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="182" id="MKe-Rb-gSk"/>
+                                                <constraint firstAttribute="height" constant="21" id="tzA-H0-nQf"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="cjL-fh-MLY" firstAttribute="leading" secondItem="QQX-XM-YfK" secondAttribute="leading" constant="-8" id="gHE-jQ-Erc"/>
+                                        <constraint firstItem="cjL-fh-MLY" firstAttribute="top" secondItem="QQX-XM-YfK" secondAttribute="top" constant="6" id="yfB-80-hX3"/>
+                                    </constraints>
+                                </view>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Hi0-Dm-mU4">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="wks-Ny-Kuz">
+                                <rect key="frame" x="499" y="8" width="81" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="真题"/>
+                                    <segment title="模拟"/>
+                                </segments>
+                                <connections>
+                                    <action selector="switchTypeForPaper:" destination="rde-PD-A1V" eventType="valueChanged" id="Irp-PE-6uu"/>
+                                </connections>
+                            </segmentedControl>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="left" destination="Hi0-Dm-mU4" id="8nq-Ln-Uhz"/>
+                        <outlet property="switchTM" destination="wks-Ny-Kuz" id="Jxg-fG-qpo"/>
+                        <outlet property="titleLabel" destination="cjL-fh-MLY" id="i9J-hi-A5f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5G-K3-XDT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1099" y="318"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="I6S-jZ-DLJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zaF-4c-vWQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8in-qS-Pbc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="rde-PD-A1V" kind="relationship" relationship="rootViewController" id="Gd0-E1-0eb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Au0-00-mb1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="287" y="318"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_paper_catalog" width="30" height="30"/>
+    </resources>
 </document>

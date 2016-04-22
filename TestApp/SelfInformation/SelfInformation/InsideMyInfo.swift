@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KeychainAccess
 
 class InsideMyInfo: UIViewController, UITableViewDataSource, UITableViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -141,6 +142,10 @@ class InsideMyInfo: UIViewController, UITableViewDataSource, UITableViewDelegate
         }//end secno 0
         else if secno == 1{//剩下的分区 //MARK:待添加注销功能
             //注销用户返回登陆界面
+            let keychain = Keychain(service: identifier_Keychain, accessGroup: "ik1")
+            keychain["user"] = nil
+            keychain["pwd"] = nil
+            UIApplication.sharedApplication().keyWindow?.rootViewController = TSUINavigationController(rootViewController: LoginViewController())
         }
     }//end didSelectRowAtIndexPath
     
