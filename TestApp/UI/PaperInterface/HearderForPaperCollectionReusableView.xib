@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -8,27 +8,37 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderForPaper" id="U6b-Vx-4bR" customClass="HearderForPaperCollectionReusableView" customModule="TestApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="32"/>
+            <rect key="frame" x="0.0" y="0.0" width="376" height="37"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20150101" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUU-Lb-8Ax">
-                    <rect key="frame" x="13" y="0.0" width="307" height="32"/>
+                    <rect key="frame" x="13" y="0.0" width="363" height="37"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DgU-Oj-mGL">
+                    <rect key="frame" x="13" y="36" width="350" height="1"/>
+                    <color key="backgroundColor" red="0.91372549020000005" green="0.90980392160000001" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="cRZ-qF-hys"/>
+                    </constraints>
+                </view>
             </subviews>
-            <color key="backgroundColor" red="0.8327538920322638" green="0.8327538920322638" blue="0.8327538920322638" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="tUU-Lb-8Ax" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="153-f4-7Y5"/>
+                <constraint firstAttribute="trailing" secondItem="DgU-Oj-mGL" secondAttribute="trailing" constant="13" id="2Ow-dK-9az"/>
                 <constraint firstItem="tUU-Lb-8Ax" firstAttribute="height" secondItem="U6b-Vx-4bR" secondAttribute="height" id="3HS-FE-uGJ"/>
+                <constraint firstItem="DgU-Oj-mGL" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="13" id="5BC-ov-LaT"/>
                 <constraint firstItem="tUU-Lb-8Ax" firstAttribute="width" secondItem="U6b-Vx-4bR" secondAttribute="width" constant="-13" id="UDg-xu-eAD"/>
                 <constraint firstItem="tUU-Lb-8Ax" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="13" id="am8-hj-IiN"/>
+                <constraint firstAttribute="bottom" secondItem="DgU-Oj-mGL" secondAttribute="bottom" id="fIP-5m-dbq"/>
             </constraints>
             <connections>
                 <outlet property="title" destination="tUU-Lb-8Ax" id="UI4-2X-xma"/>
             </connections>
-            <point key="canvasLocation" x="565" y="382"/>
+            <point key="canvasLocation" x="593" y="384.5"/>
         </collectionReusableView>
     </objects>
 </document>

@@ -44,7 +44,7 @@ extension UIColor {
         return UIColor(red: 240/255, green: 1, blue: 230/255, alpha: 1)
     }
     
-    class func grayLightColor236() -> UIColor {
-        return UIColor(red: 236/255, green: 236/255, blue: 236/255, alpha: 1)
+    class func grayLightColor237() -> UIColor {
+        return UIColor(red: 237/255, green: 237/255, blue: 237/255, alpha: 1)
     }
 }

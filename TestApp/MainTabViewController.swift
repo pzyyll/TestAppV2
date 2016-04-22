@@ -26,7 +26,7 @@ class MainTabViewController: UITabBarController {
         
         var img = UIImage(named: "Icon_home_paperSmall");
         navMessages.tabBarItem.image = img
-        navMessages.topViewController?.title = "试卷"
+        navMessages.tabBarItem.title = "试卷"
         
         
         //练习界面
@@ -38,7 +38,7 @@ class MainTabViewController: UITabBarController {
         test.title = "练习"
         
         //fun界面
-        let me = TestSearchViewController()//SelfInforViewController()
+        let me = SelfInforViewController()
         let navMe = UINavigationController(rootViewController: me)
         img = UIImage(named: "Icon_me-Small")
         navMe.tabBarItem.image = img

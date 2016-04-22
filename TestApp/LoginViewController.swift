@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import KeychainAccess
+
+let TSUsersKey = "\(identifier_Keychain)users"
 
 class LoginViewController: UIViewController, UITextFieldDelegate, LoginBLDelegate {
     
@@ -30,7 +33,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginBLDelegat
 
         self.viewConfig()
 
-
+        let users = NSUserDefaults.standardUserDefaults().objectForKey(TSUsersKey) as? [String]
+        if users != nil {
+            self.userText.text = users![(users?.count)! - 1]
+        }
         // Do any additional setup after loading the view.
 
     }
@@ -170,11 +176,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginBLDelegat
     }
     
     func register(sender: UIButton) {
-        //var reg = RegisterViewController()
-          MBProgressHUD.showDelayHUDToView(self.view, mess: "loading", icon: nil)
-//        let sb = UIStoryboard(name: "LoginMainStoryboard", bundle: nil)
-//        let reg = sb.instantiateViewControllerWithIdentifier("123")
-//        self.navigationController?.pushViewController(reg, animated: true)
+//        var reg = RegisterViewController()
+        let sb = UIStoryboard(name: "LoginMainStoryboard", bundle: nil)
+        let reg = sb.instantiateViewControllerWithIdentifier("123")
+        self.navigationController?.pushViewController(reg, animated: true)
     }
     
     func loginStatus(sender: NSNotification) {
@@ -190,10 +195,28 @@ class LoginViewController: UIViewController, UITextFieldDelegate, LoginBLDelegat
     func loginAuthority(ok: Bool) {
         MBProgressHUD.hideLoadingHUDToView(self.view)
         if ok {
+            let keychain = Keychain(service: identifier_Keychain, accessGroup: "ik1")
+            keychain["user"] = self.userText.text
+            keychain["pwd"] = self.pwdText.text
+            
+            var users = NSUserDefaults.standardUserDefaults().objectForKey(TSUsersKey) as? [String]
+            if users != nil {
+                users?.append(self.userText.text!)
+            } else {
+                users = [self.userText.text!]
+            }
+            NSUserDefaults.standardUserDefaults().setObject(users, forKey: TSUsersKey)
+            
             let jumpCtr = MainTabViewController()
             UIApplication.sharedApplication().delegate!.window!!.rootViewController = jumpCtr
         } else {
             MBProgressHUD.showLoadingErr(self.view, icon: nil)
+        }
+    }
+    
+    func linkServerFail(fail: Bool) {
+        if fail {
+            MBProgressHUD.showDelayHUDToView(self.view, mess: "network err", icon: "Icon_err1")
         }
     }
     

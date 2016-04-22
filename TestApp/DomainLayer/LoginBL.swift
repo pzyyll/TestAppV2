@@ -10,6 +10,7 @@ import UIKit
 
 protocol LoginBLDelegate {
     func loginAuthority(ok: Bool)
+    func linkServerFail(fail: Bool)
 }
 
 class LoginBL: NSObject, UserInfoDelegate {
@@ -23,5 +24,9 @@ class LoginBL: NSObject, UserInfoDelegate {
     
     func userInfoIsLegal(flag: Bool) {
         self.delegate.loginAuthority(flag)
+    }
+    
+    func userInfoCheckoutFail(fail: Bool) {
+        self.delegate.linkServerFail(fail)
     }
 }

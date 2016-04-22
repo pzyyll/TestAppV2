@@ -38,8 +38,11 @@ extension MBProgressHUD {
     
     class func showLoadingHUDToView(view: UIView, icon: String?) {
         let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
-        hud.mode = MBProgressHUDMode.Indeterminate
+        hud.mode = MBProgressHUDMode.CustomView
+        hud.customView = LoadingAnmationView(frame: CGRectMake(0, 0, 50, 40))
+        hud.color = UIColor(red: 225/255, green: 225/255, blue: 230/255, alpha: 1)
         hud.labelText = "loading..."
+        hud.labelColor = UIColor.blackColor()
         hud.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.2)
     }
     class func hideLoadingHUDToView(view: UIView) {

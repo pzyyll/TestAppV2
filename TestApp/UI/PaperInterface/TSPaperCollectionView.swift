@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TSPaperCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource{
+class TSPaperCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate{
 
     /*
     // Only override drawRect: if you perform custom drawing.
@@ -47,7 +47,7 @@ class TSPaperCollectionView: UICollectionView, UICollectionViewDelegate, UIColle
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        self.cellForItemAtIndexPath(indexPath)?.selected = false
+        self.deselectItemAtIndexPath(indexPath, animated: true)
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
@@ -57,9 +57,23 @@ class TSPaperCollectionView: UICollectionView, UICollectionViewDelegate, UIColle
             collectionView.registerNib(UINib(nibName: "HearderForPaperCollectionReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: identifier)
             view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: identifier, forIndexPath: indexPath) as! HearderForPaperCollectionReusableView
             
+        } else if kind == UICollectionElementKindSectionFooter {
+            let identifier = "FootForPaper"
+            collectionView.registerNib(UINib(nibName: "FootForPaperCollectionReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: identifier)
+            view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionFooter, withReuseIdentifier: identifier, forIndexPath: indexPath)
         }
         
         return view
     }
     
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        print(scrollView.frame)
+        print(scrollView.contentSize)
+        print(scrollView.contentOffset)
+        let val = scrollView.contentSize.height - scrollView.frame.height
+        print(val)
+        if (scrollView.contentOffset.y > val ) {
+            scrollView.contentOffset.y = val
+        }
+    }
 }

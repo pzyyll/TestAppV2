@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import KeychainAccess
 
-class RegisterViewController: UIViewController, UITextFieldDelegate {
+class RegisterViewController: UIViewController, UITextFieldDelegate, RegBLDelegate {
     
     var regUser: TSUITextField!
     var pwd: TSUITextField!
@@ -17,14 +18,26 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     var btnGetVerify: UIButton!
     var btnReg: UIButton!
     
+    var regBL: RegBL!
+    var regUserInfo: UserInfo!
+    var code: String!
+    var timer: Timer!
+    
     override func viewWillAppear(animated: Bool) {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.btnStatus(_:)), name: UITextFieldTextDidChangeNotification, object: nil)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
-        self.configView()
         
+        
+        self.timer = Timer()
+        
+        self.regBL = RegBL()
+        self.regBL.delegate = self
+        
+        self.configView()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -112,15 +125,27 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     }
     
     func getVerify() {
-        //
+        //note: check phone number
+        
+        self.regUserInfo = UserInfo()
+        self.regUserInfo.userName = self.regUser.text!
+        self.regUserInfo.pwd = self.pwd.text!
+        self.regBL.queryUser(regUserInfo)
+        //NSTimer.scheduledTimerWithTimeInterval(1, target: <#T##AnyObject#>, selector: <#T##Selector#>, userInfo: <#T##AnyObject?#>, repeats: <#T##Bool#>)
     }
     
     func register() {
-        
+        if self.verify.text == self.code {
+            MBProgressHUD.showToView(self.view, mess: "请稍后...", icon: nil)
+            self.regBL.regUser(self.regUserInfo)
+        } else {
+            MBProgressHUD.showDelayHUDToView(self.view, mess: "验证码错误！", icon: nil)
+            self.verify.becomeFirstResponder()
+        }
     }
     
     func btnStatus(sender: NSNotification) {
-        if (!self.regUser.text!.isEmpty && !self.pwd.text!.isEmpty) {
+        if (!self.regUser.text!.isEmpty && !self.pwd.text!.isEmpty && self.timer.sec <= 0) {
             self.btnGetVerify.enabled = true
         } else {
             self.btnGetVerify.enabled = false
@@ -148,6 +173,51 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    //RegBLDelegate
+    func regUserIsExists(exists: Bool) {
+        if exists {
+            MBProgressHUD.showDelayHUDToView(self.view, mess: "user had reged!", icon: "Icon_err1")
+            self.regUser.becomeFirstResponder()
+            self.regUser.bottomLine.backgroundColor = UIColor.redColor()
+        } else {
+            self.btnGetVerify.titleLabel?.text = "30s"
+            self.timer.sec = 30
+            self.timer.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(self.timerhandle), userInfo: nil, repeats: true)
+            self.btnGetVerify.enabled = false
+            self.code = self.regBL.getCode(self.regUserInfo)
+            self.code = "123456"
+        }
+    }
+    func regUserIsFinished(ok: Bool) {
+        MBProgressHUD.hideFromView(self.view)
+        if ok {
+            let keychain = Keychain(service: identifier_Keychain, accessGroup: "ik1")
+            keychain["user"] = self.regUserInfo.userName
+            keychain["pwd"] = self.regUserInfo.pwd
+            
+            MBProgressHUD.showDelayHUDToView(self.view, mess: "加载页面中...", icon: nil)
+            UIApplication.sharedApplication().keyWindow?.rootViewController = MainTabViewController()
+        }
+    }
+    func queryFail(fail: Bool) {
+        MBProgressHUD.hideFromView(self.view)
+        if fail {
+            MBProgressHUD.showDelayHUDToView(self.view, mess: "network err", icon: "Icon_err2")
+        }
+    }
+    
+    func timerhandle() {
+        print(self.timer.sec)
+        if self.timer.sec < 0 {
+            self.btnGetVerify.titleLabel?.text = "获取验证码"
+            self.btnGetVerify.enabled = true
+            self.timer.stop()
+            return
+        }
+        self.btnGetVerify.titleLabel?.text = "\(self.timer.sec)s"
+        self.timer.update_d()
+        
+    }
     /*
     // MARK: - Navigation
 
