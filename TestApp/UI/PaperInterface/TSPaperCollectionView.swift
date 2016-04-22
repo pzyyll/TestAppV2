@@ -55,8 +55,8 @@ class TSPaperCollectionView: UICollectionView, UICollectionViewDelegate, UIColle
         if kind == UICollectionElementKindSectionHeader {
             let identifier = "HeaderForPaper"
             collectionView.registerNib(UINib(nibName: "HearderForPaperCollectionReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: identifier)
-            view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: identifier, forIndexPath: indexPath) as! HearderForPaperCollectionReusableView
-            
+            view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: identifier, forIndexPath: indexPath)
+            (view as! HearderForPaperCollectionReusableView).setTitleDate("20150601");
         } else if kind == UICollectionElementKindSectionFooter {
             let identifier = "FootForPaper"
             collectionView.registerNib(UINib(nibName: "FootForPaperCollectionReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: identifier)
