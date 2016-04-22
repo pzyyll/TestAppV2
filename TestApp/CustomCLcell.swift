@@ -20,6 +20,7 @@ class CustomCLcell : UICollectionViewCell{
     
     override init(frame:CGRect){
         super.init(frame: frame)
+       
         rebuildCellInterface()
     }
     
@@ -29,11 +30,12 @@ class CustomCLcell : UICollectionViewCell{
     
     func rebuildCellInterface(){
         
-        imgView = UIImageView(frame: CGRectMake(0, 0, 80, 80))
+        imgView = UIImageView(frame: CGRectMake(0, 0, 40, 40))//80 80
         imgView?.layer.cornerRadius = (imgView?.frame.width)! / 2
         imgView?.layer.borderWidth = 1
         imgView?.layer.borderColor = UIColor.grayColor().CGColor
         self.addSubview(imgView!)
+        
         
         nameLabel = UILabel(frame: CGRectMake(self.frame.width/2-25, self.frame.height - 20, 60, 20))
         //nameLabel?.backgroundColor = UIColor.purpleColor()

@@ -49,7 +49,7 @@ class SelfInforViewController: UIViewController, UITableViewDataSource, UITableV
         self.tableView.dataSource=self//数据源
         self.tableView.delegate=self//委托
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "aCell")
-        
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.view.addSubview(self.tableView)
         
         //json数据在此操作
@@ -142,9 +142,9 @@ class SelfInforViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
         let secno = indexPath.section
         if secno == 0{//第一个分区的行高点点
-            return 150
+            return 100
         }else{//其它行高普通
-            return 50
+            return 40
         }
     }//end of heightForRowAtIndexPath
     
@@ -187,3 +187,4 @@ class SelfInforViewController: UIViewController, UITableViewDataSource, UITableV
     }
 
 }
+
