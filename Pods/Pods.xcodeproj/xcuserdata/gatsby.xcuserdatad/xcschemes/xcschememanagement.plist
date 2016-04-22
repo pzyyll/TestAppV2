@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>KeychainAccess.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
 		<key>Pods-TestApp.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -42,7 +47,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7BD776ECA1AD205CBD0ABB0CF6D0F0C0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>838A2C6DA366DE138E5FDF1AF19D94C0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E32A0C524D23FE43A535F0D0D24DBC33</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F11592936BF3B55C67C9C0032A8A5398</key>
 		<dict>
 			<key>primary</key>
 			<true/>

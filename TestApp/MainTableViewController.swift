@@ -8,24 +8,27 @@
 
 import UIKit
 
-class MainTableViewController: UITableViewController {
+struct T {
+    var ok = false
+    var qtypes = [Qtype]()
+}
 
-    var dic:Dictionary<String,String> = ["cell":"systemCell", "isAttached":"false"]
-    
-    var rec_data = [0:["LISTENNING COMPREHENSION", "SHORT CONVERSATIONS", "LONG CONVERSATIONS", "SHORT PASSAGES", "NEWS"],
-                       1:["READING COMPREHENSION", "READING SECTION A", "READING SECTION B", "READING SECTION C"],
-                       2:["TRANSLATION", "TRanslation"]]
-    
-    var cellDic : [Int:[Dictionary<String, String>]] = [:]
-    var countRowArr : [Int] = []
-    
-    var testBool = false
+class MainTableViewController: UITableViewController, PractiseQtypeBLDelegate {
+
+    var rec_data2 = [T]()
+    var course: Course!
+    var pqBL: PractiseQtypeBL!
+
     let cellIndenty = "systemCell"
     var mCutsomCell = "mCutsomCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.pqBL = PractiseQtypeBL()
+        self.pqBL.delegate = self
+        course = Course()
+        course.c_No = "c00001"
         
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
@@ -35,17 +38,7 @@ class MainTableViewController: UITableViewController {
     }
 
     func perpare_data(){
-        
-        for i in 0..<rec_data.count{
-            var countThing = 0
-            cellDic.updateValue([dic], forKey: i)//[0:[dic,dic],1:[dic],2:[dic]]
-            for _ in 1..<rec_data[i]!.count{
-                countThing += 1
-            }
-            countRowArr.append(countThing)
-        }
-        //print(cellDic[0]![0]["cell"])
-        print("countRowArr :\(countRowArr)")
+        self.pqBL.getAllQtypeByCourse(self.course)
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,12 +50,17 @@ class MainTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return cellDic.count
+        //return cellDic.count
+        return self.rec_data2.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-            return cellDic[section]!.count
+        //    return cellDic[section]!.count
+        if self.rec_data2[section].ok {
+            return self.rec_data2[section].qtypes.count + 1
+        }
+        return 1;
     }
 
     
@@ -70,79 +68,51 @@ class MainTableViewController: UITableViewController {
         
         let section = indexPath.section
         let crow = indexPath.row
-        
-                if cellDic[section]![crow]["cell"] == cellIndenty{
-                    let cell = tableView.dequeueReusableCellWithIdentifier(cellIndenty, forIndexPath: indexPath)
-                    cell.textLabel!.font = UIFont(name: "MarKer Felt", size: 25)
-                    cell.textLabel?.text = rec_data[section]![crow]
-                      return cell
-                }else if cellDic[section]![crow]["cell"] == "\(mCutsomCell)"{
-                    let cell = tableView.dequeueReusableCellWithIdentifier(mCutsomCell, forIndexPath: indexPath) as! CustsomMainTableViewCell
-                        
-                        cell.sectionName.text = rec_data[section]![crow]
-                    return cell
-                }else {
-                    return UITableViewCell()
-                }
-        
-      
+
+        if self.rec_data2[section].ok {
+            if crow == 0 {
+                let cell = tableView.dequeueReusableCellWithIdentifier(cellIndenty, forIndexPath: indexPath)
+                cell.textLabel!.font = UIFont(name: "MarKer Felt", size: 25)
+                cell.textLabel?.text = self.rec_data2[section].qtypes.first!.qtt_NameCn
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCellWithIdentifier(mCutsomCell, forIndexPath: indexPath) as! CustsomMainTableViewCell
+                cell.sectionName.text = rec_data2[section].qtypes[crow - 1].qt_TypeCn
+                return cell
+            }
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellIndenty, forIndexPath: indexPath)
+            cell.textLabel!.font = UIFont(name: "MarKer Felt", size: 25)
+            cell.textLabel?.text = self.rec_data2[section].qtypes.first!.qtt_NameCn
+            return cell
+        }
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        testBool = true
         
         let section = indexPath.section
         let crow = indexPath.row
-        var path : [NSIndexPath] = []
-        if cellDic[section]![crow]["isAttached"] == "false" && cellDic[section]![crow]["cell"] == cellIndenty{
-    
-           for i in 1...countRowArr[section]{
-               let p = NSIndexPath.init(forItem: crow + i, inSection: section)
-               path.append(p)
-           }
-
-            //print("path in \(section) will init: \(path.count)")
-            
-            let ndic = ["cell":"systemCell", "isAttached":"true"]
-            cellDic[section]![0] = ndic
-            
-            for _ in 0..<countRowArr[section]{
-                let ndic = ["cell":"\(mCutsomCell)", "isAttached":"false"]
-                cellDic[section]?.append(ndic)
+        
+        if crow == 0 {
+            var path = [NSIndexPath]()
+            for i in 1...(self.rec_data2[section].qtypes.count) {
+                path.append(NSIndexPath.init(forItem: crow + i, inSection: section))
             }
             
-            //print("cellDic \(cellDic)")
-    
-            
-            self.tableView.beginUpdates()
-            self.tableView.insertRowsAtIndexPaths(path, withRowAnimation: UITableViewRowAnimation.Left)
-            self.tableView.endUpdates() 
-            
-        }else if cellDic[section]![crow]["isAttached"] == "true" && cellDic[section]![crow]["cell"] == cellIndenty {
-            
-            let ndic = ["cell":"systemCell", "isAttached":"false"]
-            cellDic[section]![0] = ndic
-            
-            for i in 1...countRowArr[section]{
-                let p = NSIndexPath.init(forItem: crow + i, inSection: section)
-                path.append(p)
+            if !self.rec_data2[section].ok {
+                self.rec_data2[section].ok = !self.rec_data2[section].ok
+                self.tableView.beginUpdates()
+                self.tableView.insertRowsAtIndexPaths(path, withRowAnimation: UITableViewRowAnimation.Left)
+                self.tableView.endUpdates()
+            } else {
+                self.rec_data2[section].ok = !self.rec_data2[section].ok
+                self.tableView.beginUpdates()
+                self.tableView.deleteRowsAtIndexPaths(path, withRowAnimation: UITableViewRowAnimation.Left)
+                self.tableView.endUpdates()
             }
-            
-            for _ in 1...countRowArr[section]{
-                cellDic[section]?.removeLast()
-            }
-            
-            
-            
-            self.tableView.beginUpdates()
-            self.tableView.deleteRowsAtIndexPaths(path, withRowAnimation: UITableViewRowAnimation.Left)
-            self.tableView.endUpdates()
-            
         }
-        
-        print("selected \(section), rows is \(crow)")
-        
+
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -150,10 +120,32 @@ class MainTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
-        if cellDic[indexPath.section]![indexPath.row]["cell"]==cellIndenty{
+        if indexPath.row == 0 {
             return 70
         }else{
             return 40
+        }
+    }
+    
+    func getQtypeByCourseFinished(qtypes: [String: AnyObject]) {
+        dispatch_async(dispatch_get_main_queue()) {
+            for (_, val) in qtypes {
+                var v1 = val as! [Qtype]
+                v1.sortInPlace({ (a, b) -> Bool in
+                    return a.qt_Aut < b.qt_Aut
+                })
+                let aItem = T(ok: false, qtypes: v1)
+                self.rec_data2.append(aItem)
+            }
+            self.rec_data2.sortInPlace({ (a, b) -> Bool in
+                return a.qtypes.first?.qtt_Aut < b.qtypes.first?.qtt_Aut
+            })
+            self.tableView.reloadData()
+        }
+    }
+    func getQtypeByCourseFail(fail: Bool) {
+        if fail {
+            MBProgressHUD.showDelayHUDToView(self.view, mess: "loading fail", icon: "Icon_err1")
         }
     }
     

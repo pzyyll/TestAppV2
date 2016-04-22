@@ -18,6 +18,7 @@ enum Router: URLRequestConvertible {
     case RegUser(UserInfo)
     case GetUser(UserInfo)
     case GetAllCourse
+    case GetQtypes(Course)
     
     var method: Alamofire.Method {
         switch self {
@@ -30,6 +31,8 @@ enum Router: URLRequestConvertible {
         case .GetUser(_):
             return .GET
         case .GetAllCourse:
+            return .GET
+        case .GetQtypes(_):
             return .GET
         }
     }
@@ -56,8 +59,10 @@ enum Router: URLRequestConvertible {
             case .GetAllCourse:
                 let parames = [String: AnyObject]();
                 return ("/getCourses.php", parames)
+            case .GetQtypes(let course):
+                let parames = ["c_No": course.c_No]
+                return ("/getQtypesByCourse.php", parames)
             }
-
         }()
         
         let url = NSURL(string: Router.baseURLString)
@@ -87,11 +92,17 @@ protocol GRNetworkDelegateForCourse {
     func getAllCoursesFail(fail: Bool);
 }
 
+@objc
+protocol GRNetworkDelegateForQtype {
+    func getQtypeFinished(qtypes: [String: AnyObject])
+    func getQtypeFail(fail: Bool)
+}
+
 class GRNetwork: NSObject {
     
     var delegateForUserInfo: GRNetworkDelegateForUserInfo!
     var delegateForCourse: GRNetworkDelegateForCourse!
-    
+    var delegateForQtype: GRNetworkDelegateForQtype!
     //URLRequestConvertible
     //单例模式
     class var shareInstance: GRNetwork {
@@ -167,6 +178,30 @@ extension GRNetwork {
                 self.delegateForCourse.getAllCoursesFinished(courses)
             } else {
                 self.delegateForCourse.getAllCoursesFail(false)
+            }
+        }
+    }
+}
+
+extension GRNetwork {
+    func getQtypesByCourse(course: Course) {
+        Alamofire.request(Router.GetQtypes(course)).responseJSON { (res) in
+            if res.result.isSuccess {
+                let json = JSON(data: res.data!)
+                print("abc\(json)")
+                var dict = [String: [Qtype]]()
+                for item in json["qtypes"].array! {
+                    let aQtype = Qtype(dict: item.dictionaryObject!)
+                    if dict[aQtype.qtt_NameCn] == nil {
+                        dict[aQtype.qtt_NameCn] = [aQtype]
+                    } else {
+                        dict[aQtype.qtt_NameCn]?.append(aQtype)
+                    }
+                }
+                
+                self.delegateForQtype.getQtypeFinished(dict)
+            } else {
+                self.delegateForQtype.getQtypeFail(true)
             }
         }
     }

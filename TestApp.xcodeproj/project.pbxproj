@@ -69,6 +69,8 @@
 		63778CDD1CC79C3000F07921 /* CustsomMainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63778CDB1CC79C3000F07921 /* CustsomMainTableViewCell.xib */; };
 		63778CE01CC7A68D00F07921 /* CourseEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63778CDE1CC7A68D00F07921 /* CourseEntity+CoreDataProperties.swift */; };
 		63778CE11CC7A68D00F07921 /* CourseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63778CDF1CC7A68D00F07921 /* CourseEntity.swift */; };
+		637C70541CCA2B05006EF44A /* PractiseQtypeBL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637C70531CCA2B05006EF44A /* PractiseQtypeBL.swift */; };
+		637C70561CCA2B27006EF44A /* Qtype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637C70551CCA2B27006EF44A /* Qtype.swift */; };
 		637FEF101CBFCB70008C7CDE /* CutsomCourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637FEF0E1CBFCB70008C7CDE /* CutsomCourseTableViewCell.swift */; };
 		637FEF111CBFCB70008C7CDE /* CutsomCourseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 637FEF0F1CBFCB70008C7CDE /* CutsomCourseTableViewCell.xib */; };
 		6385EB751CB4039E006655F8 /* PractiseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6385EB741CB4039E006655F8 /* PractiseViewController.swift */; };
@@ -171,6 +173,8 @@
 		63778CDB1CC79C3000F07921 /* CustsomMainTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustsomMainTableViewCell.xib; sourceTree = "<group>"; };
 		63778CDE1CC7A68D00F07921 /* CourseEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CourseEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		63778CDF1CC7A68D00F07921 /* CourseEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseEntity.swift; sourceTree = "<group>"; };
+		637C70531CCA2B05006EF44A /* PractiseQtypeBL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PractiseQtypeBL.swift; path = DomainLayer/PractiseQtypeBL.swift; sourceTree = "<group>"; };
+		637C70551CCA2B27006EF44A /* Qtype.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Qtype.swift; path = DomainLayer/Qtype.swift; sourceTree = "<group>"; };
 		637FEF0E1CBFCB70008C7CDE /* CutsomCourseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CutsomCourseTableViewCell.swift; sourceTree = "<group>"; };
 		637FEF0F1CBFCB70008C7CDE /* CutsomCourseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CutsomCourseTableViewCell.xib; sourceTree = "<group>"; };
 		6385EB741CB4039E006655F8 /* PractiseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PractiseViewController.swift; sourceTree = "<group>"; };
@@ -179,7 +183,6 @@
 		63A2F93D1CBA59F700AB5EDA /* SelecTheCourseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelecTheCourseController.swift; sourceTree = "<group>"; };
 		63A9567F1CC675C700B4AB63 /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		63DA68161CC704BE004489F2 /* CustomLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLayout.swift; sourceTree = "<group>"; };
-		8A5CC247F2D556D103D74E63 /* Pods_TestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B78021C4DEF0CC8AD07DD8CD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E6F046AD1C2D0A0000D3CF6C /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6F046B01C2D0A0000D3CF6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -262,6 +265,7 @@
 		4C4BCF431CAD1698001FFC09 /* Domain Layer */ = {
 			isa = PBXGroup;
 			children = (
+				637C70521CCA2A83006EF44A /* PractiseQtypeBL */,
 				4C57DEF11CC8660E001494BE /* CourseBL */,
 				4C6965B21CC4807F00C702E7 /* LoginBL */,
 				4C53541B1CC8D8590043139D /* RegBL */,
@@ -571,6 +575,15 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		637C70521CCA2A83006EF44A /* PractiseQtypeBL */ = {
+			isa = PBXGroup;
+			children = (
+				637C70531CCA2B05006EF44A /* PractiseQtypeBL.swift */,
+				637C70551CCA2B27006EF44A /* Qtype.swift */,
+			);
+			name = PractiseQtypeBL;
+			sourceTree = "<group>";
+		};
 		CB46CE203EB0A580517F56DD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -876,6 +889,7 @@
 				63A2F93E1CBA59F700AB5EDA /* SelecTheCourseController.swift in Sources */,
 				E6F046E41C2D0AED00D3CF6C /* TestSearchViewController.swift in Sources */,
 				6385EB751CB4039E006655F8 /* PractiseViewController.swift in Sources */,
+				637C70541CCA2B05006EF44A /* PractiseQtypeBL.swift in Sources */,
 				4C89555D1C30326500A63975 /* CustomView.swift in Sources */,
 				6385EB771CB4040E006655F8 /* CustomCLcell.swift in Sources */,
 				4C7E62F11CC66698002E5033 /* MBProgressHUD+Extension.swift in Sources */,
@@ -896,6 +910,7 @@
 				4C17EB3D1CC3B6A900A2F6C5 /* TSUINavigationController.swift in Sources */,
 				4C57DEF51CC87DBA001494BE /* LoadingAnmationView.swift in Sources */,
 				4C38035A1C31D3E500B8C0B1 /* TopicDetail.swift in Sources */,
+				637C70561CCA2B27006EF44A /* Qtype.swift in Sources */,
 				4C8EFCBE1C328EB300AC7454 /* PlayerView.swift in Sources */,
 				637FEF101CBFCB70008C7CDE /* CutsomCourseTableViewCell.swift in Sources */,
 				4C89551C1C2FE0AE00A63975 /* MakeTestViewController.swift in Sources */,
