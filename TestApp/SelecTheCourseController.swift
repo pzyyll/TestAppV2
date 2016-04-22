@@ -75,7 +75,7 @@ class SelectTheCourseController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func json_Action(){
-        Alamofire.request(.POST, "http://127.0.0.1/ios/exam/getCourse.php", parameters: ["":""]).response{
+        Alamofire.request(.POST, "http://127.0.0.1/ios/TS/getCourses.php", parameters: ["":""]).response{
             (request, response, data, error) -> Void in
             
             if error != nil{
