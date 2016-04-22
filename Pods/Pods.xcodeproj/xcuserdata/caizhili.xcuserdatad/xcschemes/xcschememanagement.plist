@@ -8,29 +8,21 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
-		<key>Pods-TestApp.xcscheme</key>
+		<key>KeychainAccess.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -50,7 +42,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7BD776ECA1AD205CBD0ABB0CF6D0F0C0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>838A2C6DA366DE138E5FDF1AF19D94C0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E32A0C524D23FE43A535F0D0D24DBC33</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F11592936BF3B55C67C9C0032A8A5398</key>
 		<dict>
 			<key>primary</key>
 			<true/>

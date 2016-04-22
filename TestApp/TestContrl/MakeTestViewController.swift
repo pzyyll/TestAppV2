@@ -81,7 +81,7 @@ class MakeTestViewController: UIViewController, MyTableViewContrlerDelegate {
     override func viewDidAppear(animated: Bool) {
         //print("yes")
 
-        self.timer.timer = NSTimer(timeInterval: 1.0, target: self, selector: "nstimerHandler", userInfo: nil, repeats: true)
+        self.timer.timer = NSTimer(timeInterval: 1.0, target: self, selector: #selector(MakeTestViewController.nstimerHandler), userInfo: nil, repeats: true)
         NSRunLoop.mainRunLoop().addTimer(self.timer.timer!, forMode: NSDefaultRunLoopMode)
         self.timer.timer!.fire()
     }
