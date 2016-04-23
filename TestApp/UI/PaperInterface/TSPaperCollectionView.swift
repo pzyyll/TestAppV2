@@ -86,6 +86,7 @@ class TSPaperCollectionView: UICollectionView, UICollectionViewDelegate, UIColle
         return view
     }
     
+    
     func scrollViewDidScroll(scrollView: UIScrollView) {
         print(scrollView.frame)
         print(scrollView.contentSize)

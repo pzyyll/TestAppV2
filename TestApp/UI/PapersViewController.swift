@@ -81,10 +81,10 @@ class PapersViewController: UIViewController, PaperBLDelegate, TSPaperCollection
             self.addChildViewController(courseCtr)
             self.view.addSubview(courseCtr.view);
             self.didMoveToParentViewController(self)
+            courseViewOC = !courseViewOC
         } else {
             courseCtr.removeFromParentView()
         }
-        courseViewOC = !courseViewOC
     }
     
     func getAllPapersFinished(papersDict: [String: AnyObject]) {

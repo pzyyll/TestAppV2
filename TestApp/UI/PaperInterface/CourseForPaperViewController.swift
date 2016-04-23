@@ -47,6 +47,7 @@ class CourseForPaperViewController: UIViewController, UITableViewDelegate, UITab
         self.tableView = UITableView(frame: CGRectMake(0, 64, self.view.frame.width - 100, self.view.frame.height - NavHeight.cgFloat - TabFooterHeight.cgFloat), style: .Plain)
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.separatorStyle = .None
         self.view.addSubview(self.tableView)
         let ges = UITapGestureRecognizer(target: self, action: #selector(self.close(_:)))
         let viewTouch = UIView(frame: CGRectMake(self.tableView.frame.width, self.tableView.frame.origin.y, 100, self.tableView.frame.height))
@@ -168,6 +169,12 @@ class CourseForPaperViewController: UIViewController, UITableViewDelegate, UITab
         print(scrollView.contentOffset.y < 0)
         if scrollView.contentOffset.y < 0 {
             scrollView.contentOffset.y = 0
+        }
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row >= self.course[keys[indexPath.section]]!.count - 1 {
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: self.tableView.frame.width - 8)
         }
     }
     

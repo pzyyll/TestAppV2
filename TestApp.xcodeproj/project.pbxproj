@@ -324,11 +324,11 @@
 			children = (
 				4C4BCF491CAD4C65001FFC09 /* PaperCollectionViewCell.swift */,
 				4C4BCF4A1CAD4C65001FFC09 /* PaperCollectionViewCell.xib */,
-				4C643A551CC71B4E00698531 /* TSPaperCollectionView.swift */,
 				4C643A571CC72DD800698531 /* HearderForPaperCollectionReusableView.swift */,
 				4C643A581CC72DD800698531 /* HearderForPaperCollectionReusableView.xib */,
 				4C17FA831CC7BBF5009FC926 /* FootForPaperCollectionReusableView.swift */,
 				4C17FA841CC7BBF5009FC926 /* FootForPaperCollectionReusableView.xib */,
+				4C643A551CC71B4E00698531 /* TSPaperCollectionView.swift */,
 				4C15ED821CCB074800ABB7A2 /* TSCourseTableViewCell.swift */,
 				4C15ED831CCB074800ABB7A2 /* TSCourseTableViewCell.xib */,
 			);
