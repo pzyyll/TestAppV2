@@ -70,15 +70,14 @@ class MessageTableViewController: UITableViewController {
     }
     
     func navigationPrepare(){
-        self.title = "留言版"
         self.view.backgroundColor = UIColor.whiteColor()
-        self.navigationController?.navigationBar.barTintColor =
-            UIColor(red: 0/255, green: 160/255, blue: 255/255, alpha: 1)//导航栏背景颜色
-        self.navigationController?.navigationBar.titleTextAttributes =
-            [NSForegroundColorAttributeName: UIColor.whiteColor()]//文字颜色
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()//按钮颜色
-        let item = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action: nil)//导航栏返回的按键名
-        self.navigationItem.backBarButtonItem = item;
+        //self.navigationController?.navigationBar.barTintColor =
+        //    UIColor(red: 0/255, green: 160/255, blue: 255/255, alpha: 1)//导航栏背景颜色
+//        self.navigationController?.navigationBar.titleTextAttributes =
+//            [NSForegroundColorAttributeName: UIColor.whiteColor()]//文字颜色
+//        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()//按钮颜色
+//        let item = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action: nil)//导航栏返回的按键名
+//        self.navigationItem.backBarButtonItem = item;
         
         //print("navigation loaded")
     }

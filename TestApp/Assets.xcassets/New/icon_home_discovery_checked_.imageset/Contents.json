@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icon_home_discovery_checked_.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "icon_home_discovery_checked_.png",
       "scale" : "2x"
     },
     {

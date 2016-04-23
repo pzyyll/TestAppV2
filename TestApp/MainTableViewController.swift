@@ -25,20 +25,31 @@ class MainTableViewController: UITableViewController, PractiseQtypeBLDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "printName:", name: "sss", object: nil)
+        
         self.pqBL = PractiseQtypeBL()
         self.pqBL.delegate = self
         
         course = Course()
         course.c_No = "c00001"
-        
+        perpare_data(course)
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellIndenty)
         self.tableView.registerNib(UINib(nibName: "CustsomMainTableViewCell", bundle: nil), forCellReuseIdentifier: mCutsomCell)
-        perpare_data()
+        
     }
 
-    func perpare_data(){
+    func printName(notifaction: NSNotification){
+        print( notifaction.object!)
+        let c = notifaction.object! as! Course
+        course = Course()
+        course = c
+        //perpare_data(course)
+        print(c.c_No, self.course.c_No)
+    }
+    
+    func perpare_data(course:Course){
         self.pqBL.getAllQtypeByCourse(self.course)
     }
     
@@ -142,7 +153,6 @@ class MainTableViewController: UITableViewController, PractiseQtypeBLDelegate{
                 return a.qtypes.first?.qtt_Aut < b.qtypes.first?.qtt_Aut
             })
             
-            print("rec_data2 \(self.rec_data2)")
             self.tableView.reloadData()
         }
     }
@@ -153,7 +163,9 @@ class MainTableViewController: UITableViewController, PractiseQtypeBLDelegate{
         }
     }
     
-    
+    func sendCellInfo(course: Course?) {
+        print("ccellleee")
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

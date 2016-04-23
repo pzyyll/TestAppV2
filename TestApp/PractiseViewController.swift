@@ -10,7 +10,6 @@ import UIKit
 import WebKit
 import CoreData
 
-
 class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SelectTheCourseControllerDataSource{
     
     let numOfPages = 3
@@ -38,6 +37,7 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.view.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
         self.timer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(10),target:self,selector:#selector(PractiseViewController.countTime),userInfo:nil,repeats:true)
         
@@ -214,11 +214,13 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
             self.didMoveToParentViewController(self)
         }else{
             //print(arr[indexPath.row].c_No)
-            entityBecomeCourse(arr[indexPath.row])
             
-            //let trans = MainTableViewController()
-            let trans = MessageTableViewController()
+            let trans = MainTableViewController()
+            //let trans = MessageTableViewController()
+            entityBecomeCourse(arr[indexPath.row])
             self.navigationController?.pushViewController(trans, animated: true)
+            //self.presentViewController(trans, animated: true, completion: nil)
+            
         }
         
     }
@@ -253,11 +255,11 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
         return cell
     }
     
-    func entityBecomeCourse(cE:CourseEntity) -> Course{
+    func entityBecomeCourse(cE:CourseEntity) {
         print(cE.c_IntroEn!, cE.c_No!)
-        let course = Course()
-        course.c_No = cE.c_No!
-        return course
+        let tcourse = Course()
+        tcourse.c_No = cE.c_No!
+        NSNotificationCenter.defaultCenter().postNotificationName("sss", object: tcourse)
     }
     
     
