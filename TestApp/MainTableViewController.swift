@@ -30,6 +30,9 @@ class MainTableViewController: UITableViewController, PractiseQtypeBLDelegate {
         course = Course()
         course.c_No = "c00001"
         
+        self.tableView.backgroundColor = UIColor.clearColor()
+        self.view.backgroundColor = UIColor.grayLightColor237()
+        
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellIndenty)

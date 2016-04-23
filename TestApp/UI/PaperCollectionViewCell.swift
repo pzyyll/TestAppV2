@@ -10,6 +10,9 @@ import UIKit
 
 class PaperCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var titleLable: UILabel!
+    @IBOutlet weak var titleTextView: UITextView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

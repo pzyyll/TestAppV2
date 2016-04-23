@@ -78,30 +78,7 @@ class SelectTheCourseController: UIViewController, UITableViewDelegate, UITableV
         let courseBL = CourseBL()
         courseBL.delegate = self
         courseBL.getAllCourse()
-//        Alamofire.request(.POST, "http://127.0.0.1/ios/TServices/getCourses.php", parameters: ["":""]).response{
-//            (request, response, data, error) -> Void in
-//            
-//            if error != nil{
-//                print(error)
-//            }else{
-//                let json = JSON(data: data!)
-//                
-//                print("json rec: \(json)")
-//                for i in 0..<json.count{
-//                    let arr = json[i].dictionaryObject as! [String:String]
-//                    self.blankArr.append(arr)
-//                    //print(self.blankArr)
-//                }
-//                
-//                self.rec_courseArr = self.blankArr
-//                
-//                print(self.rec_courseArr)
-//                dispatch_async(dispatch_get_main_queue(), { () -> Void in//异步
-//                    self.do_coredata()
-//                    self.smalltblView!.reloadData()
-//                })
-//            }
-//        }
+
     }
     
     func do_coredata(){

@@ -19,12 +19,7 @@ class HearderForPaperCollectionReusableView: UICollectionReusableView {
     }
     
     func setTitleDate(str: String) {
-        let dateForm = NSDateFormatter()
-        dateForm.dateFormat = "yyyyMMdd"
-        let date = dateForm.dateFromString(str)
-        dateForm.dateFormat = "yyyy年dd月"
-        
-        self.title.text = dateForm.stringFromDate(date!)
+        self.title.text = str
     }
     
 }

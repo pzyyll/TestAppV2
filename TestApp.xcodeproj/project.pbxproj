@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4C11ABFA1C314E0F006C3816 /* OptionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11ABF91C314E0F006C3816 /* OptionItem.swift */; };
+		4C15ED811CCAE9AC00ABB7A2 /* PaperBL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C15ED801CCAE9AC00ABB7A2 /* PaperBL.swift */; };
+		4C15ED841CCB074800ABB7A2 /* TSCourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C15ED821CCB074800ABB7A2 /* TSCourseTableViewCell.swift */; };
+		4C15ED851CCB074800ABB7A2 /* TSCourseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C15ED831CCB074800ABB7A2 /* TSCourseTableViewCell.xib */; };
 		4C17EB3D1CC3B6A900A2F6C5 /* TSUINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C17EB3C1CC3B6A900A2F6C5 /* TSUINavigationController.swift */; };
 		4C17FA851CC7BBF5009FC926 /* FootForPaperCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C17FA831CC7BBF5009FC926 /* FootForPaperCollectionReusableView.swift */; };
 		4C17FA861CC7BBF5009FC926 /* FootForPaperCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C17FA841CC7BBF5009FC926 /* FootForPaperCollectionReusableView.xib */; };
@@ -111,6 +114,9 @@
 		091A524E08E9AF6938D2C1BC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		2E1E948396830C51998BB4E1 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C11ABF91C314E0F006C3816 /* OptionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionItem.swift; sourceTree = "<group>"; };
+		4C15ED801CCAE9AC00ABB7A2 /* PaperBL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaperBL.swift; path = DomainLayer/PaperBL.swift; sourceTree = "<group>"; };
+		4C15ED821CCB074800ABB7A2 /* TSCourseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSCourseTableViewCell.swift; path = UI/PaperInterface/TSCourseTableViewCell.swift; sourceTree = "<group>"; };
+		4C15ED831CCB074800ABB7A2 /* TSCourseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TSCourseTableViewCell.xib; path = UI/PaperInterface/TSCourseTableViewCell.xib; sourceTree = "<group>"; };
 		4C17EB3C1CC3B6A900A2F6C5 /* TSUINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TSUINavigationController.swift; path = BAC/TSUINavigationController.swift; sourceTree = "<group>"; };
 		4C17FA831CC7BBF5009FC926 /* FootForPaperCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FootForPaperCollectionReusableView.swift; path = UI/PaperInterface/FootForPaperCollectionReusableView.swift; sourceTree = "<group>"; };
 		4C17FA841CC7BBF5009FC926 /* FootForPaperCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FootForPaperCollectionReusableView.xib; path = UI/PaperInterface/FootForPaperCollectionReusableView.xib; sourceTree = "<group>"; };
@@ -228,6 +234,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C15ED7F1CCAE97600ABB7A2 /* PaperBL */ = {
+			isa = PBXGroup;
+			children = (
+				4C15ED801CCAE9AC00ABB7A2 /* PaperBL.swift */,
+			);
+			name = PaperBL;
+			sourceTree = "<group>";
+		};
 		4C1FECC01C340E1100B3E855 /* LoginInstall */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +284,7 @@
 				4C6965B21CC4807F00C702E7 /* LoginBL */,
 				4C53541B1CC8D8590043139D /* RegBL */,
 				4C5D43D71CC4A8CF00AB3FFD /* User Entity */,
+				4C15ED7F1CCAE97600ABB7A2 /* PaperBL */,
 				4C8955151C2FC32100A63975 /* Paper Entity */,
 				E6F046B71C2D0A0000D3CF6C /* TestApp.xcdatamodeld */,
 				63778CDE1CC7A68D00F07921 /* CourseEntity+CoreDataProperties.swift */,
@@ -314,6 +329,8 @@
 				4C643A581CC72DD800698531 /* HearderForPaperCollectionReusableView.xib */,
 				4C17FA831CC7BBF5009FC926 /* FootForPaperCollectionReusableView.swift */,
 				4C17FA841CC7BBF5009FC926 /* FootForPaperCollectionReusableView.xib */,
+				4C15ED821CCB074800ABB7A2 /* TSCourseTableViewCell.swift */,
+				4C15ED831CCB074800ABB7A2 /* TSCourseTableViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -773,6 +790,7 @@
 				E6F046BE1C2D0A0000D3CF6C /* LaunchScreen.storyboard in Resources */,
 				4C4BCF5A1CAD515B001FFC09 /* PapersStoryboard.storyboard in Resources */,
 				4C4BCF4C1CAD4C65001FFC09 /* PaperCollectionViewCell.xib in Resources */,
+				4C15ED851CCB074800ABB7A2 /* TSCourseTableViewCell.xib in Resources */,
 				637FEF111CBFCB70008C7CDE /* CutsomCourseTableViewCell.xib in Resources */,
 				63778CDD1CC79C3000F07921 /* CustsomMainTableViewCell.xib in Resources */,
 				4C8EFD341C32B3F000AC7454 /* history.png in Resources */,
@@ -881,6 +899,7 @@
 				4C5D43D91CC4A92900AB3FFD /* LoginBL.swift in Sources */,
 				E6F046B91C2D0A0000D3CF6C /* TestApp.xcdatamodeld in Sources */,
 				4C6965B41CC4823500C702E7 /* GRNetwork.swift in Sources */,
+				4C15ED811CCAE9AC00ABB7A2 /* PaperBL.swift in Sources */,
 				4C24C1CD1C30DBBB00875D46 /* MyTableView.swift in Sources */,
 				4C24C1CF1C3107C200875D46 /* MyTableViewCell.swift in Sources */,
 				E6F34A721C2D379A00D453B8 /* MainTabViewController.swift in Sources */,
@@ -889,6 +908,7 @@
 				63A2F93E1CBA59F700AB5EDA /* SelecTheCourseController.swift in Sources */,
 				E6F046E41C2D0AED00D3CF6C /* TestSearchViewController.swift in Sources */,
 				6385EB751CB4039E006655F8 /* PractiseViewController.swift in Sources */,
+				4C15ED841CCB074800ABB7A2 /* TSCourseTableViewCell.swift in Sources */,
 				637C70541CCA2B05006EF44A /* PractiseQtypeBL.swift in Sources */,
 				4C89555D1C30326500A63975 /* CustomView.swift in Sources */,
 				6385EB771CB4040E006655F8 /* CustomCLcell.swift in Sources */,

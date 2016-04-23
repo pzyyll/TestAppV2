@@ -17,23 +17,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="100" height="120"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(一)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fo6-BZ-3PA">
-                        <rect key="frame" x="36" y="49" width="29" height="21"/>
+                        <rect key="frame" x="36" y="88" width="29" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="2015年06月大学英语专业四级真题（一）" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gz8-QU-YkZ">
+                        <rect key="frame" x="0.0" y="29" width="100" height="44"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
+                <constraint firstItem="Gz8-QU-YkZ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="29" id="9Tq-Kt-IdG"/>
+                <constraint firstItem="fo6-BZ-3PA" firstAttribute="top" secondItem="Gz8-QU-YkZ" secondAttribute="bottom" constant="15" id="CPa-Mo-DO6"/>
+                <constraint firstAttribute="trailing" secondItem="Gz8-QU-YkZ" secondAttribute="trailing" id="I9P-IY-Xwc"/>
                 <constraint firstItem="fo6-BZ-3PA" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="JeY-OA-XUz"/>
+                <constraint firstItem="Gz8-QU-YkZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="NF8-jk-vom"/>
                 <constraint firstAttribute="bottom" secondItem="9iK-Ve-vZ6" secondAttribute="bottom" id="SdX-Vb-12r"/>
                 <constraint firstItem="9iK-Ve-vZ6" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="YHh-zp-HdY"/>
-                <constraint firstItem="fo6-BZ-3PA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="49" id="dqm-4b-F3h"/>
+                <constraint firstItem="fo6-BZ-3PA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="88" id="dqm-4b-F3h"/>
                 <constraint firstAttribute="trailing" secondItem="9iK-Ve-vZ6" secondAttribute="trailing" id="fL5-80-Kwa"/>
                 <constraint firstItem="9iK-Ve-vZ6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="wIq-wJ-xey"/>
             </constraints>
             <size key="customSize" width="102" height="121"/>
+            <connections>
+                <outlet property="titleLable" destination="fo6-BZ-3PA" id="H7Q-2p-NEr"/>
+                <outlet property="titleTextView" destination="Gz8-QU-YkZ" id="mCo-tK-C7a"/>
+            </connections>
             <point key="canvasLocation" x="260" y="321"/>
         </collectionViewCell>
     </objects>

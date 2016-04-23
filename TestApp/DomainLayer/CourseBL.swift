@@ -8,8 +8,10 @@
 
 import UIKit
 
+@objc
 protocol CourseBLDelegate {
-    func getCoursesFinished(courses: [Course]);
+    optional func getCoursesFinished(courses: [Course]);
+    optional func getCoursesDictFinished(courses: [String: [Course]])
     func loadingCoursesFail(fail: Bool);
 }
 
@@ -17,13 +19,25 @@ class CourseBL: NSObject, GRNetworkDelegateForCourse {
     
     var delegate: CourseBLDelegate!
 
-    func getAllCourse() {
-        GRNetwork.shareInstance.getAllCourses()
+    override init() {
+        super.init()
         GRNetwork.shareInstance.delegateForCourse = self
     }
     
+    func getAllCourse() {
+        GRNetwork.shareInstance.getAllCourses()
+    }
+    
+    func getAllCourseDict() {
+        GRNetwork.shareInstance.getAllCoursesDict()
+    }
+    
     func getAllCoursesFinished(courses: [Course]) {
-        self.delegate.getCoursesFinished(courses)
+        self.delegate.getCoursesFinished!(courses)
+    }
+    
+    func getAllCoursesDictFinished(coursesDict: [String: [Course]]) {
+        self.delegate.getCoursesDictFinished!(coursesDict)
     }
     
     func getAllCoursesFail(fail: Bool) {
