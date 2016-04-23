@@ -78,6 +78,24 @@ class SelectTheCourseController: UIViewController, UITableViewDelegate, UITableV
         let courseBL = CourseBL()
         courseBL.delegate = self
         courseBL.getAllCourse()
+<<<<<<< HEAD
+=======
+
+    }
+    
+    func do_coredata(){
+        self.appDelegate = (UIApplication.sharedApplication().delegate) as!  AppDelegate
+        
+        for i in 0..<self.rec_courseArr.count{
+            let rec_course = Course()
+            rec_course.c_No = self.rec_courseArr[i]["c_No"]!
+            rec_course.c_Name = self.rec_courseArr[i]["c_Name"]!
+            rec_course.c_Intro = self.rec_courseArr[i]["c_Introduction"]!
+            
+            self.allCourse.append(rec_course)
+        }
+        
+>>>>>>> pzyyll/master
     }
     
     func close(sender: UITapGestureRecognizer) {

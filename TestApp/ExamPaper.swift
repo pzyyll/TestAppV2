@@ -38,8 +38,21 @@ class ExamPaper: NSObject {
         if let str = dict["ep_PublishTime"] as? String {
             self.ep_PublishTime = str
         }
-        if let str = dict["epType"] as? Int {
-            self.ep_Type = str
+        if let str = dict["ep_Type"] as? String {
+            self.ep_Type = Int(str)!
         }
+    }
+    
+    func getDate() -> String {
+        let dataF = NSDateFormatter()
+        dataF.dateFormat = "yyyyMMdd"
+        var datestr = self.ep_No
+        if datestr.characters.last! == "m" {
+            datestr.removeAtIndex(datestr.endIndex.predecessor())
+        }
+        let date = dataF.dateFromString(datestr)
+        dataF.dateFormat = "yyyy年MM月"
+        let str = dataF.stringFromDate(date!)
+        return str
     }
 }

@@ -19,6 +19,7 @@ enum Router: URLRequestConvertible {
     case GetUser(UserInfo)
     case GetAllCourse
     case GetQtypes(Course)
+    case GetPapers(Course, Int)
     
     var method: Alamofire.Method {
         switch self {
@@ -33,6 +34,8 @@ enum Router: URLRequestConvertible {
         case .GetAllCourse:
             return .GET
         case .GetQtypes(_):
+            return .GET
+        case .GetPapers(_, _):
             return .GET
         }
     }
@@ -62,6 +65,9 @@ enum Router: URLRequestConvertible {
             case .GetQtypes(let course):
                 let parames = ["c_No": course.c_No]
                 return ("/getQtypesByCourse.php", parames)
+            case .GetPapers(let course, let type):
+                let params = ["c_No": course.c_No, "epType": type]
+                return ("/getPaperByCourse.php", params as! [String : AnyObject])
             }
         }()
         
@@ -88,8 +94,10 @@ protocol GRNetworkDelegateForUserInfo {
 
 @objc
 protocol GRNetworkDelegateForCourse {
-    func getAllCoursesFinished(courses: [Course]);
+    optional func getAllCoursesFinished(courses: [Course]);
     func getAllCoursesFail(fail: Bool);
+    
+    optional func getAllCoursesDictFinished(coursesDict: [String: [Course]])
 }
 
 @objc
@@ -98,11 +106,18 @@ protocol GRNetworkDelegateForQtype {
     func getQtypeFail(fail: Bool)
 }
 
+@objc
+protocol GRNetworkDelegateForPapers {
+    func getPapersFinished(papersDict: [String: AnyObject])
+    func getPapersFail(fail: Bool)
+}
+
 class GRNetwork: NSObject {
     
     var delegateForUserInfo: GRNetworkDelegateForUserInfo!
     var delegateForCourse: GRNetworkDelegateForCourse!
     var delegateForQtype: GRNetworkDelegateForQtype!
+    var delegateForPaper: GRNetworkDelegateForPapers!
     //URLRequestConvertible
     //单例模式
     class var shareInstance: GRNetwork {
@@ -168,15 +183,44 @@ extension GRNetwork {
         Alamofire.request(Router.GetAllCourse).responseJSON { (res) in
             if res.result.isSuccess {
                 let json = JSON(data: res.data!)
+<<<<<<< HEAD
                 print(json)
+=======
+                //print(json)
+>>>>>>> pzyyll/master
                 var courses = [Course]()
                 if json["count"].int != 0 {
                     for item in json["course"].array! {
                         let aCourse = Course(dict: item.dictionaryObject!)
                         courses.append(aCourse)
+                        //print(aCourse.c_IntroEn)
                     }
                 }
-                self.delegateForCourse.getAllCoursesFinished(courses)
+                self.delegateForCourse.getAllCoursesFinished!(courses)
+            } else {
+                self.delegateForCourse.getAllCoursesFail(false)
+            }
+        }
+    }
+    
+    func getAllCoursesDict() {
+        Alamofire.request(Router.GetAllCourse).responseJSON { (res) in
+            if res.result.isSuccess {
+                let json = JSON(data: res.data!)
+                //print(json)
+                var courses = [String:[Course]]()
+                if json["count"].int != 0 {
+                    for item in json["course"].array! {
+                        let aCourse = Course(dict: item.dictionaryObject!)
+                        if courses[aCourse.l_Name] == nil {
+                            courses[aCourse.l_Name] = [aCourse]
+                        } else {
+                            courses[aCourse.l_Name]?.append(aCourse)
+                        }
+                        //print(aCourse.c_IntroEn)
+                    }
+                }
+                self.delegateForCourse.getAllCoursesDictFinished!(courses)
             } else {
                 self.delegateForCourse.getAllCoursesFail(false)
             }
@@ -203,6 +247,31 @@ extension GRNetwork {
                 self.delegateForQtype.getQtypeFinished(dict)
             } else {
                 self.delegateForQtype.getQtypeFail(true)
+            }
+        }
+    }
+}
+
+extension GRNetwork {
+    func getPaterByCourse(course: Course, type: Int) {
+        Alamofire.request(Router.GetPapers(course, type)).responseJSON { (res) in
+            if res.result.isSuccess {
+                let json = JSON(data: res.data!)
+                var papers = [String: [ExamPaper]]()
+                if json["count"].int != 0 {
+                    for item in json["papers"].array! {
+                        let paper = ExamPaper(dict: item.dictionaryObject!)
+                        let str = paper.getDate()
+                        if papers[str] == nil {
+                            papers[str] = [paper]
+                        } else {
+                            papers[str]?.append(paper)
+                        }
+                    }
+                }
+                self.delegateForPaper.getPapersFinished(papers)
+            } else {
+                self.delegateForPaper.getPapersFail(true)
             }
         }
     }

@@ -22,3 +22,9 @@ extension CGFloat {
         return Double(self)
     }
 }
+
+extension Int {
+    var cgFloat: CGFloat {
+        return CGFloat(self)
+    }
+}

@@ -8,21 +8,43 @@
 
 import UIKit
 
-class PapersViewController: UIViewController, CourseBLDelegate {
+let CourseChange = "coursechange"
+
+class PapersViewController: UIViewController, PaperBLDelegate, TSPaperCollectionViewDelegate {
 
     @IBOutlet weak var left: UIBarButtonItem!
     @IBOutlet weak var switchTM: UISegmentedControl!
     @IBOutlet weak var titleLabel: UILabel!
     
+    var courseViewOC = true
+    var courseCtr: CourseForPaperViewController!
+    var courseb: Course!
+    var paperBL: PaperBL!
+    
+    var papers: [String: [ExamPaper]]!
+    
+    var collectionView: TSPaperCollectionView!
+    
+    var tview: LoadingAnmationView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.courseChange(_:)), name: CourseChange, object: nil)
         self.configView()
         
-        let tview = LoadingAnmationView(frame: CGRectMake(100,100,30, 40))
-        self.view.addSubview(tview)
+        tview = LoadingAnmationView(frame: CGRectMake(100,100,30, 40))
+        //self.view.addSubview(tview)
        
+        print("viewdidload\(switchTM.selectedSegmentIndex)")
+        self.paperBL = PaperBL()
+        self.paperBL.delegate = self
+        self.courseb = Course.getCoursesDefault()
+        self.titleLabel.text = self.courseb.c_Intro
+        self.paperBL.getAllPapers(self.courseb, type: switchTM.selectedSegmentIndex + 1)
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
     }
     
     func configView() {
@@ -34,21 +56,17 @@ class PapersViewController: UIViewController, CourseBLDelegate {
         layout.headerReferenceSize = CGSizeMake(0, 37)
         layout.footerReferenceSize = CGSizeMake(0, 10)
         layout.sectionInset = UIEdgeInsets(top: 15, left: 30, bottom: 20, right: 30)
-        let collectionView = TSPaperCollectionView(frame: CGRectMake(0, 64, self.view.frame.width, self.view.frame.height - 59 - 44), collectionViewLayout: layout)
+        collectionView = TSPaperCollectionView(frame: CGRectMake(0, 64, self.view.frame.width, self.view.frame.height - 59 - 44), collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.whiteColor()
-
+        collectionView.delegateData = self
         self.view.addSubview(collectionView)
     }
 
     @IBAction func switchTypeForPaper(sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            print("a")
-        case 1:
-            print("b")
-        default:
-            break
-        }
+
+        MBProgressHUD.showLoadingHUDToView(self.view, icon: nil)
+        self.paperBL.getAllPapers(self.courseb, type: switchTM.selectedSegmentIndex + 1)
+        //self.collectionView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,25 +75,53 @@ class PapersViewController: UIViewController, CourseBLDelegate {
     }
     
     @IBAction func setCourse(sender: UIBarButtonItem) {
-        let courseBl = CourseBL()
-        courseBl.delegate = self
-        courseBl.getAllCourse()
-    }
-    
-    func getCoursesFinished(courses: [Course]) {
-        dispatch_async(dispatch_get_main_queue()) {
-            print(courses.count)
-            print(courses[0].c_Intro)
+        //self.presentViewController(, animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+        if courseViewOC {
+            self.courseCtr = CourseForPaperViewController()
+            self.addChildViewController(courseCtr)
+            self.view.addSubview(courseCtr.view);
+            self.didMoveToParentViewController(self)
+            courseViewOC = !courseViewOC
+        } else {
+            courseCtr.removeFromParentView()
         }
     }
     
-    func loadingCoursesFail(fail: Bool) {
+    func getAllPapersFinished(papersDict: [String: AnyObject]) {
+        dispatch_async(dispatch_get_main_queue()) {
+            self.papers = papersDict as! [String: [ExamPaper]]
+            self.collectionView.reloadData()
+            if self.papers.count == 0 {
+                print(self.view.subviews.count)
+                self.view.insertSubview(self.tview, atIndex: 5)
+            } else {
+                self.tview.removeFromSuperview()
+            }
+            
+            MBProgressHUD.hideLoadingHUDToView(self.view)
+        }
+    }
+    
+    func getAllPapersFail(fail: Bool) {
+        MBProgressHUD.hideLoadingHUDToView(self.view)
         if fail {
             MBProgressHUD.showDelayHUDToView(self.view, mess: "network is err", icon: "Icon_err2")
         }
     }
     
+    func changeData() -> [String: [ExamPaper]]? {
+        return self.papers
+    }
     
+    func courseChange(sender: NSNotification) {
+        self.courseb = sender.object as! Course
+        MBProgressHUD.showLoadingHUDToView(self.view, icon: nil)
+        self.titleLabel.text = courseb.c_Intro
+        self.paperBL.getAllPapers(self.courseb, type: self.switchTM.selectedSegmentIndex + 1)
+    }
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: CourseChange, object: nil)
+    }
     /*
     // MARK: - Navigation
 

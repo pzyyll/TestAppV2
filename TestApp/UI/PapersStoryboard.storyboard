@@ -17,7 +17,6 @@
                     <view key="view" contentMode="scaleToFill" id="LeV-m2-lUW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ms2-vx-giH">
                                 <rect key="frame" x="163" y="383" width="123" height="30"/>
@@ -25,7 +24,7 @@
                                 <state key="highlighted" backgroundImage="alien_press"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="lvs-ZG-8L5">
-                                <rect key="frame" x="145" y="147" width="102" height="152"/>
+                                <rect key="frame" x="146" y="169" width="102" height="152"/>
                                 <state key="normal" backgroundImage="bg_paper_latest_pressed">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -34,7 +33,6 @@
                                 </state>
                             </button>
                         </subviews>
-
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="5Ar-ke-p40">
@@ -111,6 +109,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="alien_press" width="20" height="20"/>
+        <image name="bg_paper_latest_pressed" width="182" height="264"/>
         <image name="icon_paper_catalog" width="30" height="30"/>
     </resources>
 </document>

@@ -8,6 +8,8 @@
 
 import Foundation
 
+let DefaultCourse = "\(identifier_Keychain)defaultCourse"
+
 class Course: NSObject {
     var l_No = ""
     var l_Name = ""
@@ -41,12 +43,30 @@ class Course: NSObject {
         if let str = dict["c_AppdendTime"] as? String {
             self.c_Appdendtime = str
         }
+<<<<<<< HEAD
         if let str = dict["c_Name"] as? String {
             self.c_Name = str
         }
         if let str = dict["c_IntroEn"] as? String {
             self.c_IntroEn = str
         }
+=======
+        if let str = dict["c_IntroEn"] as? String {
+            self.c_IntroEn = str
+        }
+        if let str = dict["c_Name"] as? String {
+            self.c_Name = self.c_IntroEn
+        }
+        
+>>>>>>> pzyyll/master
         super.init()
+    }
+    
+    class func getCoursesDefault() -> Course {
+        let index = NSUserDefaults.standardUserDefaults().valueForKey(DefaultCourse) as? [String]
+        if index != nil {
+            return Course(dict: ["c_No": index![0], "c_Introduction": index![1]])
+        }
+        return Course(dict: ["c_No": "c00001", "c_Introduction": "大学英语四级"])
     }
 }

@@ -18,4 +18,8 @@ class HearderForPaperCollectionReusableView: UICollectionReusableView {
         
     }
     
+    func setTitleDate(str: String) {
+        self.title.text = str
+    }
+    
 }
