@@ -2,7 +2,7 @@
 //  CourseEntity.swift
 //  TestApp
 //
-//  Created by Gatsby on 16/4/20.
+//  Created by Gatsby on 16/4/22.
 //  Copyright © 2016年 pzyyll. All rights reserved.
 //
 

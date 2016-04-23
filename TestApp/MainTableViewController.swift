@@ -13,8 +13,8 @@ struct T {
     var qtypes = [Qtype]()
 }
 
-class MainTableViewController: UITableViewController, PractiseQtypeBLDelegate {
-
+class MainTableViewController: UITableViewController, PractiseQtypeBLDelegate{
+    
     var rec_data2 = [T]()
     var course: Course!
     var pqBL: PractiseQtypeBL!
@@ -27,6 +27,7 @@ class MainTableViewController: UITableViewController, PractiseQtypeBLDelegate {
         
         self.pqBL = PractiseQtypeBL()
         self.pqBL.delegate = self
+        
         course = Course()
         course.c_No = "c00001"
         
@@ -72,7 +73,7 @@ class MainTableViewController: UITableViewController, PractiseQtypeBLDelegate {
         if self.rec_data2[section].ok {
             if crow == 0 {
                 let cell = tableView.dequeueReusableCellWithIdentifier(cellIndenty, forIndexPath: indexPath)
-                cell.textLabel!.font = UIFont(name: "MarKer Felt", size: 25)
+                cell.textLabel!.font = UIFont(name: "MarKer Felt", size: 20)
                 cell.textLabel?.text = self.rec_data2[section].qtypes.first!.qtt_NameCn
                 return cell
             } else {
@@ -82,7 +83,7 @@ class MainTableViewController: UITableViewController, PractiseQtypeBLDelegate {
             }
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier(cellIndenty, forIndexPath: indexPath)
-            cell.textLabel!.font = UIFont(name: "MarKer Felt", size: 25)
+            cell.textLabel!.font = UIFont(name: "MarKer Felt", size: 20)
             cell.textLabel?.text = self.rec_data2[section].qtypes.first!.qtt_NameCn
             return cell
         }
@@ -140,14 +141,18 @@ class MainTableViewController: UITableViewController, PractiseQtypeBLDelegate {
             self.rec_data2.sortInPlace({ (a, b) -> Bool in
                 return a.qtypes.first?.qtt_Aut < b.qtypes.first?.qtt_Aut
             })
+            
+            print("rec_data2 \(self.rec_data2)")
             self.tableView.reloadData()
         }
     }
+    
     func getQtypeByCourseFail(fail: Bool) {
         if fail {
             MBProgressHUD.showDelayHUDToView(self.view, mess: "loading fail", icon: "Icon_err1")
         }
     }
+    
     
     /*
     // Override to support conditional editing of the table view.
