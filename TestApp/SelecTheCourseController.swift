@@ -78,9 +78,6 @@ class SelectTheCourseController: UIViewController, UITableViewDelegate, UITableV
         let courseBL = CourseBL()
         courseBL.delegate = self
         courseBL.getAllCourse()
-<<<<<<< HEAD
-=======
-
     }
     
     func do_coredata(){
@@ -95,7 +92,6 @@ class SelectTheCourseController: UIViewController, UITableViewDelegate, UITableV
             self.allCourse.append(rec_course)
         }
         
->>>>>>> pzyyll/master
     }
     
     func close(sender: UITapGestureRecognizer) {

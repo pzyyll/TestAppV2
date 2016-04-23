@@ -183,11 +183,9 @@ extension GRNetwork {
         Alamofire.request(Router.GetAllCourse).responseJSON { (res) in
             if res.result.isSuccess {
                 let json = JSON(data: res.data!)
-<<<<<<< HEAD
-                print(json)
-=======
+
                 //print(json)
->>>>>>> pzyyll/master
+
                 var courses = [Course]()
                 if json["count"].int != 0 {
                     for item in json["course"].array! {

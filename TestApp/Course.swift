@@ -43,22 +43,12 @@ class Course: NSObject {
         if let str = dict["c_AppdendTime"] as? String {
             self.c_Appdendtime = str
         }
-<<<<<<< HEAD
         if let str = dict["c_Name"] as? String {
             self.c_Name = str
         }
         if let str = dict["c_IntroEn"] as? String {
             self.c_IntroEn = str
         }
-=======
-        if let str = dict["c_IntroEn"] as? String {
-            self.c_IntroEn = str
-        }
-        if let str = dict["c_Name"] as? String {
-            self.c_Name = self.c_IntroEn
-        }
-        
->>>>>>> pzyyll/master
         super.init()
     }
     
