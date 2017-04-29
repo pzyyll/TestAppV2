@@ -68,12 +68,20 @@
 		4C8EFD3B1C32B3F000AC7454 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C8EFD1F1C32B3F000AC7454 /* test.json */; };
 		4C8EFD3C1C32B3F000AC7454 /* UserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8EFD201C32B3F000AC7454 /* UserItem.swift */; };
 		61FF06BA696E2980C6013659 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E1E948396830C51998BB4E1 /* Pods.framework */; };
+		6364BBEF1CCB271500E00923 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364BBEE1CCB271500E00923 /* MessageTableViewController.swift */; };
+		6364BBF11CCB272B00E00923 /* TheDetailMesgTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364BBF01CCB272B00E00923 /* TheDetailMesgTableViewController.swift */; };
+		6364BBF31CCB274500E00923 /* AddTheLeaveMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364BBF21CCB274500E00923 /* AddTheLeaveMessage.swift */; };
+		6364BBF51CCB278A00E00923 /* MyCopyUILable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364BBF41CCB278A00E00923 /* MyCopyUILable.swift */; };
+		6364BBF91CCB27B700E00923 /* MyDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364BBF81CCB27B700E00923 /* MyDetailTableViewCell.swift */; };
+		6364BBFC1CCB27D300E00923 /* MessageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364BBFB1CCB27D300E00923 /* MessageItem.swift */; };
+		6364BBFE1CCB281200E00923 /* ContextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364BBFD1CCB281200E00923 /* ContextLabel.swift */; };
+		6364BC001CCB2B8200E00923 /* MsgCutsomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364BBFF1CCB2B8200E00923 /* MsgCutsomTableViewCell.swift */; };
 		63778CDC1CC79C3000F07921 /* CustsomMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63778CDA1CC79C3000F07921 /* CustsomMainTableViewCell.swift */; };
 		63778CDD1CC79C3000F07921 /* CustsomMainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63778CDB1CC79C3000F07921 /* CustsomMainTableViewCell.xib */; };
-		63778CE01CC7A68D00F07921 /* CourseEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63778CDE1CC7A68D00F07921 /* CourseEntity+CoreDataProperties.swift */; };
-		63778CE11CC7A68D00F07921 /* CourseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63778CDF1CC7A68D00F07921 /* CourseEntity.swift */; };
 		637C70541CCA2B05006EF44A /* PractiseQtypeBL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637C70531CCA2B05006EF44A /* PractiseQtypeBL.swift */; };
 		637C70561CCA2B27006EF44A /* Qtype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637C70551CCA2B27006EF44A /* Qtype.swift */; };
+		637C70591CCA6996006EF44A /* CourseEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637C70571CCA6996006EF44A /* CourseEntity+CoreDataProperties.swift */; };
+		637C705A1CCA6996006EF44A /* CourseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637C70581CCA6996006EF44A /* CourseEntity.swift */; };
 		637FEF101CBFCB70008C7CDE /* CutsomCourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637FEF0E1CBFCB70008C7CDE /* CutsomCourseTableViewCell.swift */; };
 		637FEF111CBFCB70008C7CDE /* CutsomCourseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 637FEF0F1CBFCB70008C7CDE /* CutsomCourseTableViewCell.xib */; };
 		6385EB751CB4039E006655F8 /* PractiseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6385EB741CB4039E006655F8 /* PractiseViewController.swift */; };
@@ -175,12 +183,20 @@
 		4C8EFD1E1C32B3F000AC7454 /* SettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		4C8EFD1F1C32B3F000AC7454 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		4C8EFD201C32B3F000AC7454 /* UserItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserItem.swift; sourceTree = "<group>"; };
+		6364BBEE1CCB271500E00923 /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
+		6364BBF01CCB272B00E00923 /* TheDetailMesgTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheDetailMesgTableViewController.swift; sourceTree = "<group>"; };
+		6364BBF21CCB274500E00923 /* AddTheLeaveMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTheLeaveMessage.swift; sourceTree = "<group>"; };
+		6364BBF41CCB278A00E00923 /* MyCopyUILable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCopyUILable.swift; sourceTree = "<group>"; };
+		6364BBF81CCB27B700E00923 /* MyDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDetailTableViewCell.swift; sourceTree = "<group>"; };
+		6364BBFB1CCB27D300E00923 /* MessageItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageItem.swift; sourceTree = "<group>"; };
+		6364BBFD1CCB281200E00923 /* ContextLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextLabel.swift; sourceTree = "<group>"; };
+		6364BBFF1CCB2B8200E00923 /* MsgCutsomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MsgCutsomTableViewCell.swift; sourceTree = "<group>"; };
 		63778CDA1CC79C3000F07921 /* CustsomMainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustsomMainTableViewCell.swift; sourceTree = "<group>"; };
 		63778CDB1CC79C3000F07921 /* CustsomMainTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustsomMainTableViewCell.xib; sourceTree = "<group>"; };
-		63778CDE1CC7A68D00F07921 /* CourseEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CourseEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		63778CDF1CC7A68D00F07921 /* CourseEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseEntity.swift; sourceTree = "<group>"; };
 		637C70531CCA2B05006EF44A /* PractiseQtypeBL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PractiseQtypeBL.swift; path = DomainLayer/PractiseQtypeBL.swift; sourceTree = "<group>"; };
 		637C70551CCA2B27006EF44A /* Qtype.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Qtype.swift; path = DomainLayer/Qtype.swift; sourceTree = "<group>"; };
+		637C70571CCA6996006EF44A /* CourseEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CourseEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		637C70581CCA6996006EF44A /* CourseEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseEntity.swift; sourceTree = "<group>"; };
 		637FEF0E1CBFCB70008C7CDE /* CutsomCourseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CutsomCourseTableViewCell.swift; sourceTree = "<group>"; };
 		637FEF0F1CBFCB70008C7CDE /* CutsomCourseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CutsomCourseTableViewCell.xib; sourceTree = "<group>"; };
 		6385EB741CB4039E006655F8 /* PractiseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PractiseViewController.swift; sourceTree = "<group>"; };
@@ -287,8 +303,8 @@
 				4C15ED7F1CCAE97600ABB7A2 /* PaperBL */,
 				4C8955151C2FC32100A63975 /* Paper Entity */,
 				E6F046B71C2D0A0000D3CF6C /* TestApp.xcdatamodeld */,
-				63778CDE1CC7A68D00F07921 /* CourseEntity+CoreDataProperties.swift */,
-				63778CDF1CC7A68D00F07921 /* CourseEntity.swift */,
+				637C70571CCA6996006EF44A /* CourseEntity+CoreDataProperties.swift */,
+				637C70581CCA6996006EF44A /* CourseEntity.swift */,
 			);
 			name = "Domain Layer";
 			sourceTree = "<group>";
@@ -574,6 +590,7 @@
 			children = (
 				4C9C20C41CB609EE006465A7 /* ViewController */,
 				4C9C20C51CB609FB006465A7 /* View */,
+				6364BBFA1CCB27C100E00923 /* MessageItem */,
 			);
 			name = "Fun Interface";
 			sourceTree = "<group>";
@@ -581,6 +598,9 @@
 		4C9C20C41CB609EE006465A7 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6364BBF21CCB274500E00923 /* AddTheLeaveMessage.swift */,
+				6364BBF01CCB272B00E00923 /* TheDetailMesgTableViewController.swift */,
+				6364BBEE1CCB271500E00923 /* MessageTableViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -588,8 +608,20 @@
 		4C9C20C51CB609FB006465A7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6364BBFD1CCB281200E00923 /* ContextLabel.swift */,
+				6364BBF81CCB27B700E00923 /* MyDetailTableViewCell.swift */,
+				6364BBF41CCB278A00E00923 /* MyCopyUILable.swift */,
+				6364BBFF1CCB2B8200E00923 /* MsgCutsomTableViewCell.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		6364BBFA1CCB27C100E00923 /* MessageItem */ = {
+			isa = PBXGroup;
+			children = (
+				6364BBFB1CCB27D300E00923 /* MessageItem.swift */,
+			);
+			name = MessageItem;
 			sourceTree = "<group>";
 		};
 		637C70521CCA2A83006EF44A /* PractiseQtypeBL */ = {
@@ -878,6 +910,7 @@
 				4C4A7ED11CC753BF00D2D89A /* LauchViewController.swift in Sources */,
 				4C1FECC41C340E8600B3E855 /* LoginViewController.swift in Sources */,
 				4C5D43DB1CC4A94800AB3FFD /* UserInfo.swift in Sources */,
+				637C70591CCA6996006EF44A /* CourseEntity+CoreDataProperties.swift in Sources */,
 				6385EB791CB4043D006655F8 /* AdViewController.swift in Sources */,
 				4C57DEF31CC8663F001494BE /* CourseBL.swift in Sources */,
 				4C8955171C2FC34900A63975 /* Course.swift in Sources */,
@@ -887,22 +920,28 @@
 				4C4E73171CB549C4002D8926 /* MBProgressHUD.m in Sources */,
 				4C7540C81CBF46BE00E94C82 /* TSUITextField.swift in Sources */,
 				4C53541D1CC8D8840043139D /* RegBL.swift in Sources */,
+				6364BBF51CCB278A00E00923 /* MyCopyUILable.swift in Sources */,
 				4C1FECC51C340E8600B3E855 /* RegisterViewController.swift in Sources */,
 				4C775A081CB3F86C000BA228 /* UIColor+Extension.swift in Sources */,
+				6364BC001CCB2B8200E00923 /* MsgCutsomTableViewCell.swift in Sources */,
 				4C8EFD2B1C32B3F000AC7454 /* AboutPageView.swift in Sources */,
 				4C775A041CB3F799000BA228 /* UILabelPadding.swift in Sources */,
 				4C8EFD3A1C32B3F000AC7454 /* SettingView.swift in Sources */,
+				6364BBEF1CCB271500E00923 /* MessageTableViewController.swift in Sources */,
 				4C643A561CC71B4E00698531 /* TSPaperCollectionView.swift in Sources */,
 				4C3803561C31BA4100B8C0B1 /* AExamPaper.swift in Sources */,
 				4C11ABFA1C314E0F006C3816 /* OptionItem.swift in Sources */,
 				4C775A061CB3F7F5000BA228 /* AbsViewFactory.swift in Sources */,
 				4C5D43D91CC4A92900AB3FFD /* LoginBL.swift in Sources */,
 				E6F046B91C2D0A0000D3CF6C /* TestApp.xcdatamodeld in Sources */,
+				6364BBFC1CCB27D300E00923 /* MessageItem.swift in Sources */,
 				4C6965B41CC4823500C702E7 /* GRNetwork.swift in Sources */,
 				4C15ED811CCAE9AC00ABB7A2 /* PaperBL.swift in Sources */,
 				4C24C1CD1C30DBBB00875D46 /* MyTableView.swift in Sources */,
 				4C24C1CF1C3107C200875D46 /* MyTableViewCell.swift in Sources */,
+				6364BBF11CCB272B00E00923 /* TheDetailMesgTableViewController.swift in Sources */,
 				E6F34A721C2D379A00D453B8 /* MainTabViewController.swift in Sources */,
+				6364BBF31CCB274500E00923 /* AddTheLeaveMessage.swift in Sources */,
 				4C8EFD371C32B3F000AC7454 /* InsideMyInfo.swift in Sources */,
 				4C1FECC61C340E8600B3E855 /* InstallViewController.swift in Sources */,
 				63A2F93E1CBA59F700AB5EDA /* SelecTheCourseController.swift in Sources */,
@@ -921,10 +960,10 @@
 				4C17FA851CC7BBF5009FC926 /* FootForPaperCollectionReusableView.swift in Sources */,
 				4C8EFCC01C32A1D500AC7454 /* Timer.swift in Sources */,
 				4C8EFD311C32B3F000AC7454 /* CollectionView.swift in Sources */,
+				6364BBFE1CCB281200E00923 /* ContextLabel.swift in Sources */,
 				4C8EFD3C1C32B3F000AC7454 /* UserItem.swift in Sources */,
+				6364BBF91CCB27B700E00923 /* MyDetailTableViewCell.swift in Sources */,
 				63A956801CC675C700B4AB63 /* MainTableViewController.swift in Sources */,
-				63778CE11CC7A68D00F07921 /* CourseEntity.swift in Sources */,
-				63778CE01CC7A68D00F07921 /* CourseEntity+CoreDataProperties.swift in Sources */,
 				4C643A591CC72DD800698531 /* HearderForPaperCollectionReusableView.swift in Sources */,
 				4C4BCF561CAD50EF001FFC09 /* PapersViewController.swift in Sources */,
 				4C17EB3D1CC3B6A900A2F6C5 /* TSUINavigationController.swift in Sources */,
@@ -933,6 +972,7 @@
 				637C70561CCA2B27006EF44A /* Qtype.swift in Sources */,
 				4C8EFCBE1C328EB300AC7454 /* PlayerView.swift in Sources */,
 				637FEF101CBFCB70008C7CDE /* CutsomCourseTableViewCell.swift in Sources */,
+				637C705A1CCA6996006EF44A /* CourseEntity.swift in Sources */,
 				4C89551C1C2FE0AE00A63975 /* MakeTestViewController.swift in Sources */,
 				63DA68171CC704BE004489F2 /* CustomLayout.swift in Sources */,
 				4C8955191C2FC3D900A63975 /* ExamPaper.swift in Sources */,

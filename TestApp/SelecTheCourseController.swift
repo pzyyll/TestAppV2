@@ -78,7 +78,6 @@ class SelectTheCourseController: UIViewController, UITableViewDelegate, UITableV
         let courseBL = CourseBL()
         courseBL.delegate = self
         courseBL.getAllCourse()
-
     }
     
     func do_coredata(){
@@ -156,6 +155,8 @@ class SelectTheCourseController: UIViewController, UITableViewDelegate, UITableV
                 
                 myevent.c_No = course.c_No
                 myevent.c_Name = course.c_Name
+                myevent.c_Introduction = course.c_Intro
+                myevent.c_IntroEn = course.c_IntroEn
                 
                 try self.appDelegate.managedObjectContext.save()
                 self.pendingarr.append(myevent)
@@ -257,9 +258,6 @@ class SelectTheCourseController: UIViewController, UITableViewDelegate, UITableV
     func findCourse(course: Course) -> Int {
         var i = 0;
         for item in self.pendingarr {
-            //            print(item.c_No)
-            //            print(course.c_No)
-            //            print("-----------")
             if item.c_No == course.c_No {
                 print("delete after count: \(self.pendingarr.count)");
                 return i;
@@ -279,14 +277,17 @@ class SelectTheCourseController: UIViewController, UITableViewDelegate, UITableV
     
     func getCoursesFinished(courses: [Course]) {
         dispatch_async(dispatch_get_main_queue()) {
-            self.do_coredata()
+            self.appDelegate = (UIApplication.sharedApplication().delegate) as!  AppDelegate
             self.allCourse = courses
             self.smalltblView?.reloadData()
         }
     }
+    
     func loadingCoursesFail(fail: Bool) {
         if fail {
             print("abc")
         }
     }
+    
+    
 }

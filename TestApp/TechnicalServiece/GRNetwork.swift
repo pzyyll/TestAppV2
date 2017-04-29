@@ -183,7 +183,9 @@ extension GRNetwork {
         Alamofire.request(Router.GetAllCourse).responseJSON { (res) in
             if res.result.isSuccess {
                 let json = JSON(data: res.data!)
+
                 //print(json)
+
                 var courses = [Course]()
                 if json["count"].int != 0 {
                     for item in json["course"].array! {
@@ -229,7 +231,7 @@ extension GRNetwork {
         Alamofire.request(Router.GetQtypes(course)).responseJSON { (res) in
             if res.result.isSuccess {
                 let json = JSON(data: res.data!)
-                print("abc\(json)")
+                //print("abc\(json)")
                 var dict = [String: [Qtype]]()
                 for item in json["qtypes"].array! {
                     let aQtype = Qtype(dict: item.dictionaryObject!)
@@ -239,7 +241,7 @@ extension GRNetwork {
                         dict[aQtype.qtt_NameCn]?.append(aQtype)
                     }
                 }
-                
+                //print(dict)
                 self.delegateForQtype.getQtypeFinished(dict)
             } else {
                 self.delegateForQtype.getQtypeFail(true)

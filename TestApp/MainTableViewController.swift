@@ -13,8 +13,8 @@ struct T {
     var qtypes = [Qtype]()
 }
 
-class MainTableViewController: UITableViewController, PractiseQtypeBLDelegate {
-
+class MainTableViewController: UITableViewController, PractiseQtypeBLDelegate{
+    
     var rec_data2 = [T]()
     var course: Course!
     var pqBL: PractiseQtypeBL!
@@ -25,22 +25,37 @@ class MainTableViewController: UITableViewController, PractiseQtypeBLDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "printName:", name: "sss", object: nil)
+        
         self.pqBL = PractiseQtypeBL()
         self.pqBL.delegate = self
+        
         course = Course()
         course.c_No = "c00001"
+
+        perpare_data(course)
         
         self.tableView.backgroundColor = UIColor.clearColor()
         self.view.backgroundColor = UIColor.grayLightColor237()
         
+
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellIndenty)
         self.tableView.registerNib(UINib(nibName: "CustsomMainTableViewCell", bundle: nil), forCellReuseIdentifier: mCutsomCell)
-        perpare_data()
+        
     }
 
-    func perpare_data(){
+    func printName(notifaction: NSNotification){
+        print( notifaction.object!)
+        let c = notifaction.object! as! Course
+        course = Course()
+        course = c
+        //perpare_data(course)
+        print(c.c_No, self.course.c_No)
+    }
+    
+    func perpare_data(course:Course){
         self.pqBL.getAllQtypeByCourse(self.course)
     }
     
@@ -75,7 +90,7 @@ class MainTableViewController: UITableViewController, PractiseQtypeBLDelegate {
         if self.rec_data2[section].ok {
             if crow == 0 {
                 let cell = tableView.dequeueReusableCellWithIdentifier(cellIndenty, forIndexPath: indexPath)
-                cell.textLabel!.font = UIFont(name: "MarKer Felt", size: 25)
+                cell.textLabel!.font = UIFont(name: "MarKer Felt", size: 20)
                 cell.textLabel?.text = self.rec_data2[section].qtypes.first!.qtt_NameCn
                 return cell
             } else {
@@ -85,7 +100,7 @@ class MainTableViewController: UITableViewController, PractiseQtypeBLDelegate {
             }
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier(cellIndenty, forIndexPath: indexPath)
-            cell.textLabel!.font = UIFont(name: "MarKer Felt", size: 25)
+            cell.textLabel!.font = UIFont(name: "MarKer Felt", size: 20)
             cell.textLabel?.text = self.rec_data2[section].qtypes.first!.qtt_NameCn
             return cell
         }
@@ -143,15 +158,20 @@ class MainTableViewController: UITableViewController, PractiseQtypeBLDelegate {
             self.rec_data2.sortInPlace({ (a, b) -> Bool in
                 return a.qtypes.first?.qtt_Aut < b.qtypes.first?.qtt_Aut
             })
+            
             self.tableView.reloadData()
         }
     }
+    
     func getQtypeByCourseFail(fail: Bool) {
         if fail {
             MBProgressHUD.showDelayHUDToView(self.view, mess: "loading fail", icon: "Icon_err1")
         }
     }
     
+    func sendCellInfo(course: Course?) {
+        print("ccellleee")
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

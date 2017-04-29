@@ -22,11 +22,7 @@ class Course: NSObject {
     var courseNo = ""
     var courseName = ""
     var courseIntro = ""
-//    init (no: String, name: String, intro: String) {
-//        self.courseNo = no
-//        self.courseName = name
-//        self.courseIntro = intro
-//    }
+
     override init() {
         super.init()
     }
@@ -47,13 +43,12 @@ class Course: NSObject {
         if let str = dict["c_AppdendTime"] as? String {
             self.c_Appdendtime = str
         }
+        if let str = dict["c_Name"] as? String {
+            self.c_Name = str
+        }
         if let str = dict["c_IntroEn"] as? String {
             self.c_IntroEn = str
         }
-        if let str = dict["c_Name"] as? String {
-            self.c_Name = self.c_IntroEn
-        }
-        
         super.init()
     }
     

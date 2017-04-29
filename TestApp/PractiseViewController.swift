@@ -10,9 +10,7 @@ import UIKit
 import WebKit
 import CoreData
 
-
-class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SelectTheCourseControllerDataSource {
-    
+class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SelectTheCourseControllerDataSource{
     
     let numOfPages = 3
     
@@ -39,6 +37,7 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.view.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
         self.timer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(10),target:self,selector:#selector(PractiseViewController.countTime),userInfo:nil,repeats:true)
         
@@ -59,11 +58,11 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
         if !NSUserDefaults.standardUserDefaults().boolForKey(boolKey) {
                         let firstCourse = Course()
                         firstCourse.c_No = "c00001"
-                        firstCourse.c_Name = "En_LV4";
+                        firstCourse.c_Name = "CET-4";
                         firstCourse.c_Intro = "大学英语四级";
                         let secCourse = Course()
                         secCourse.c_No = "c00002"
-                        secCourse.c_Name = "En_LV6";
+                        secCourse.c_Name = "CET-4";
                         secCourse.c_Intro = "大学英语六级"
             
                         self.evarr = [firstCourse, secCourse];
@@ -214,8 +213,14 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
             self.view.addSubview(courseCtr.view);
             self.didMoveToParentViewController(self)
         }else{
+            //print(arr[indexPath.row].c_No)
+            
             let trans = MainTableViewController()
+            //let trans = MessageTableViewController()
+            entityBecomeCourse(arr[indexPath.row])
             self.navigationController?.pushViewController(trans, animated: true)
+            //self.presentViewController(trans, animated: true, completion: nil)
+            
         }
         
     }
@@ -243,21 +248,23 @@ class PractiseViewController: UIViewController,UICollectionViewDelegate,UICollec
             cell.nameLabel?.text = "more"
         }else{
             cell.nameLabel?.font = UIFont(name: "Chalkboard SE", size: 18)
-            cell.nameLabel?.text = arr[indexPath.item].c_Name
+            cell.nameLabel?.text = arr[indexPath.item].c_IntroEn
             cell.imgView?.image = UIImage(named: "icon_subject_yingyu")
         }
         
         return cell
     }
     
-    //調整並返回collectionView的间距
-//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets{
-//        return UIEdgeInsetsMake(10, 20, 10, 10)
-//    }
+    func entityBecomeCourse(cE:CourseEntity) {
+        print(cE.c_IntroEn!, cE.c_No!)
+        let tcourse = Course()
+        tcourse.c_No = cE.c_No!
+        NSNotificationCenter.defaultCenter().postNotificationName("sss", object: tcourse)
+    }
     
     
     func changeData() -> [CourseEntity]? {
         return arr
     }
-    
+
 }

@@ -38,6 +38,13 @@ class MainTabViewController: UITabBarController {
         test.title = "练习"
         
         //fun界面
+        let fun = MessageTableViewController()
+        fun.title = "FUN"
+        let navFun = UINavigationController(rootViewController: fun)
+        img = UIImage(named: "icon_home_discovery_checked_")
+        navFun.tabBarItem.image = img
+        
+        //Me
         let me = SelfInforViewController()
         let navMe = UINavigationController(rootViewController: me)
         img = UIImage(named: "Icon_me-Small")
@@ -45,10 +52,10 @@ class MainTabViewController: UITabBarController {
         navMe.tabBarItem.title = "Me"
         
         
-        self.setViewControllers([navTest, navMessages, navMe], animated: true)
+        self.setViewControllers([navTest, navMessages, navFun, navMe], animated: true)
         
         let selectIconsForTabItems = ["icon_home_practice_checked_",
-            "icon_home_paper_checked_",
+            "icon_home_paper_checked_", "icon_home_discovery_checked_",
             "Icon_me-Small"];
         var i = 0;
         for item in self.tabBar.items! {

@@ -12,6 +12,7 @@ class CustomCLcell : UICollectionViewCell{
     let width = UIScreen.mainScreen().bounds.size.width//获取屏幕宽
     var imgView : UIImageView?
     var nameLabel:UILabel?
+    var ccourse_No = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
